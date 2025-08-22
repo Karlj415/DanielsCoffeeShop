@@ -164,8 +164,16 @@ h1, h2, h3, h4, h5, h6 {
     border: none;
     border-radius: 5px;
     font-weight: 600;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.2s ease-in-out;
     text-transform: uppercase;
+    cursor: pointer;
+}
+
+.cta-button:hover {
+    background: #7BA082;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(107, 142, 113, 0.3);
+}
     letter-spacing: 1px;
     cursor: pointer;
     font-size: 1rem;
@@ -824,27 +832,43 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateY(0);
 }
 
-.shine-effect {
+/* Staggered animations for images */
+.menu-item:nth-child(1) .animate-on-scroll { transition-delay: 0.1s; }
+.menu-item:nth-child(2) .animate-on-scroll { transition-delay: 0.2s; }
+.menu-item:nth-child(3) .animate-on-scroll { transition-delay: 0.3s; }
+.menu-item:nth-child(4) .animate-on-scroll { transition-delay: 0.4s; }
+.menu-item:nth-child(5) .animate-on-scroll { transition-delay: 0.5s; }
+.menu-item:nth-child(6) .animate-on-scroll { transition-delay: 0.6s; }
+
+.instagram-post:nth-child(1) .animate-on-scroll { transition-delay: 0.1s; }
+.instagram-post:nth-child(2) .animate-on-scroll { transition-delay: 0.2s; }
+.instagram-post:nth-child(3) .animate-on-scroll { transition-delay: 0.3s; }
+.instagram-post:nth-child(4) .animate-on-scroll { transition-delay: 0.4s; }
+.instagram-post:nth-child(5) .animate-on-scroll { transition-delay: 0.5s; }
+.instagram-post:nth-child(6) .animate-on-scroll { transition-delay: 0.6s; }
+
+.about-image .animate-on-scroll { transition-delay: 0.2s; }
+
+.coffee-glow {
     position: relative;
     overflow: hidden;
 }
 
-.shine-effect::after {
+.coffee-glow::after {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -200%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-    transform: rotate(45deg);
-    transition: left 1s ease-in-out;
-    transition-delay: 0s;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.5s ease-out;
+    pointer-events: none;
 }
 
-.shine-effect:hover::after {
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-    left: 200%;
-    top: -50%;
-    transition-delay: 0.2s;
+.coffee-glow:hover::after {
+    width: 300px;
+    height: 300px;
 }

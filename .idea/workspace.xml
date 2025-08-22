@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c10139a8-3e1a-487e-9561-56766d2721ef" name="Changes" comment="Add initial project setup with homepage and assets&#10;&#10;- Included `index.html` as the main structure for the webpage.&#10;- Added `favicon.svg` for site branding.&#10;- Uploaded coffee-related SVG files for logos.&#10;- Structured sections for navigation, menu, about, and Instagram feed in `index.html`." />
+    <list default="true" id="c10139a8-3e1a-487e-9561-56766d2721ef" name="Changes" comment="Add initial project setup with homepage and assets&#10;&#10;- Included `index.html` as the main structure for the webpage.&#10;- Added `favicon.svg` for site branding.&#10;- Uploaded coffee-related SVG files for logos.&#10;- Structured sections for navigation, menu, about, and Instagram feed in `index.html`.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,6 +31,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "junie.onboarding.icon.badge.shown": "true",
     "last_opened_file_path": "/Users/gawdly/Developer/CoffeeShop",
@@ -61,7 +66,8 @@
       <updated>1755748691662</updated>
       <workItem from="1755748692762" duration="2481000" />
       <workItem from="1755751245761" duration="1317000" />
-      <workItem from="1755776399727" duration="15996000" />
+      <workItem from="1755776399727" duration="16178000" />
+      <workItem from="1755862337821" duration="881000" />
     </task>
     <task id="LOCAL-00001" summary="Add initial project setup with homepage and assets&#10;&#10;- Included `index.html` as the main structure for the webpage.&#10;- Added `favicon.svg` for site branding.&#10;- Uploaded coffee-related SVG files for logos.&#10;- Structured sections for navigation, menu, about, and Instagram feed in `index.html`.">
       <option name="closed" value="true" />
