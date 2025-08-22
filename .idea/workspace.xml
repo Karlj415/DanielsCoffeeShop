@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c10139a8-3e1a-487e-9561-56766d2721ef" name="Changes" comment="Add initial project setup with homepage and assets&#10;&#10;- Included `index.html` as the main structure for the webpage.&#10;- Added `favicon.svg` for site branding.&#10;- Uploaded coffee-related SVG files for logos.&#10;- Structured sections for navigation, menu, about, and Instagram feed in `index.html`." />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="31a48etbhaRa8IjEi9US0lWHeSg" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showScratchesAndConsoles" value="false" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "/Users/gawdly/Developer/CoffeeShop",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/imgs" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-e03c56caf84a-JavaScript-WS-252.23892.411" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c10139a8-3e1a-487e-9561-56766d2721ef" name="Changes" comment="" />
+      <created>1755748691662</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1755748691662</updated>
+      <workItem from="1755748692762" duration="2481000" />
+      <workItem from="1755751245761" duration="1317000" />
+      <workItem from="1755776399727" duration="15996000" />
+    </task>
+    <task id="LOCAL-00001" summary="Add initial project setup with homepage and assets&#10;&#10;- Included `index.html` as the main structure for the webpage.&#10;- Added `favicon.svg` for site branding.&#10;- Uploaded coffee-related SVG files for logos.&#10;- Structured sections for navigation, menu, about, and Instagram feed in `index.html`.">
+      <option name="closed" value="true" />
+      <created>1755835270068</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1755835270068</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add initial project setup with homepage and assets&#10;&#10;- Included `index.html` as the main structure for the webpage.&#10;- Added `favicon.svg` for site branding.&#10;- Uploaded coffee-related SVG files for logos.&#10;- Structured sections for navigation, menu, about, and Instagram feed in `index.html`." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add initial project setup with homepage and assets&#10;&#10;- Included `index.html` as the main structure for the webpage.&#10;- Added `favicon.svg` for site branding.&#10;- Uploaded coffee-related SVG files for logos.&#10;- Structured sections for navigation, menu, about, and Instagram feed in `index.html`." />
+  </component>
+</project>
