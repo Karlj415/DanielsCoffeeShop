@@ -8,6 +8,8 @@
 html {
     scroll-behavior: smooth;
     overflow-x: hidden; /* Prevent horizontal scroll */
+    -webkit-text-size-adjust: 100%; /* Prevent text scaling on iOS */
+    -ms-text-size-adjust: 100%;
 }
 
 body {
@@ -16,6 +18,8 @@ body {
     color: #333;
     font-weight: 400;
     overflow-x: hidden; /* Prevent horizontal scroll */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
@@ -46,13 +50,23 @@ h1, h2, h3, h4, h5, h6 {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 5px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
 }
 
 .nav-logo {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     gap: 15px;
 }
@@ -74,9 +88,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-menu {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     list-style: none;
     gap: 2rem;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
 }
 
@@ -110,6 +128,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-toggle {
     display: none;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     cursor: pointer;
     gap: 4px;
@@ -141,6 +162,17 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     text-align: center;
     color: white;
+    /* Fallback for mobile browsers that don't support fixed attachment */
+    background-repeat: no-repeat;
+}
+
+/* Fix for mobile browsers */
+@media screen and (max-width: 768px) {
+    .hero {
+        background-attachment: scroll;
+        min-height: 100vh;
+        height: auto;
+    }
 }
 
 .hero-content h1 {
@@ -218,9 +250,30 @@ h1, h2, h3, h4, h5, h6 {
 
 .menu-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
     margin-top: 3rem;
+    width: 100%;
+    /* Fallback for older browsers */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+/* Modern browsers will use grid */
+@supports (display: grid) {
+    .menu-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        -webkit-box-pack: unset;
+        -ms-flex-pack: unset;
+        justify-content: unset;
+    }
 }
 
 .menu-item {
@@ -229,6 +282,21 @@ h1, h2, h3, h4, h5, h6 {
     overflow: hidden;
     box-shadow: 0 5px 20px rgba(0,0,0,0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Flexbox fallback */
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 280px;
+    flex: 0 0 280px;
+    margin: 0 1rem 2rem 0;
+}
+
+/* Grid support */
+@supports (display: grid) {
+    .menu-item {
+        -webkit-box-flex: unset;
+        -ms-flex: unset;
+        flex: unset;
+        margin: 0;
+    }
 }
 
 .menu-item:hover {
@@ -344,6 +412,27 @@ h1, h2, h3, h4, h5, h6 {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
     margin-bottom: 3rem;
+    width: 100%;
+    /* Flexbox fallback */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+/* Modern browsers will use grid */
+@supports (display: grid) {
+    .instagram-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        -webkit-box-pack: unset;
+        -ms-flex-pack: unset;
+        justify-content: unset;
+    }
 }
 
 .instagram-post {
@@ -353,6 +442,21 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 5px 20px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
     position: relative;
+    /* Flexbox fallback */
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 280px;
+    flex: 0 0 280px;
+    margin: 0 1rem 2rem 0;
+}
+
+/* Grid support */
+@supports (display: grid) {
+    .instagram-post {
+        -webkit-box-flex: unset;
+        -ms-flex: unset;
+        flex: unset;
+        margin: 0;
+    }
 }
 
 .instagram-post:hover {
@@ -779,27 +883,49 @@ h1, h2, h3, h4, h5, h6 {
         height: calc(100vh - 70px);
         background: #4A2C2A;
         backdrop-filter: blur(10px);
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
         justify-content: flex-start;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
         padding-top: 2rem;
         transition: left 0.3s ease;
         gap: 1.5rem;
         z-index: 999;
+        /* Fix for Chrome mobile */
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+        transition: -webkit-transform 0.3s ease;
+        transition: transform 0.3s ease;
+        transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+        left: 0;
     }
 
     .nav-menu.active {
         left: 0;
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
     }
 
     .nav-toggle {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
         position: relative;
         z-index: 1000;
         padding: 8px;
         min-width: 40px;
         min-height: 40px;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
         justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
     }
 
@@ -1340,4 +1466,74 @@ h1, h2, h3, h4, h5, h6 {
 .coffee-glow:hover::after {
     width: 300px;
     height: 300px;
+}
+
+/* Additional Cross-Browser Compatibility Fixes */
+
+/* Fix for Chrome's handling of flexbox gaps */
+@supports not (gap: 2rem) {
+    .nav-menu > li:not(:last-child) {
+        margin-right: 2rem;
+    }
+    
+    .menu-grid > .menu-item:not(:last-child) {
+        margin-right: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .instagram-grid > .instagram-post:not(:last-child) {
+        margin-right: 2rem;
+        margin-bottom: 2rem;
+    }
+}
+
+/* Fix for Safari's handling of 100vh on mobile */
+@supports (-webkit-appearance: none) {
+    .hero {
+        min-height: -webkit-fill-available;
+    }
+}
+
+/* Fix for Chrome's subpixel rendering */
+* {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    perspective: 1000;
+}
+
+/* Ensure proper box-sizing inheritance */
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+/* Fix for Chrome's handling of transform3d */
+.menu-item,
+.instagram-post {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+/* Additional mobile fixes for Chrome */
+@media screen and (max-width: 768px) {
+    /* Fix viewport units on mobile Chrome */
+    .hero {
+        height: 100vh;
+        height: calc(var(--vh, 1vh) * 100);
+    }
+    
+    /* Ensure proper touch scrolling */
+    .nav-menu {
+        -webkit-overflow-scrolling: touch;
+        overflow-y: auto;
+    }
+    
+    /* Fix for Chrome mobile zoom issues */
+    input, textarea, select {
+        font-size: 16px;
+    }
 }
