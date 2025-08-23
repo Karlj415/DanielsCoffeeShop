@@ -206,18 +206,21 @@ h1, h2, h3, h4, h5, h6 {
     border: none;
     border-radius: 5px;
     font-weight: 600;
-    transition: all 0.2s ease-in-out;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.35s ease,
+                background-color 0.35s ease;
     text-transform: uppercase;
     cursor: pointer;
 }
 
 .cta-button:hover {
-    background: #7BA082;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(107, 142, 113, 0.3);
+    background: #5F8A6A; /* subtle darken */
+    box-shadow: 0 12px 28px rgba(107, 142, 113, 0.35);
+    transform: translateY(0) scale(1.03); /* slight pop */
 }
+/* Button fine-tuning */
+.cta-button {
     letter-spacing: 1px;
-    cursor: pointer;
     font-size: 1rem;
     position: relative;
     overflow: hidden;
@@ -341,18 +344,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .about-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
-    gap: 4rem 4rem;
-    align-items: flex-start;
-    margin-bottom: 3rem;
-    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem;
+    align-items: center;
+    /* Mobile-first: stack content */
+    flex-direction: column;
 }
 
 .about-text {
-    grid-column: 1;
-    grid-row: 1;
+    flex: 1 1 50%;
+}
+
+.about-image {
+    flex: 1 1 50%;
 }
 
 .about-text h2 {
@@ -365,11 +370,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .about-text p {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem; /* increased spacing between paragraphs */
     color: #555;
     font-size: 1.1rem;
     line-height: 1.8;
     font-weight: 400;
+}
+
+/* Avoid extra space after the last paragraph */
+.about-text p:last-child {
+    margin-bottom: 0;
 }
 
 .about-image {
@@ -377,18 +387,18 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    max-width: 500px;
+    /* Keep image from overpowering the section */
+    max-width: clamp(320px, 42vw, 460px);
+    width: 100%;
     margin: 0 auto;
-    grid-column: 2;
-    grid-row: 1;
-    justify-self: center;
+    /* Maintain a pleasant, consistent frame and crop overflow */
+    aspect-ratio: 4 / 3;
 }
 
 .about-features {
     text-align: center;
     margin-top: 2rem;
-    grid-column: 1 / -1;
-    grid-row: 2;
+    width: 100%;
 }
 
 .features {
@@ -406,8 +416,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .about-image img {
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
+    object-position: center;
+    display: block;
     transition: transform 0.3s ease;
 }
 
@@ -549,13 +561,15 @@ h1, h2, h3, h4, h5, h6 {
     text-decoration: none;
     border-radius: 25px;
     font-weight: 600;
-    transition: all 0.3s ease;
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.45s ease,
+                background 0.45s ease;
 }
 
 .instagram-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(228, 64, 95, 0.4);
-    background: linear-gradient(45deg, #C13584, #833AB4);
+    box-shadow: 0 12px 28px rgba(228, 64, 95, 0.45);
+    background: linear-gradient(45deg, #D43E78, #A33EA8); /* subtle shift */
+    transform: translateY(0) scale(1.03); /* slight pop */
 }
 
 .instagram-btn svg {
@@ -738,13 +752,76 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.45s ease,
+                background-color 0.45s ease;
     white-space: nowrap;
 }
 
 .submit-btn:hover {
     background: #5A7A61;
-    transform: translateY(-2px);
+    transform: translateY(0) scale(1.03); /* slight pop */
+    box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+}
+
+/* Flashy sheen sweep on hover */
+.cta-button,
+.instagram-btn,
+.submit-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button::before,
+.instagram-btn::before,
+.submit-btn::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -75%;
+    width: 50%;
+    height: 200%;
+    transform: skewX(-20deg) translateX(-150%);
+    background: linear-gradient(
+        120deg,
+        rgba(255,255,255,0) 0%,
+        rgba(255,255,255,0.3) 30%,
+        rgba(255,255,255,0.65) 50%,
+        rgba(255,255,255,0.3) 70%,
+        rgba(255,255,255,0) 100%
+    );
+    transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+    pointer-events: none;
+}
+
+.cta-button:hover::before,
+.instagram-btn:hover::before,
+.submit-btn:hover::before {
+    transform: skewX(-20deg) translateX(350%);
+}
+
+/* Optional outer glow pulse on hover */
+@keyframes glowPulseGreen {
+    0% { box-shadow: 0 0 0 rgba(107,142,113,0); }
+    40% { box-shadow: 0 0 20px rgba(107,142,113,0.35); }
+    100% { box-shadow: 0 0 0 rgba(107,142,113,0); }
+}
+
+@keyframes glowPulsePink {
+    0% { box-shadow: 0 0 0 rgba(228,64,95,0); }
+    40% { box-shadow: 0 0 24px rgba(228,64,95,0.5); }
+    100% { box-shadow: 0 0 0 rgba(228,64,95,0); }
+}
+
+.cta-button:hover { animation: glowPulseGreen 1400ms ease-out; }
+.instagram-btn:hover { animation: glowPulsePink 1400ms ease-out; }
+.submit-btn:hover { animation: glowPulseGreen 1400ms ease-out; }
+
+/* Press feedback */
+.cta-button:active,
+.instagram-btn:active,
+.submit-btn:active {
+    transform: scale(0.98);
 }
 
 .form-message {
@@ -937,42 +1014,44 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .nav-toggle {
-        display: -webkit-box;
-        display: -ms-flexbox;
         display: flex;
+        align-items: center;
+        justify-content: center;
         position: relative;
         z-index: 1000;
-        padding: 8px;
-        min-width: 40px;
-        min-height: 40px;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+
+    .nav-toggle:hover {
+        background-color: rgba(255, 255, 255, 0.08);
     }
 
     .nav-toggle .bar {
-        width: 20px;
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        right: 10px;
         height: 2px;
-        background: white;
-        display: block;
-        transition: all 0.3s ease;
+        background: #fff;
+        border-radius: 2px;
+        transform-origin: center;
+        transition: transform 0.25s ease, opacity 0.2s ease;
     }
 
-    .nav-toggle.active .bar:nth-child(1) {
-        transform: rotate(-45deg) translate(-5px, 6px);
-    }
+    /* Default stacked lines */
+    .nav-toggle .bar:nth-child(1) { transform: translateY(-8px); }
+    .nav-toggle .bar:nth-child(2) { transform: translateY(0); }
+    .nav-toggle .bar:nth-child(3) { transform: translateY(8px); }
 
-    .nav-toggle.active .bar:nth-child(2) {
-        opacity: 0;
-    }
-
-    .nav-toggle.active .bar:nth-child(3) {
-        transform: rotate(45deg) translate(-5px, -6px);
-    }
-    }
+    /* Morph to X */
+    .nav-toggle.active .bar:nth-child(1) { transform: translateY(0) rotate(45deg); }
+    .nav-toggle.active .bar:nth-child(2) { opacity: 0; }
+    .nav-toggle.active .bar:nth-child(3) { transform: translateY(0) rotate(-45deg); }
 
     .nav-link {
         font-size: 1.2rem;
@@ -987,17 +1066,15 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 1.1rem;
     }
 
-    .about-content {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto auto auto;
-        gap: 2rem;
-        margin-bottom: 2rem;
-    }
-    
     .about-text {
-        text-align: center;
-        grid-column: 1;
-        grid-row: 2;
+        order: 2;
+    }
+
+    .about-image {
+        order: 1;
+        /* Slightly wider and flatter frame on mobile */
+        max-width: 520px;
+        aspect-ratio: 16 / 10;
     }
     
     .about-text h2 {
@@ -1104,7 +1181,7 @@ h1, h2, h3, h4, h5, h6 {
 
     .about-text p {
         font-size: 1rem;
-        margin-bottom: 1rem;
+        margin-bottom: 1.5rem; /* slightly increased on mobile too */
     }
 
     .instagram-grid {
@@ -1160,6 +1237,27 @@ h1, h2, h3, h4, h5, h6 {
     .social-links {
         justify-content: center;
     }
+}
+
+/* Tablet and up */
+@media screen and (min-width: 769px) {
+    /* About: image on right, text on left */
+    .about-content {
+        flex-direction: row-reverse;
+    }
+    .about-text, .about-image {
+        flex: 1 1 50%;
+    }
+}
+
+/* Section title tweaks for spacing/centering */
+.about .section-title,
+.contact .section-title,
+.menu .section-title {
+    text-align: center;
+}
+.about .section-title {
+    margin-top: 1rem;
 }
 
 /* Extra Small Mobile Devices (390px and below) */
@@ -1496,29 +1594,13 @@ h1, h2, h3, h4, h5, h6 {
     overflow: hidden;
 }
 
-.coffee-glow::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: all 0.5s ease-out;
-    pointer-events: none;
-}
-
-.coffee-glow:hover::after {
-    width: 300px;
-    height: 300px;
-}
+/* Disable the previous glow ripple for a cleaner hover */
+.coffee-glow::after { content: none; }
 
 /* Large Desktop Styles */
 @media screen and (min-width: 1200px) {
     .about-image {
-        max-width: 450px;
+        max-width: 450px; /* keep modest on large screens */
         order: 0; /* Ensure proper order on large screens */
     }
 }
@@ -1526,7 +1608,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Extra Large Desktop Styles */
 @media screen and (min-width: 1440px) {
     .about-image {
-        max-width: 500px;
+        max-width: 460px; /* avoid overly large about image */
         order: 0; /* Ensure proper order on extra large screens */
     }
 }
@@ -1557,13 +1639,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-/* Fix for Chrome's subpixel rendering */
-* {
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -webkit-perspective: 1000;
-    perspective: 1000;
-}
+/* Remove global perspective/backface to avoid breaking position: fixed */
 
 /* Ensure proper box-sizing inheritance */
 *, *::before, *::after {
