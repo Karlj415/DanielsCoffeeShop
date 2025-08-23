@@ -979,7 +979,7 @@ h1, h2, h3, h4, h5, h6 {
     .nav-menu {
         position: fixed;
         top: 70px;
-        left: -100%;
+        left: 0; /* anchor to the viewport; use transform for slide */
         width: 100%;
         height: calc(100vh - 70px);
         background: #4A2C2A;
@@ -995,22 +995,22 @@ h1, h2, h3, h4, h5, h6 {
         -ms-flex-align: center;
         align-items: center;
         padding-top: 2rem;
-        transition: left 0.3s ease;
         gap: 1.5rem;
         z-index: 999;
-        /* Fix for Chrome mobile */
+        /* slide closed by default */
         -webkit-transform: translateX(-100%);
         transform: translateX(-100%);
-        transition: -webkit-transform 0.3s ease;
         transition: transform 0.3s ease;
-        transition: transform 0.3s ease, -webkit-transform 0.3s ease;
-        left: 0;
     }
 
     .nav-menu.active {
-        left: 0;
         -webkit-transform: translateX(0);
         transform: translateX(0);
+    }
+
+    /* Disable transitions temporarily when resizing */
+    .nav-menu.no-transition {
+        transition: none !important;
     }
 
     .nav-toggle {

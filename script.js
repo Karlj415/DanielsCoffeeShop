@@ -39,6 +39,26 @@ document.addEventListener('DOMContentLoaded', function() {
                 navToggle.classList.remove('active');
             }
         });
+
+        // Close menu and prevent odd auto-animations when crossing breakpoints
+        const BREAKPOINT = 768;
+        let lastIsMobile = window.innerWidth <= BREAKPOINT;
+
+        window.addEventListener('resize', () => {
+            const isMobile = window.innerWidth <= BREAKPOINT;
+            if (isMobile !== lastIsMobile) {
+                // Temporarily disable transitions to avoid slide flicker
+                navMenu.classList.add('no-transition');
+                // Ensure menu is closed and toggle reset when breakpoint changes
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+                // Allow layout to settle, then re-enable transitions
+                setTimeout(() => {
+                    navMenu.classList.remove('no-transition');
+                }, 50);
+            }
+            lastIsMobile = isMobile;
+        });
     }
 });
 
