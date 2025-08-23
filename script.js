@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const navToggle = document.querySelector('.nav-toggle');
     const navMenu = document.querySelector('.nav-menu');
     const navLinks = Array.from(document.querySelectorAll('.nav-menu .nav-link'));
+    const themeToggle = document.getElementById('themeToggle');
 
     if (navToggle && navMenu) {
         navToggle.addEventListener('click', function(e) {
@@ -91,6 +92,26 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         sections.forEach(sec => observer.observe(sec));
+    }
+
+    // Theme: load preference and toggle
+    const rootEl = document.documentElement;
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        rootEl.setAttribute('data-theme', 'dark');
+    }
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const isDark = rootEl.getAttribute('data-theme') === 'dark';
+            if (isDark) {
+                rootEl.removeAttribute('data-theme');
+                localStorage.removeItem('theme');
+            } else {
+                rootEl.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
     }
 });
 

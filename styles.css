@@ -15,20 +15,25 @@ html {
 :root {
     --nav-height: 70px;
     --font-size-base: clamp(16px, 1.1vw + 0.5rem, 18px);
-    --brand: #6B8E71;
-    --brand-dark: #5F8A6A;
-    --accent: #E4405F;
-    --text: #333;
-    --muted: #777;
-    --bg-muted: #f8f4ef;
+    /* Espresso + Sage palette */
+    --brand: #5C8068;
+    --brand-dark: #4B6B58;
+    --accent: #D63E62;
+    --text: #2E2A27;
+    --muted: #6F6A66;
+    --bg-muted: #F4EFE8;
+    --surface: #FFFFFF;
     --radius: 12px;
     --elevation: 0 8px 24px rgba(0,0,0,0.12);
+    --nav-bg: #4A2C2A;
+    --footer-bg: #4A2C2A;
+    --newsletter-bg: #4A2C2A;
 }
 
 body {
     font-family: 'Open Sans', sans-serif;
     line-height: 1.7;
-    color: #333;
+    color: var(--text);
     font-weight: 400;
     overflow-x: hidden; /* Prevent horizontal scroll */
     -webkit-font-smoothing: antialiased;
@@ -52,7 +57,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Navigation */
 .navbar {
-    background: #4A2C2A;
+    background: var(--nav-bg);
     backdrop-filter: blur(10px);
     position: fixed;
     top: 0;
@@ -782,10 +787,48 @@ section[id] {
 
 #backToTop:hover { background: var(--brand-dark); }
 
+/* Dark theme overrides */
+[data-theme="dark"] {
+    --text: #EDEAE7;
+    --bg-muted: #1C1A18;
+    --surface: #121110;
+    --nav-bg: #1C1A18;
+    --footer-bg: #121110;
+    --newsletter-bg: #121110;
+}
+
+[data-theme="dark"] body { background: var(--surface); }
+[data-theme="dark"] .menu,
+[data-theme="dark"] .instagram-feed { background: #181614; }
+[data-theme="dark"] .menu-item,
+[data-theme="dark"] .instagram-post { background: #1F1C1A; }
+[data-theme="dark"] .price { border-top-color: #2A2623; }
+
+/* Theme toggle button */
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    margin-left: 0.5rem;
+    border-radius: 8px;
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.2);
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+.theme-toggle:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.3); }
+.theme-toggle svg { width: 18px; height: 18px; display: block; }
+.icon-sun { display: none; }
+[data-theme="dark"] .icon-moon { display: none; }
+[data-theme="dark"] .icon-sun { display: block; }
+
 /* Newsletter Section */
 .newsletter {
     padding: 80px 0;
-    background: #4A2C2A;
+    background: var(--newsletter-bg);
     color: white;
 }
 
@@ -1001,7 +1044,7 @@ section[id] {
 
 /* Footer */
 .footer {
-    background: #4A2C2A;
+    background: var(--footer-bg);
     color: white;
     padding: 3rem 0 1rem;
 }
