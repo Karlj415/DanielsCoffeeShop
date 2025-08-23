@@ -46,11 +46,6 @@ CoffeeShop/
 - ✅ Touch-friendly navigation and interactions
 - ✅ Optimized typography scaling
 
-### Instagram Integration
-- ✅ Instafeed.js integration for real Instagram posts
-- ✅ Fallback system with placeholder posts
-- ✅ Loading states and error handling
-- ✅ Easy configuration system
 
 ### Animations & Interactions
 - ✅ Scroll-based animations using Intersection Observer
