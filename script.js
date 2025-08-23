@@ -15,6 +15,7 @@ window.addEventListener('orientationchange', setViewportHeight);
 document.addEventListener('DOMContentLoaded', function() {
     const navToggle = document.querySelector('.nav-toggle');
     const navMenu = document.querySelector('.nav-menu');
+    const navLinks = Array.from(document.querySelectorAll('.nav-menu .nav-link'));
 
     if (navToggle && navMenu) {
         navToggle.addEventListener('click', function(e) {
@@ -59,6 +60,37 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             lastIsMobile = isMobile;
         });
+    }
+
+    // Active nav link highlight on scroll
+    const sections = Array.from(document.querySelectorAll('section[id]'));
+    const linkById = new Map(
+        navLinks
+            .filter(a => a.getAttribute('href') && a.getAttribute('href').startsWith('#'))
+            .map(a => [a.getAttribute('href').slice(1), a])
+    );
+
+    function setActive(id) {
+        navLinks.forEach(a => a.classList.remove('active'));
+        const link = linkById.get(id);
+        if (link) link.classList.add('active');
+    }
+
+    if (sections.length && linkById.size) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setActive(entry.target.id);
+                }
+            });
+        }, {
+            root: null,
+            // Consider a section active when its top is 40% from viewport top
+            rootMargin: '-40% 0px -55% 0px',
+            threshold: 0.01
+        });
+
+        sections.forEach(sec => observer.observe(sec));
     }
 });
 
@@ -165,6 +197,10 @@ function observeElements() {
 // Navbar scroll effect
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
+    const backToTop = document.getElementById('backToTop');
+    if (!navbar) return;
+    
+    // Solid background + shadow after small scroll
     if (navbar) {
         if (window.scrollY > 100) {
             navbar.style.background = '#4A2C2A';
@@ -173,6 +209,12 @@ window.addEventListener('scroll', () => {
             navbar.style.background = '#4A2C2A';
             navbar.style.boxShadow = 'none';
         }
+    }
+    
+    // Back-to-top toggle
+    if (backToTop) {
+        if (window.scrollY > 600) backToTop.classList.add('show');
+        else backToTop.classList.remove('show');
     }
 });
 
@@ -190,5 +232,30 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (fallback) {
         fallback.style.display = 'grid';
+    }
+    
+    // Scroll-up reveal/hide navbar
+    let lastY = window.scrollY;
+    const nav = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+        const y = window.scrollY;
+        if (!nav) return;
+        if (y > lastY && y > 120) {
+            // scrolling down
+            nav.classList.add('nav-hidden');
+        } else {
+            // scrolling up
+            nav.classList.remove('nav-hidden');
+        }
+        lastY = y;
+    });
+    
+    // Back-to-top handler
+    const backToTop = document.getElementById('backToTop');
+    if (backToTop) {
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
     }
 });

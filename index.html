@@ -17,7 +17,7 @@
 </head>
 <body>
 <!-- Navigation -->
-<nav class="navbar">
+<nav class="navbar" role="navigation" aria-label="Primary Navigation">
     <div class="nav-container">
         <div class="nav-logo">
             <a href="#home" class="navbar-logo">
@@ -64,41 +64,56 @@
         <p class="section-title-description">Available in store</p>
         <div class="menu-grid">
             <div class="menu-item">
-                <img src="imgs/lc/Corsica_12oz_Coffee_Web1.webp" alt="Corsica Coffee" class="animate-on-scroll">
+                <img src="imgs/lc/Corsica_12oz_Coffee_Web1.webp" alt="Corsica Coffee" class="animate-on-scroll" loading="lazy" decoding="async">
                 <h3>Corsica Blend</h3>
                 <p>Premium single-origin coffee with rich, complex flavors</p>
                 <span class="price">$19.99</span>
             </div>
             <div class="menu-item">
                 <img src="imgs/lc/Colombia_SanRoque_web1_d22eb753-c4f1-47e0-9b9f-99a3aa38f0a0_1.webp"
-                     alt="Colombia San Roque" class="animate-on-scroll">
+                     alt="Colombia San Roque" class="animate-on-scroll" loading="lazy" decoding="async">
                 <h3>Colombia San Roque</h3>
                 <p>Smooth Colombian coffee with notes of chocolate and caramel</p>
                 <span class="price">$24.99</span>
             </div>
             <div class="menu-item">
-                <img src="imgs/lc/Nizza_12ozCoffee_web1.webp" alt="Nizza Coffee" class="animate-on-scroll">
+                <img src="imgs/lc/Nizza_12ozCoffee_web1.webp" alt="Nizza Coffee" class="animate-on-scroll" loading="lazy" decoding="async">
                 <h3>Nizza Roast</h3>
                 <p>Medium roast with balanced acidity and full body</p>
                 <span class="price">$19.99</span>
             </div>
             <div class="menu-item">
-                <img src="imgs/lc/RTD-9oz-2024_ColdBrew3.webp" alt="Cold Brew" class="animate-on-scroll">
+                <img src="imgs/lc/RTD-9oz-2024_ColdBrew3.webp" alt="Cold Brew" class="animate-on-scroll" loading="lazy" decoding="async">
                 <h3>Cold Brew RTD</h3>
                 <p>Ready-to-drink cold brew, smooth and refreshing</p>
                 <span class="price">$4.50</span>
             </div>
             <div class="menu-item">
-                <img src="imgs/lc/586933802-dtc_2024_9oz_oatvanilla-camera.webp" alt="Oat Vanilla" class="animate-on-scroll">
+                <img src="imgs/lc/586933802-dtc_2024_9oz_oatvanilla-camera.webp" alt="Oat Vanilla" class="animate-on-scroll" loading="lazy" decoding="async">
                 <h3>Oat Vanilla Latte</h3>
                 <p>Creamy oat milk latte with natural vanilla flavoring</p>
                 <span class="price">$4.50</span>
             </div>
             <div class="menu-item">
-                <img src="imgs/lc/586933794-dtc_2024_9oz_oatdouble-camera_1.webp" alt="Double Oat" class="animate-on-scroll">
+                <img src="imgs/lc/586933794-dtc_2024_9oz_oatdouble-camera_1.webp" alt="Double Oat" class="animate-on-scroll" loading="lazy" decoding="async">
                 <h3>Double Oat Espresso</h3>
                 <p>Rich double shot espresso with premium oat milk</p>
                 <span class="price">$4.50</span>
+            </div>
+            <div class="footer-section">
+                <h4>Visit & Contact</h4>
+                <div class="social-links">
+                    <a class="social-icon" href="https://maps.google.com/?q=1050+3rd+Ave+New+York+NY+10065" target="_blank" aria-label="Get Directions">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7Zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5Z"/>
+                        </svg>
+                    </a>
+                    <a class="social-icon" href="tel:+12125551234" aria-label="Call">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V21a1 1 0 0 1-1 1C10.61 22 2 13.39 2 3a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.59a1 1 0 0 1-.25 1.01l-2.2 2.19Z"/>
+                        </svg>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -110,7 +125,7 @@
         <h2 class="section-title">About Daniel's Coffee & More</h2>
         <div class="about-content">
             <div class="about-image">
-                <img src="imgs/store/about-photo.png" alt="Daniel's Coffee & More Interior" class="animate-on-scroll">
+                <img src="imgs/store/about-photo.png" alt="Daniel's Coffee & More Interior" class="animate-on-scroll" loading="lazy" decoding="async">
             </div>
             <div class="about-text">
                 <p>Daniel's Coffee & More is your neighborhood destination for exceptional coffee
@@ -386,6 +401,14 @@
         </div>
     </div>
 </footer>
+
+<!-- Back to top button -->
+<button id="backToTop" aria-label="Back to top" title="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 4l-7 7h4v7h6v-7h4z"/>
+    </svg>
+    <span class="sr-only">Back to top</span>
+</button>
 
 <script src="script.js"></script>
 
