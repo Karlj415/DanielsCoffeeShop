@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c10139a8-3e1a-487e-9561-56766d2721ef" name="Changes" comment="Add initial project setup with homepage and assets&#10;&#10;- Included `index.html` as the main structure for the webpage.&#10;- Added `favicon.svg` for site branding.&#10;- Uploaded coffee-related SVG files for logos.&#10;- Structured sections for navigation, menu, about, and Instagram feed in `index.html`.">
-      <change beforePath="$PROJECT_DIR$/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +32,7 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/gawdly/Developer/CoffeeShop&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/gawdly/Desktop/DanielsCoffeeShop&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -68,6 +67,8 @@
       <workItem from="1755776399727" duration="16178000" />
       <workItem from="1755862337821" duration="881000" />
       <workItem from="1755875316088" duration="5666000" />
+      <workItem from="1755926630899" duration="277000" />
+      <workItem from="1755927019729" duration="59000" />
     </task>
     <task id="LOCAL-00001" summary="Add initial project setup with homepage and assets&#10;&#10;- Included `index.html` as the main structure for the webpage.&#10;- Added `favicon.svg` for site branding.&#10;- Uploaded coffee-related SVG files for logos.&#10;- Structured sections for navigation, menu, about, and Instagram feed in `index.html`.">
       <option name="closed" value="true" />
