@@ -9,19 +9,23 @@
     <meta name="keywords"
           content="coffee shop, premium coffee, espresso, latte, cold brew, Daniel's Coffee, specialty coffee">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preload" as="image" href="imgs/store/hero.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Open+Sans:wght@300;400;500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Open+Sans:wght@300;400;500;600;700&display=swap"
           rel="stylesheet">
 </head>
 <body>
+<a class="skip-link" href="#menu">Skip to content</a>
 <!-- Navigation -->
 <nav class="navbar" role="navigation" aria-label="Primary Navigation">
     <div class="nav-container">
         <div class="nav-logo">
-            <a href="#home" class="navbar-logo">
-                <h2>Daniel's Coffee & More</h2></a>
+            <a href="#home" class="navbar-logo" aria-label="Daniel's Coffee & More - Home">
+                <span class="logo-letter" aria-hidden="true">D</span>
+                <span class="sr-only">Daniel's Coffee & More</span>
+            </a>
         </div>
         <ul class="nav-menu">
             <li class="nav-item">
@@ -40,28 +44,34 @@
                 <a href="#contact" class="nav-link">Contact</a>
             </li>
         </ul>
-        <div class="nav-toggle" id="mobile-menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
+        <div class="nav-controls">
+            <div class="nav-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 1 0 9.79 9.79Z"/>
+                </svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.8 1.42-1.42ZM1 13h3v-2H1v2Zm10 10h2v-3h-2v3Zm9.66-3.34l-1.41 1.41-1.8-1.79 1.41-1.41 1.8 1.79ZM20 11v2h3v-2h-3Zm-8-7h2V1h-2v3Zm-7.66 14.34 1.41 1.41 1.8-1.79-1.41-1.41-1.8 1.79ZM12 7a5 5 0 1 0 .001 10.001A5 5 0 0 0 12 7Z"/>
+                </svg>
+            </button>
         </div>
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">
-            <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 1 0 9.79 9.79Z"/>
-            </svg>
-            <svg class="icon-sun" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.8 1.42-1.42ZM1 13h3v-2H1v2Zm10 10h2v-3h-2v3Zm9.66-3.34l-1.41 1.41-1.8-1.79 1.41-1.41 1.8 1.79ZM20 11v2h3v-2h-3Zm-8-7h2V1h-2v3Zm-7.66 14.34 1.41 1.41 1.8-1.79-1.41-1.41-1.8 1.79ZM12 7a5 5 0 1 0 .001 10.001A5 5 0 0 0 12 7Z"/>
-            </svg>
-        </button>
     </div>
 </nav>
+<div id="navOverlay" class="nav-overlay" aria-hidden="true"></div>
 <!--Test -->
 <!-- Hero Section -->
 <section id="home" class="hero">
     <div class="hero-content">
-        <h1 class="hero-heading">WELCOME TO DANIEL'S COFFEE&nbsp;&&nbsp;MORE</h1>
+        <h1 class="hero-heading">WELCOME TO <span class="brand-lockup">DANIEL'S COFFEE&nbsp;&amp;&nbsp;MORE</span></h1>
         <p>Where every cup tells a story</p>
-                <a href="#menu"><button class="cta-button coffee-glow">Explore Our Menu</button></a>
+        <div class="cta-group">
+            <a class="cta-button coffee-glow" href="#menu">Explore Our Menu</a>
+            <a class="cta-button cta-outline" href="#contact">Visit Us</a>
+        </div>
     </div>
 </section>
 

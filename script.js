@@ -19,11 +19,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const themeToggle = document.getElementById('themeToggle');
 
     if (navToggle && navMenu) {
+        const overlay = document.getElementById('navOverlay');
         navToggle.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
+            const willOpen = !navMenu.classList.contains('active');
             navMenu.classList.toggle('active');
             navToggle.classList.toggle('active');
+            if (overlay) overlay.classList.toggle('show', willOpen);
+            document.body.classList.toggle('no-scroll', willOpen);
         });
 
         // Close mobile menu when clicking on a link
@@ -31,6 +35,9 @@ document.addEventListener('DOMContentLoaded', function() {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
                 navToggle.classList.remove('active');
+                const overlay = document.getElementById('navOverlay');
+                if (overlay) overlay.classList.remove('show');
+                document.body.classList.remove('no-scroll');
             });
         });
 
@@ -39,11 +46,24 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
                 navMenu.classList.remove('active');
                 navToggle.classList.remove('active');
+                const overlay = document.getElementById('navOverlay');
+                if (overlay) overlay.classList.remove('show');
+                document.body.classList.remove('no-scroll');
             }
         });
 
+        // Close menu when tapping overlay
+        if (overlay) {
+            overlay.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+                overlay.classList.remove('show');
+                document.body.classList.remove('no-scroll');
+            });
+        }
+
         // Close menu and prevent odd auto-animations when crossing breakpoints
-        const BREAKPOINT = 768;
+        const BREAKPOINT = 992;
         let lastIsMobile = window.innerWidth <= BREAKPOINT;
 
         window.addEventListener('resize', () => {
@@ -54,6 +74,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Ensure menu is closed and toggle reset when breakpoint changes
                 navMenu.classList.remove('active');
                 navToggle.classList.remove('active');
+                const overlay = document.getElementById('navOverlay');
+                if (overlay) overlay.classList.remove('show');
+                document.body.classList.remove('no-scroll');
                 // Allow layout to settle, then re-enable transitions
                 setTimeout(() => {
                     navMenu.classList.remove('no-transition');
@@ -72,9 +95,9 @@ document.addEventListener('DOMContentLoaded', function() {
     );
 
     function setActive(id) {
-        navLinks.forEach(a => a.classList.remove('active'));
+        navLinks.forEach(a => { a.classList.remove('active'); a.removeAttribute('aria-current'); });
         const link = linkById.get(id);
-        if (link) link.classList.add('active');
+        if (link) { link.classList.add('active'); link.setAttribute('aria-current', 'page'); }
     }
 
     if (sections.length && linkById.size) {
@@ -111,6 +134,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 rootEl.setAttribute('data-theme', 'dark');
                 localStorage.setItem('theme', 'dark');
             }
+            // micro-interaction twist
+            themeToggle.classList.add('twist');
+            setTimeout(() => themeToggle.classList.remove('twist'), 250);
         });
     }
 });
@@ -226,9 +252,11 @@ window.addEventListener('scroll', () => {
         if (window.scrollY > 100) {
             navbar.style.background = '#4A2C2A';
             navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.3)';
+            navbar.classList.add('scrolled');
         } else {
             navbar.style.background = '#4A2C2A';
             navbar.style.boxShadow = 'none';
+            navbar.classList.remove('scrolled');
         }
     }
     
