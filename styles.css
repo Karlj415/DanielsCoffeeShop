@@ -518,17 +518,20 @@ h1, h2, h3, h4, h5, h6 {
     text-align: left; /* Features stay left-aligned */
     margin-top: 0;
     width: 100%;
+    overflow: hidden; /* Prevent any overflow */
 }
 
 /* Feature chips for a modern, readable look */
 .features {
     list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem 0.8rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: repeat(2, 1fr);
+    gap: 0.8rem 1rem;
     margin: 0;
     padding: 0;
-    justify-content: flex-start; /* Features start from left */
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .features li {
@@ -539,9 +542,14 @@ h1, h2, h3, h4, h5, h6 {
     border: 1px solid color-mix(in oklab, var(--brand) 22%, white);
     border-radius: 999px;
     font-weight: 600;
-    line-height: 1;
-    white-space: nowrap;
+    line-height: 1.2;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
     transition: all 0.2s ease;
+    text-align: center;
+    min-width: 0; /* Allow flex items to shrink below content size */
 }
 
 .features li:hover {
@@ -807,6 +815,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 .nav-overlay.show { opacity: 1; pointer-events: auto; }
 body.no-scroll { overflow: hidden; }
+
+/* Medium Mobile Devices (600px and below) - Single column for features */
+@media screen and (max-width: 600px) {
+    .features {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 1fr);
+        gap: 0.5rem;
+    }
+    
+    .features li {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.75rem;
+    }
+}
 
 /* Extra small mobile screens */
 @media screen and (max-width: 480px) {
@@ -1409,7 +1431,8 @@ section[id] {
     }
     
     .features {
-        justify-content: flex-start; /* Features start from left */
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: repeat(3, 1fr);
         gap: 0.5rem 0.7rem;
     }
     
@@ -1553,8 +1576,9 @@ section[id] {
     }
     
     .features {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 1fr);
         gap: 0.4rem 0.6rem;
-        justify-content: flex-start; /* Features start from left */
     }
     
     .features li {
@@ -1749,12 +1773,12 @@ section[id] {
     /* Remove outline to keep image clean */
     .about-image { outline: none; outline-offset: 0; }
 
-    /* Keep features as responsive chips on wider screens */
+    /* Keep features as responsive grid on wider screens */
     .features { 
-        display: flex; 
-        flex-wrap: wrap; 
+        display: grid; 
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-rows: repeat(2, 1fr);
         gap: 0.6rem 0.8rem;
-        justify-content: flex-start; /* Features stay left-aligned */
     }
     .about-features {
         text-align: left; /* Features container stays left-aligned */
@@ -1805,7 +1829,8 @@ section[id] {
     }
     
     .features {
-        justify-content: flex-start; /* Features start from left */
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-rows: repeat(2, 1fr);
         gap: 0.7rem 0.9rem;
     }
 }
@@ -1962,7 +1987,9 @@ section[id] {
     }
     
     .features {
-        justify-content: flex-start; /* Features start from left */
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 1fr);
+        gap: 0.4rem;
     }
     
     .features li {
@@ -2193,7 +2220,8 @@ section[id] {
     }
     
     .features {
-        justify-content: flex-start; /* Features start from left */
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-rows: repeat(2, 1fr);
         gap: 0.6rem 0.8rem;
     }
 
@@ -2259,7 +2287,8 @@ section[id] {
     }
     
     .features {
-        justify-content: flex-start; /* Features start from left */
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-rows: repeat(2, 1fr);
         gap: 0.7rem 0.9rem;
     }
 }
@@ -2309,7 +2338,8 @@ section[id] {
     }
     
     .features {
-        justify-content: flex-start; /* Features start from left */
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-rows: repeat(2, 1fr);
         gap: 0.8rem 1rem;
     }
 }

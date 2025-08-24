@@ -177,7 +177,7 @@ if (newsletterForm) {
             return;
         }
         
-        // Submit the form (replace with your actual submission logic)
+        // Submit the form (replace with actual submission logic)
         submitNewsletter(name, email);
     });
 }
