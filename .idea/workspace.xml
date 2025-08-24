@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c10139a8-3e1a-487e-9561-56766d2721ef" name="Changes" comment="Add initial project setup with homepage and assets&#10;&#10;- Included `index.html` as the main structure for the webpage.&#10;- Added `favicon.svg` for site branding.&#10;- Uploaded coffee-related SVG files for logos.&#10;- Structured sections for navigation, menu, about, and Instagram feed in `index.html`.">
+    <list default="true" id="c10139a8-3e1a-487e-9561-56766d2721ef" name="Changes" comment="Responsive navigation and UI improvements: enhanced mobile menu interactions, added accessibility features (skip links, aria labels), subtle theme/overlay effects, hero blur overlays, polished typography, and refined button hover states.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/script.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,7 +68,8 @@
       <workItem from="1755751245761" duration="1317000" />
       <workItem from="1755776399727" duration="16178000" />
       <workItem from="1755862337821" duration="881000" />
-      <workItem from="1755875316088" duration="9489000" />
+      <workItem from="1755875316088" duration="11483000" />
+      <workItem from="1756002264717" duration="1235000" />
     </task>
     <task id="LOCAL-00001" summary="Add initial project setup with homepage and assets&#10;&#10;- Included `index.html` as the main structure for the webpage.&#10;- Added `favicon.svg` for site branding.&#10;- Uploaded coffee-related SVG files for logos.&#10;- Structured sections for navigation, menu, about, and Instagram feed in `index.html`.">
       <option name="closed" value="true" />
@@ -79,7 +79,15 @@
       <option name="project" value="LOCAL" />
       <updated>1755835270068</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Responsive navigation and UI improvements: enhanced mobile menu interactions, added accessibility features (skip links, aria labels), subtle theme/overlay effects, hero blur overlays, polished typography, and refined button hover states.">
+      <option name="closed" value="true" />
+      <created>1755960106581</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1755960106581</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -87,6 +95,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add initial project setup with homepage and assets&#10;&#10;- Included `index.html` as the main structure for the webpage.&#10;- Added `favicon.svg` for site branding.&#10;- Uploaded coffee-related SVG files for logos.&#10;- Structured sections for navigation, menu, about, and Instagram feed in `index.html`." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add initial project setup with homepage and assets&#10;&#10;- Included `index.html` as the main structure for the webpage.&#10;- Added `favicon.svg` for site branding.&#10;- Uploaded coffee-related SVG files for logos.&#10;- Structured sections for navigation, menu, about, and Instagram feed in `index.html`." />
+    <MESSAGE value="Responsive navigation and UI improvements: enhanced mobile menu interactions, added accessibility features (skip links, aria labels), subtle theme/overlay effects, hero blur overlays, polished typography, and refined button hover states." />
+    <option name="LAST_COMMIT_MESSAGE" value="Responsive navigation and UI improvements: enhanced mobile menu interactions, added accessibility features (skip links, aria labels), subtle theme/overlay effects, hero blur overlays, polished typography, and refined button hover states." />
   </component>
 </project>

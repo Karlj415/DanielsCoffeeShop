@@ -449,79 +449,104 @@ h1, h2, h3, h4, h5, h6 {
 
 /* About Section */
 .about {
-    padding: clamp(64px, 10vw, 96px) 0;
+    padding: clamp(60px, 8vw, 100px) 0;
     background: var(--bg-muted);
 }
 
 .about-content {
     display: flex;
     flex-wrap: wrap;
-    gap: 4rem;
-    align-items: center;
+    gap: clamp(2rem, 4vw, 3.5rem);
+    align-items: flex-start;
     /* Mobile-first: stack content */
     flex-direction: column;
+    /* Card-style container for a cleaner, pleasant look */
+    background: var(--surface);
+    padding: clamp(20px, 4vw, 32px);
+    border-radius: var(--radius);
+    box-shadow: var(--elevation);
 }
 
 .about-text {
-    flex: 1 1 50%;
+    flex: 1 1 100%;
+    min-width: 0; /* Prevent flex item overflow */
+    text-align: center; /* Center the text content */
 }
 
 .about-image {
-    flex: 1 1 50%;
+    flex: 1 1 100%;
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+    /* Responsive sizing */
+    max-width: min(100%, 480px);
+    width: 100%;
+    margin: 0 auto;
+    /* Maintain consistent aspect ratio */
+    aspect-ratio: 4 / 3;
 }
 
 .about-text h2 {
-    font-size: 2.6rem;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
     margin-bottom: 1.5rem;
     color: #4A2C2A;
     font-weight: 600;
     line-height: 1.2;
     letter-spacing: -0.5px;
+    text-align: center;
 }
 
 .about-text p {
-    margin-bottom: 2rem; /* increased spacing between paragraphs */
+    margin-bottom: 1.5rem;
     color: var(--muted);
-    font-size: 1.1rem;
-    line-height: 1.8;
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
+    line-height: 1.7;
     font-weight: 400;
+    max-width: 65ch; /* Optimal reading width */
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* Avoid extra space after the last paragraph */
-.about-text p:last-child {
-    margin-bottom: 0;
-}
-
-.about-image {
-    position: relative;
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    /* Keep image from overpowering the section */
-    max-width: clamp(320px, 42vw, 460px);
-    width: 100%;
-    margin: 0 auto;
-    /* Maintain a pleasant, consistent frame and crop overflow */
-    aspect-ratio: 4 / 3;
+/* Remove extra space after the last paragraph */
+.about-text p:last-of-type {
+    margin-bottom: 1.5rem; /* Keep space before features */
 }
 
 .about-features {
-    text-align: center;
-    margin-top: 2rem;
+    text-align: left; /* Features stay left-aligned */
+    margin-top: 0;
     width: 100%;
 }
 
+/* Feature chips for a modern, readable look */
 .features {
     list-style: none;
-    display: inline-block;
-    text-align: left;
-    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 0.8rem;
+    margin: 0;
+    padding: 0;
+    justify-content: flex-start; /* Features start from left */
 }
 
 .features li {
-    padding: 0.5rem 0;
-    color: #6B8E71;
+    font-size: 0.9rem;
+    padding: 0.6rem 0.9rem;
+    color: var(--brand-dark);
+    background: color-mix(in oklab, var(--brand) 12%, white);
+    border: 1px solid color-mix(in oklab, var(--brand) 22%, white);
+    border-radius: 999px;
     font-weight: 600;
+    line-height: 1;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+
+.features li:hover {
+    background: color-mix(in oklab, var(--brand) 18%, white);
+    transform: translateY(-1px);
 }
 
 .about-image img {
@@ -534,7 +559,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .about-image:hover img {
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
 /* Instagram Section */
@@ -1352,36 +1377,71 @@ section[id] {
 
     .about-text {
         order: 2;
+        text-align: center; /* Keep text centered on mobile */
     }
 
     .about-image {
         order: 1;
         /* Slightly wider and flatter frame on mobile */
-        max-width: 520px;
+        max-width: min(100%, 520px);
         aspect-ratio: 16 / 10;
+        margin-bottom: 1rem;
     }
     
     .about-text h2 {
-        font-size: 2rem;
+        font-size: clamp(1.6rem, 5vw, 2rem);
+        text-align: center; /* Center heading on mobile */
+        margin-bottom: 1rem;
     }
     
-    .about-image {
-        grid-column: 1;
-        grid-row: 1;
-        max-width: none;
-        margin: 0;
+    .about-text p {
+        font-size: clamp(0.95rem, 3vw, 1.05rem);
+        line-height: 1.6;
+        margin-bottom: 1.25rem;
+        text-align: center; /* Center paragraphs on mobile */
+        margin-left: auto;
+        margin-right: auto;
     }
     
     .about-features {
-        margin-top: 1rem;
-        grid-column: 1;
-        grid-row: 3;
+        margin-top: 1.5rem;
+        text-align: left; /* Features stay left-aligned on mobile */
+    }
+    
+    .features {
+        justify-content: flex-start; /* Features start from left */
+        gap: 0.5rem 0.7rem;
+    }
+    
+    .features li {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.75rem;
+    }
+
+    /* Ensure About content fills width and aligns consistently */
+    .about-content { 
+        align-items: flex-start; /* Align to start instead of center */
+        padding: clamp(16px, 4vw, 24px);
+        gap: 1.5rem;
+    }
+    .about-text, .about-image { 
+        flex: 1 1 auto; 
+        width: 100%; 
+        max-width: none; 
     }
     
     .contact-content {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
+    /* Center contact details so the right side doesn't look empty */
+    .contact-info {
+        max-width: 100%;
+        margin-inline: auto;
+        text-align: center;
+    }
+    .contact-info h3 { text-align: center; }
+    .contact-info p { justify-content: center; }
     
     .instagram-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -1459,17 +1519,47 @@ section[id] {
     }
 
     .about {
-        padding: 60px 0;
+        padding: 50px 0;
     }
 
     .about-text h2 {
-        font-size: 1.8rem;
+        font-size: clamp(1.4rem, 6vw, 1.8rem);
         margin-bottom: 1rem;
+        text-align: center; /* Center heading on small mobile */
     }
 
     .about-text p {
-        font-size: 1rem;
-        margin-bottom: 1.5rem; /* slightly increased on mobile too */
+        font-size: clamp(0.9rem, 3.5vw, 1rem);
+        margin-bottom: 1rem;
+        line-height: 1.5;
+        text-align: center; /* Center paragraphs on small mobile */
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .about-content {
+        padding: clamp(12px, 3vw, 20px);
+        gap: 1.25rem;
+    }
+    
+    .about-image {
+        aspect-ratio: 16 / 9; /* Even wider on very small screens */
+        max-width: 100%;
+    }
+    
+    .about-features {
+        margin-top: 1rem;
+        text-align: left; /* Features stay left-aligned on small mobile */
+    }
+    
+    .features {
+        gap: 0.4rem 0.6rem;
+        justify-content: flex-start; /* Features start from left */
+    }
+    
+    .features li {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.7rem;
     }
 
     .instagram-grid {
@@ -1527,16 +1617,199 @@ section[id] {
     }
 }
 
+/* Center "Follow Us" under two-column footer (tablet widths) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    /* Ensure two equal columns and explicit areas */
+    .footer .container .footer-content {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: start;
+        justify-items: center; /* center content in each cell */
+        row-gap: 1.25rem;      /* slightly tighter vertical rhythm */
+        grid-template-areas:
+          "brand links"
+          "social social";
+    }
+
+    .footer .container .footer-content > .footer-section:nth-child(1) { grid-area: brand; }
+    .footer .container .footer-content > .footer-section:nth-child(2) { grid-area: links; }
+    .footer .container .footer-content > .footer-section:nth-child(3) {
+        grid-area: social;
+        justify-self: center;
+        align-self: start;
+        width: max-content;
+        text-align: center;
+        margin-top: 0.25rem; /* breathe under top row */
+    }
+
+    /* Simplify Quick Links to a single column for balance */
+    .footer .footer-section ul {
+        grid-template-columns: 1fr;
+    }
+
+    /* Slightly tighter headings on tablet */
+    .footer .footer-section h3,
+    .footer .footer-section h4 { margin-bottom: 0.75rem; }
+
+    /* Make social icons a tad larger for touch comfort */
+    .footer .social-links { gap: 1.25rem; }
+    .footer .social-icon { width: 44px; height: 44px; }
+}
+
+/* Center "Follow Us" under two-column footer (<=768px down to small tablets) */
+@media screen and (max-width: 768px) {
+    /* Keep two columns with centered social row on small tablets */
+    .footer .container .footer-content {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-areas:
+          "brand links"
+          "social social";
+        align-items: start;
+        justify-items: center;
+        row-gap: 1rem;
+    }
+
+    .footer .container .footer-content > .footer-section:nth-child(1) { grid-area: brand; }
+    .footer .container .footer-content > .footer-section:nth-child(2) { grid-area: links; }
+    .footer .container .footer-content > .footer-section:nth-child(3) {
+        grid-area: social;
+        justify-self: center;
+        align-self: start;
+        text-align: center;
+        margin-top: 0.25rem;
+    }
+
+    /* Quick Links as a single column for clarity */
+    .footer .footer-section ul { grid-template-columns: 1fr; }
+
+    /* Slightly larger social icons */
+    .footer .social-links { gap: 1.2rem; }
+    .footer .social-icon { width: 44px; height: 44px; }
+    .footer .container .footer-content {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-areas:
+          "brand links"
+          "social social";
+        align-items: start;
+    }
+
+    .footer .container .footer-content > .footer-section:nth-child(1) { grid-area: brand; }
+    .footer .container .footer-content > .footer-section:nth-child(2) { grid-area: links; }
+    .footer .container .footer-content > .footer-section:nth-child(3) {
+        grid-area: social;
+        justify-self: center;
+        align-self: start;
+        text-align: center;
+    }
+}
+
+/* Below ~phone widths, stack all three */
+@media screen and (max-width: 480px) {
+    .footer .container .footer-content {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "brand"
+          "links"
+          "social";
+    }
+    .footer .container .footer-content > .footer-section:nth-child(3) {
+        justify-self: center;
+    }
+}
+
 /* Tablet and up */
 @media screen and (min-width: 769px) {
     /* About: image on right, text on left */
-    .about-content {
-        flex-direction: row-reverse;
+    .about-content { 
+        flex-direction: row-reverse; 
+        gap: clamp(2.5rem, 4vw, 4rem);
+        align-items: flex-start;
     }
-    .about-text, .about-image {
-        flex: 1 1 50%;
+    .about-text, .about-image { 
+        flex: 1 1 50%; 
+        max-width: none;
+    }
+    .about-text {
+        padding-right: 1rem; /* Add some breathing room */
+        text-align: center; /* Keep text centered on tablet+ */
+    }
+    .about-text h2 {
+        text-align: center; /* Center heading on tablet+ */
+    }
+    .about-text p {
+        text-align: center; /* Center paragraphs on tablet+ */
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .about-image {
+        max-width: min(50%, 450px);
+        aspect-ratio: 4 / 3;
+    }
+    /* Keep About title centered for consistency */
+    .about .section-title { text-align: center; }
+    /* Remove outline to keep image clean */
+    .about-image { outline: none; outline-offset: 0; }
+
+    /* Keep features as responsive chips on wider screens */
+    .features { 
+        display: flex; 
+        flex-wrap: wrap; 
+        gap: 0.6rem 0.8rem;
+        justify-content: flex-start; /* Features stay left-aligned */
+    }
+    .about-features {
+        text-align: left; /* Features container stays left-aligned */
     }
 }
+
+@media screen and (min-width: 1024px) {
+    /* Desktop About section styling */
+    .about-content {
+        flex-direction: row-reverse; /* Image right, text left */
+        gap: clamp(3rem, 5vw, 4.5rem);
+        align-items: flex-start;
+        padding: clamp(28px, 4vw, 40px);
+    }
+    
+    .about-text { 
+        flex: 1 1 55%;
+        max-width: none; /* Remove restrictive max-width */
+        text-align: center; /* Ensure text stays centered */
+        padding-right: 2rem;
+    }
+    
+    .about-image {
+        flex: 1 1 45%;
+        max-width: min(45%, 500px);
+        aspect-ratio: 4 / 3;
+    }
+    
+    .about-text h2 {
+        font-size: clamp(2.2rem, 3vw, 2.6rem);
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+    
+    .about-text p {
+        max-width: 60ch; /* Apply max-width to paragraphs only */
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        font-size: clamp(1.05rem, 1.8vw, 1.15rem);
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+    }
+    
+    .about-features {
+        text-align: left; /* Features stay left-aligned */
+        margin-top: 1.5rem;
+    }
+    
+    .features {
+        justify-content: flex-start; /* Features start from left */
+        gap: 0.7rem 0.9rem;
+    }
+}
+
 
 /* Section title tweaks for spacing/centering */
 .about .section-title,
@@ -1659,15 +1932,42 @@ section[id] {
     }
 
     .about-text h2 {
-        font-size: 1.6rem;
+        font-size: clamp(1.3rem, 7vw, 1.6rem);
         margin-bottom: 0.75rem;
         word-wrap: break-word;
+        text-align: center; /* Center heading on extra small mobile */
     }
 
     .about-text p {
-        font-size: 0.9rem;
+        font-size: clamp(0.85rem, 4vw, 0.9rem);
         margin-bottom: 0.75rem;
         line-height: 1.5;
+        text-align: center; /* Center paragraphs on extra small mobile */
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .about-content {
+        padding: clamp(10px, 2.5vw, 16px);
+        gap: 1rem;
+    }
+    
+    .about-image {
+        aspect-ratio: 3 / 2;
+        border-radius: 8px; /* Slightly smaller radius on tiny screens */
+    }
+    
+    .about-features {
+        text-align: left; /* Features stay left-aligned on extra small mobile */
+    }
+    
+    .features {
+        justify-content: flex-start; /* Features start from left */
+    }
+    
+    .features li {
+        font-size: 0.75rem;
+        padding: 0.35rem 0.6rem;
     }
 
     .newsletter-content h2 {
@@ -1845,7 +2145,7 @@ section[id] {
 .about-image .animate-on-scroll { transition-delay: 0.2s; }
 
 /* Tablet Styles */
-@media screen and (max-width: 1024px) and (min-width: 769px) {
+@media screen and (max-width: 1023px) and (min-width: 769px) {
     .container {
         padding: 0 1.5rem;
     }
@@ -1855,17 +2155,46 @@ section[id] {
     }
 
     .about-content {
-        gap: 3rem;
+        gap: clamp(2.5rem, 4vw, 3.5rem);
         margin-bottom: 2rem;
+        padding: clamp(24px, 4vw, 32px);
     }
     
     .about-image {
-        max-width: 400px;
+        max-width: min(45%, 420px);
+        aspect-ratio: 4 / 3;
         order: 0; /* Keep proper order on tablet */
+    }
+    
+    .about-text {
+        flex: 1 1 55%;
+        padding-right: 1.5rem;
+        text-align: center; /* Center text on tablet */
+    }
+    
+    .about-text h2 {
+        font-size: clamp(2rem, 3.5vw, 2.4rem);
+        text-align: center; /* Center heading on tablet */
+        margin-bottom: 1.25rem;
+    }
+    
+    .about-text p {
+        font-size: clamp(1rem, 2.2vw, 1.1rem);
+        line-height: 1.65;
+        margin-bottom: 1.25rem;
+        text-align: center; /* Center paragraphs on tablet */
+        margin-left: auto;
+        margin-right: auto;
     }
     
     .about-features {
         margin-top: 1.5rem;
+        text-align: left; /* Features stay left-aligned */
+    }
+    
+    .features {
+        justify-content: flex-start; /* Features start from left */
+        gap: 0.6rem 0.8rem;
     }
 
     .contact-content {
@@ -1888,17 +2217,100 @@ section[id] {
 
 /* Large Desktop Styles */
 @media screen and (min-width: 1200px) {
+    .about-content {
+        gap: clamp(3rem, 5vw, 4rem);
+        padding: clamp(28px, 4vw, 40px);
+        flex-direction: row-reverse; /* Ensure image right, text left */
+        align-items: flex-start;
+    }
+    
     .about-image {
-        max-width: 450px; /* keep modest on large screens */
-        order: 0; /* Ensure proper order on large screens */
+        flex: 1 1 45%;
+        max-width: min(45%, 480px); /* keep modest on large screens */
+        aspect-ratio: 4 / 3;
+    }
+    
+    .about-text {
+        flex: 1 1 55%;
+        max-width: none; /* Remove restrictive max-width from container */
+        text-align: center; /* Keep text centered */
+        padding-right: 2rem;
+    }
+    
+    .about-text h2 {
+        font-size: clamp(2.2rem, 3vw, 2.6rem);
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+    
+    .about-text p {
+        max-width: 60ch; /* Apply to paragraphs only */
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        font-size: clamp(1.05rem, 1.8vw, 1.15rem);
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+    }
+    
+    .about-features {
+        text-align: left; /* Features stay left-aligned */
+        margin-top: 1.5rem;
+    }
+    
+    .features {
+        justify-content: flex-start; /* Features start from left */
+        gap: 0.7rem 0.9rem;
     }
 }
 
 /* Extra Large Desktop Styles */
 @media screen and (min-width: 1440px) {
+    .about-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        gap: clamp(3.5rem, 5vw, 4.5rem);
+        flex-direction: row-reverse; /* Ensure image right, text left */
+        align-items: flex-start;
+    }
+    
     .about-image {
-        max-width: 460px; /* avoid overly large about image */
-        order: 0; /* Ensure proper order on extra large screens */
+        flex: 1 1 42%;
+        max-width: min(42%, 500px); /* avoid overly large about image */
+        aspect-ratio: 4 / 3;
+    }
+    
+    .about-text {
+        flex: 1 1 58%;
+        max-width: none; /* Remove restrictive max-width from container */
+        text-align: center; /* Keep text centered */
+        padding-right: 2.5rem;
+    }
+    
+    .about-text h2 {
+        text-align: center;
+        font-size: clamp(2.4rem, 2.8vw, 2.6rem);
+        margin-bottom: 1.5rem;
+    }
+    
+    .about-text p {
+        max-width: 65ch; /* Slightly wider for extra large screens */
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        font-size: clamp(1.1rem, 1.6vw, 1.2rem);
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+    }
+    
+    .about-features {
+        text-align: left; /* Features stay left-aligned */
+        margin-top: 1.5rem;
+    }
+    
+    .features {
+        justify-content: flex-start; /* Features start from left */
+        gap: 0.8rem 1rem;
     }
 }
 
