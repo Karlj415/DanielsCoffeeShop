@@ -14,7 +14,21 @@ html {
 
 :root {
     --nav-height: 60px;
-    --font-size-base: clamp(16px, 1.1vw + 0.5rem, 18px);
+    --font-size-base: clamp(17px, 1.2vw + 0.35rem, 19px);
+    /* Typography system */
+    --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
+    --font-serif: 'Lora', Georgia, 'Times New Roman', serif;
+    --leading: 1.7;
+    --leading-tight: 1.2;
+    --leading-relaxed: 1.8;
+    --measure: 65ch;
+    /* Modular scale */
+    --step--1: clamp(0.9rem, 0.84rem + 0.2vw, 1rem);
+    --step-0: var(--font-size-base);
+    --step-1: clamp(1.1rem, 1rem + 0.8vw, 1.35rem);
+    --step-2: clamp(1.35rem, 1.15rem + 1.4vw, 1.75rem);
+    --step-3: clamp(1.8rem, 1.5rem + 2.2vw, 2.5rem);
+    --step-4: clamp(2.2rem, 1.7rem + 3.2vw, 3.25rem);
     /* Espresso + Sage palette (tuned) */
     --brand: #547A62; /* slightly deeper for contrast */
     --brand-dark: #4B6B58;
@@ -26,14 +40,19 @@ html {
     --radius: 12px;
     --elevation: 0 8px 24px rgba(0,0,0,0.12);
     --nav-bg: #4A2C2A;
+    /* Card palette (light) */
+    --card-bg: #F4F1ED;          /* warm neutral card */
+    --card-border: #E5E0DA;      /* warm subtle border */
+    --card-shadow: 0 8px 22px rgba(0,0,0,0.06);
+    --card-brown: #5A3E3A; /* slightly lighter brown for cards */
     --footer-bg: #4A2C2A;
     --newsletter-bg: #4A2C2A;
     --logo-offset: 5px; /* tweakable vertical nudge for logo */
 }
 
 body {
-    font-family: 'Open Sans', sans-serif;
-    line-height: 1.7;
+    font-family: var(--font-sans);
+    line-height: var(--leading);
     color: var(--text);
     font-weight: 400;
     overflow-x: hidden; /* Prevent horizontal scroll */
@@ -53,9 +72,10 @@ body {
 }
 
 /* Typography */
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Lora', serif;
-}
+h1, h2, h3, h4, h5, h6 { font-family: var(--font-serif); }
+h1 { font-size: var(--step-4); line-height: var(--leading-tight); letter-spacing: -0.015em; font-weight: 500; }
+h2 { font-size: var(--step-3); line-height: 1.2; letter-spacing: -0.01em; font-weight: 500; }
+h3 { font-size: var(--step-2); line-height: 1.25; letter-spacing: -0.005em; font-weight: 500; }
 
 /* Navigation */
 .navbar {
@@ -107,7 +127,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-logo h2 {
     color: #fff; /* better contrast on dark nav */
-    font-weight: 700;
+    font-weight: 600;
     font-size: 1.5rem;
     transition: all 0.3s ease-in-out;
 }
@@ -133,9 +153,9 @@ h1, h2, h3, h4, h5, h6 {
     text-decoration: none;
     color: rgba(255,255,255,0.92);
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.06em; /* refined */
-    font-size: 0.9rem;
+    text-transform: none; /* sentence case improves readability */
+    letter-spacing: 0.02em;
+    font-size: 0.95rem;
     transition: color 0.25s ease;
     position: relative;
 }
@@ -207,7 +227,7 @@ h1, h2, h3, h4, h5, h6 {
     background-position: center 35%;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    filter: blur(2.5px) saturate(1.05) brightness(0.95);
+    filter: blur(2px) saturate(1.05) brightness(0.95);
     transform: scale(1.06); /* avoid blur-edge clipping */
     z-index: 0;
 }
@@ -239,15 +259,15 @@ h1, h2, h3, h4, h5, h6 {
 .hero-content h1 {
     font-size: clamp(2.2rem, 5.2vw, 3.8rem);
     margin-bottom: 1rem;
-    font-weight: 700;
+    font-weight: 600;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     line-height: 1.1;
     letter-spacing: -1px;
 }
 
 .hero-heading {
-    font-family: 'Lora', serif;
-    letter-spacing: -0.5px; /* slightly looser for all-caps legibility */
+    font-family: var(--font-serif);
+    letter-spacing: 0.02em; /* refined, less playful spacing */
 }
 @media (max-width: 480px) {
     .hero-heading { letter-spacing: -0.3px; }
@@ -326,12 +346,12 @@ h1, h2, h3, h4, h5, h6 {
 /* Section Titles */
 .section-title {
     text-align: center;
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: var(--step-3);
     margin-bottom: 3rem;
     color: var(--text);
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.2;
-    letter-spacing: -0.8px;
+    letter-spacing: -0.01em;
 }
 
 /* Balanced wrapping for multi-line headings */
@@ -339,7 +359,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .section-title-description {
     text-align: center;
-    font-size: 1.5rem;
+    font-size: var(--step-1);
     color: var(--muted);
     margin-bottom: 3rem;
     font-style: italic;
@@ -415,7 +435,7 @@ h1, h2, h3, h4, h5, h6 {
 .menu-item h3 {
     padding: 1rem 1rem 0.5rem;
     color: var(--text);
-    font-weight: 600;
+    font-weight: 500;
     font-size: 1.5rem;
     line-height: 1.3;
     letter-spacing: -0.3px;
@@ -491,7 +511,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: clamp(1.8rem, 4vw, 2.6rem);
     margin-bottom: 1.5rem;
     color: #4A2C2A;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.2;
     letter-spacing: -0.5px;
     text-align: center;
@@ -548,13 +568,27 @@ h1, h2, h3, h4, h5, h6 {
     overflow-wrap: break-word;
     hyphens: auto;
     transition: all 0.2s ease;
-    text-align: center;
+    text-align: left;                /* left-align content inside chip */
     min-width: 0; /* Allow flex items to shrink below content size */
+    display: grid;                   /* grid for icon + text */
+    grid-template-columns: 1rem 1fr; /* slightly tighter icon column */
+    column-gap: 0.5rem;
+    align-items: center;
 }
 
 .features li:hover {
     background: color-mix(in oklab, var(--brand) 18%, white);
     transform: translateY(-1px);
+}
+
+/* Consistent check icon alignment */
+.features li::before {
+    content: "✓";
+    color: var(--brand);
+    font-weight: 700;
+    display: inline-block;
+    width: 1rem;
+    text-align: center;
 }
 
 .about-image img {
@@ -821,12 +855,18 @@ body.no-scroll { overflow: hidden; }
     .features {
         grid-template-columns: 1fr;
         grid-template-rows: repeat(6, 1fr);
-        gap: 0.5rem;
+        gap: 0.4rem; /* tighter gap on extra small */
+        justify-items: stretch; /* make all items equal width */
     }
     
     .features li {
         font-size: 0.85rem;
-        padding: 0.5rem 0.75rem;
+        padding: 0.45rem 0.65rem;
+        text-align: left;               /* align check + text to left */
+        display: flex;                   /* stable left alignment */
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;                     /* same start edge for all */
     }
 }
 
@@ -836,7 +876,9 @@ body.no-scroll { overflow: hidden; }
         font-size: 1.8rem;
         gap: 0.5rem;
     }
-    
+    /* Ensure left-aligned features on extra small */
+    .features { justify-items: stretch; }
+    .features li { text-align: left; justify-content: flex-start; width: 100%; }
     .instagram-icon-right {
         width: 24px;
         height: 24px;
@@ -887,7 +929,7 @@ body.no-scroll { overflow: hidden; }
 }
 
 /* Comfortable reading width for text blocks */
-.about-text, .newsletter-content p, .contact-info { max-width: 65ch; }
+.about-text, .newsletter-content p, .contact-info { max-width: var(--measure); }
 @media (max-width: 480px) {
     .about-text, .newsletter-content p, .contact-info { max-width: 58ch; }
 }
@@ -1004,26 +1046,30 @@ section[id] {
 .theme-toggle.twist .icon-moon,
 .theme-toggle.twist .icon-sun { transform: rotate(90deg); }
 
-/* Newsletter Section */
-.newsletter {
+/* Mobile Order / Newsletter Section */
+.newsletter,
+.mobile-order {
     padding: clamp(64px, 10vw, 96px) 0;
     background: var(--newsletter-bg);
     color: white;
 }
 
-.newsletter-content {
+.newsletter-content,
+.mobile-order-content {
     text-align: center;
     max-width: 600px;
     margin: 0 auto;
 }
 
-.newsletter-content h2 {
+.newsletter-content h2,
+.mobile-order-content h2 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
     color: white;
 }
 
-.newsletter-content p {
+.newsletter-content p,
+.mobile-order-content p {
     font-size: 1.1rem;
     margin-bottom: 2rem;
     color: rgba(255,255,255,0.9);
@@ -1206,6 +1252,36 @@ section[id] {
     color: var(--brand);
     stroke: currentColor;
     stroke-width: 2;
+}
+
+/* Align contact rows: icon | label | value */
+.contact-row {
+    display: grid;
+    grid-template-columns: 24px 10ch 1fr;
+    align-items: center;
+    column-gap: 0.5rem;
+    width: fit-content;
+    max-width: 100%;
+    margin-inline: auto; /* center the row block */
+    justify-items: start; /* keep text starting at same place */
+}
+
+.contact-row .icon { justify-self: start; width: 24px; height: 24px; display: block; }
+.contact-label { color: var(--text); font-weight: 500; }
+
+/* Allow long values (emails, handles) to wrap on small screens */
+.contact-row a { overflow-wrap: anywhere; word-break: break-word; }
+
+@media screen and (max-width: 480px) {
+    .contact-row { grid-template-columns: 24px 10ch 1fr; }
+}
+
+/* Align left on larger screens */
+@media screen and (min-width: 769px) {
+    .contact-info { text-align: left; margin-inline: 0; }
+    .contact-info h3 { text-align: left; }
+    .contact-info p { justify-content: flex-start; }
+    .contact-row { margin-inline: 0; width: auto; }
 }
 
 .map-placeholder {
@@ -1431,14 +1507,16 @@ section[id] {
     }
     
     .features {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-template-rows: repeat(3, 1fr);
-        gap: 0.5rem 0.7rem;
+        grid-template-columns: 1fr;      /* single column on mobile */
+        grid-template-rows: auto;
+        gap: 0.4rem 0.5rem;             /* tighter vertical and horizontal gap */
+        justify-items: stretch;         /* stretch items to column width */
     }
     
     .features li {
         font-size: 0.85rem;
-        padding: 0.5rem 0.75rem;
+        padding: 0.45rem 0.65rem;       /* compact padding */
+        width: 100%;                    /* ensure same left start */
     }
 
     /* Ensure About content fills width and aligns consistently */
@@ -1465,6 +1543,9 @@ section[id] {
     }
     .contact-info h3 { text-align: center; }
     .contact-info p { justify-content: center; }
+    /* Keep contact rows left-aligned internally, but center the block */
+    .contact-row { text-align: left; }
+    .contact-info { text-align: center; margin-inline: auto; }
     
     .instagram-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -1596,16 +1677,19 @@ section[id] {
         padding: 60px 0;
     }
 
-    .newsletter {
+    .newsletter,
+    .mobile-order {
         padding: 60px 0;
     }
 
-    .newsletter-content h2 {
+    .newsletter-content h2,
+    .mobile-order-content h2 {
         font-size: 2rem;
         margin-bottom: 1rem;
     }
 
-    .newsletter-content p {
+    .newsletter-content p,
+    .mobile-order-content p {
         font-size: 1rem;
         margin-bottom: 1.5rem;
     }
@@ -1622,6 +1706,27 @@ section[id] {
         font-size: 0.9rem;
         flex-wrap: wrap;
     }
+
+    /* Contact as card tiles on small screens */
+    .contact-info br { display: none; }
+    .contact-row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+        max-width: 420px;
+        margin-inline: auto;
+        padding: 16px 18px;
+        border-radius: 12px;
+        background: var(--bg-muted);
+        box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+        border: 1px solid rgba(0,0,0,0.06);
+        gap: 6px;
+    }
+    .contact-row .icon { width: 28px; height: 28px; }
+    .contact-label { font-size: 0.95rem; opacity: 0.9; }
 
     .map-placeholder iframe {
         height: 250px;
@@ -1997,13 +2102,15 @@ section[id] {
         padding: 0.35rem 0.6rem;
     }
 
-    .newsletter-content h2 {
+    .newsletter-content h2,
+    .mobile-order-content h2 {
         font-size: 1.75rem;
         margin-bottom: 0.75rem;
         word-wrap: break-word;
     }
 
-    .newsletter-content p {
+    .newsletter-content p,
+    .mobile-order-content p {
         font-size: 0.9rem;
         margin-bottom: 1.25rem;
         line-height: 1.4;
@@ -2102,6 +2209,13 @@ section[id] {
         font-size: 0.85rem;
         line-height: 1.4;
     }
+}
+
+/* Mobile order note */
+.order-note {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.95rem;
+    margin-top: 1rem;
 }
 
 /* Animation Keyframes */
@@ -2406,6 +2520,62 @@ html {
     input, textarea, select {
         font-size: 16px;
     }
+}
+
+/* Ensure Contact card tiles take effect (strong override, last in file) */
+@media screen and (max-width: 768px) {
+    .contact .contact-info br { display: none !important; }
+
+    /* Card tiles for Phone, Email, Instagram */
+    .contact .contact-info .contact-row {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+        max-width: 420px;
+        margin: 1rem auto; /* breathing room between cards */
+        padding: 16px 18px;
+        border-radius: 12px;
+        background: var(--card-bg);
+        color: var(--text);
+        box-shadow: var(--card-shadow);
+        border: 1px solid var(--card-border);
+        gap: 6px;
+    }
+    .contact .contact-info .contact-row .icon { width: 28px; height: 28px; }
+    .contact .contact-info .contact-row a { color: var(--brand); text-decoration: underline; }
+    .contact .contact-info .contact-label { color: var(--text); opacity: 0.9; }
+
+    /* Make Address and Hours cards as well */
+    .contact .contact-info .info-item {
+        background: var(--card-bg);
+        color: var(--text);
+        border: 1px solid var(--card-border);
+        box-shadow: var(--card-shadow);
+        border-radius: 12px;
+        padding: 16px 18px;
+        margin: 0.5rem auto;
+        width: 100%;
+        max-width: 420px;
+        text-align: center;
+    }
+    .contact .contact-info .info-item h3 { margin-bottom: 0.5rem; color: var(--text); }
+    .contact .contact-info .info-item p { color: var(--muted); }
+}
+
+/* Dark theme cards on mobile */
+@media screen and (max-width: 768px) {
+    [data-theme="dark"] .contact .contact-info .contact-row,
+    [data-theme="dark"] .contact .contact-info .info-item {
+        background: #201E1B;
+        color: #fff;
+        border-color: rgba(255,255,255,0.10);
+        box-shadow: 0 10px 26px rgba(0,0,0,0.45);
+    }
+    [data-theme="dark"] .contact .contact-info .contact-row a { color: #fff; }
+    [data-theme="dark"] .contact .contact-info .contact-row .icon { color: #fff; }
 }
 
 

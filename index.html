@@ -13,8 +13,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Open+Sans:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 <a class="skip-link" href="#menu">Skip to content</a>
@@ -137,12 +136,12 @@
                 <p>Whether you're grabbing your morning fuel, settling in for a productive work session, or catching up with friends over a leisurely afternoon coffee, our warm and inviting space is designed to make every visit memorable.</p>
                 <div class="about-features">
                     <ul class="features">
-                        <li>✓ Artisan coffee & espresso</li>
-                        <li>✓ Expert barista craftsmanship</li>
-                        <li>✓ Cozy neighborhood atmosphere</li>
-                        <li>✓ Fresh pastries & light bites</li>
-                        <li>✓ Free WiFi & comfortable workspace</li>
-                        <li>✓ Community gathering place</li>
+                        <li>Artisan coffee & espresso</li>
+                        <li>Expert barista craftsmanship</li>
+                        <li>Cozy neighborhood atmosphere</li>
+                        <li>Fresh pastries & light bites</li>
+                        <li>Free WiFi & comfortable workspace</li>
+                        <li>Community gathering place</li>
                     </ul>
                 </div>
             </div>
@@ -263,24 +262,21 @@
     </div>
 </section>
 
-<!-- Newsletter Section -->
-<section class="newsletter">
+<!-- Mobile Order Section -->
+<section id="order" class="mobile-order">
     <div class="container">
-        <div class="newsletter-content">
-            <h2>Stay Connected</h2>
-            <p>Join our newsletter for exclusive offers, new menu items, and coffee tips!</p>
-            <form class="newsletter-form" id="newsletterForm">
-                <div class="form-group">
-                    <input type="text" id="name" name="name" placeholder="Your Name" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" id="email" name="email" placeholder="Your Email" required>
-                </div>
-                <button type="submit" class="submit-btn">Subscribe</button>
-            </form>
-            <div id="form-message" class="form-message"></div>
+        <div class="mobile-order-content">
+            <h2>Order Ahead for Pickup</h2>
+            <p>Skip the line—place your order on your phone and we’ll have it ready when you arrive.</p>
+            <div class="cta-group">
+                <a class="cta-button coffee-glow" href="https://order.odeko.com/merchant/1424" target="_blank" rel="noopener noreferrer" aria-label="Order ahead on Odeko">
+                    Order Now
+                </a>
+            </div>
+            <p class="order-note">Powered by Odeko</p>
         </div>
     </div>
+    
 </section>
 
 <!-- Contact Section -->
@@ -300,16 +296,17 @@
                 </div>
                 <div class="info-item">
                     <h3>Contact</h3>
-                    <p>
+                    <p class="contact-row">
                         <svg class="icon phone-icon" width="20" height="20" viewBox="0 0 24 24"
                              fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
                                   stroke="currentColor" stroke-width="2" fill="none"/>
                         </svg>
-                        Phone: <a href="tel:+12125551234">(212) 555-1234</a>
+                        <span class="contact-label">Phone:</span>
+                        <a href="tel:+12125551234">(212) 555-1234</a>
                     </p>
                     <br>
-                    <p>
+                    <p class="contact-row">
                         <svg class="icon email-icon" width="20" height="20" viewBox="0 0 24 24"
                              fill="none"
                              xmlns="http://www.w3.org/2000/svg">
@@ -318,18 +315,19 @@
                             <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2"
                                       fill="none"/>
                         </svg>
-                        Email: <a href="mailto:danielscoffeeandmore@gmail.com">danielscoffeeandmore@gmail.com</a>
+                        <span class="contact-label">Email:</span>
+                        <a href="mailto:danielscoffeeandmore@gmail.com">danielscoffeeandmore@gmail.com</a>
                     </p>
                     <br>
-                    <p>
+                    <p class="contact-row">
                         <svg class="icon instagram-icon" width="20" height="20" viewBox="0 0 24 24"
                              fill="none"
                              xmlns="http://www.w3.org/2000/svg">
                             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
                                   fill="#E4405F"/>
                         </svg>
-                        Instagram: <a href="https://instagram.com/danielscoffeeandmore"
-                                      target="_blank">@danielscoffeeandmore</a>
+                        <span class="contact-label">Instagram:</span>
+                        <a href="https://instagram.com/danielscoffeeandmore" target="_blank">@danielscoffeeandmore</a>
                     </p>
                 </div>
             </div>
