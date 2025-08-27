@@ -1,19 +1,6 @@
 // Mark JS-enabled for CSS fallbacks
 document.documentElement.classList.add('js');
 
-// Fix for mobile Chrome viewport height issues
-function setViewportHeight() {
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-}
-
-// Set initial viewport height
-setViewportHeight();
-
-// Update on resize and orientation change
-window.addEventListener('resize', setViewportHeight);
-window.addEventListener('orientationchange', setViewportHeight);
-
 // Mobile Navigation Toggle
 document.addEventListener('DOMContentLoaded', function() {
     const navToggle = document.querySelector('.nav-toggle');
@@ -26,14 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const BREAKPOINT = 992;
         // Helper to set ARIA states
         function setMenuState(open) {
-            // Set reveal center for clip-path (cool circular reveal)
-            try {
-                const r = navToggle.getBoundingClientRect();
-                const cx = Math.round(r.left + r.width / 2);
-                const cy = Math.round(r.top + r.height / 2);
-                navMenu.style.setProperty('--reveal-cx', cx + 'px');
-                navMenu.style.setProperty('--reveal-cy', cy + 'px');
-            } catch (_) {}
             navMenu.classList.toggle('active', open);
             navToggle.classList.toggle('active', open);
             if (overlay) overlay.classList.toggle('show', open);
@@ -106,6 +85,36 @@ document.addEventListener('DOMContentLoaded', function() {
         // Initialize ARIA states
         setMenuState(false);
     }
+
+    // Defer interactive map on mobile to avoid scroll jank
+    try {
+        const isMobile = window.matchMedia('(max-width: 768px)').matches;
+        const mapWrapper = document.querySelector('.map-placeholder');
+        const mapIframe = mapWrapper ? mapWrapper.querySelector('iframe') : null;
+        if (isMobile && mapWrapper && mapIframe) {
+            const src = mapIframe.getAttribute('src');
+            mapWrapper.dataset.mapSrc = src;
+            mapIframe.remove();
+            const btn = document.createElement('button');
+            btn.className = 'load-map-btn';
+            btn.type = 'button';
+            btn.textContent = 'Load Map';
+            btn.setAttribute('aria-label', 'Load interactive map');
+            mapWrapper.appendChild(btn);
+            btn.addEventListener('click', () => {
+                const iframe = document.createElement('iframe');
+                iframe.src = mapWrapper.dataset.mapSrc || src;
+                iframe.setAttribute('width', '100%');
+                iframe.setAttribute('style', 'border:0; border-radius: 10px;');
+                iframe.setAttribute('allowfullscreen', '');
+                iframe.setAttribute('loading', 'eager');
+                iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
+                iframe.setAttribute('title', 'Daniel\'s Coffee & More Location - 1050 3rd Ave, New York, NY 10065');
+                mapWrapper.innerHTML = '';
+                mapWrapper.appendChild(iframe);
+            });
+        }
+    } catch (e) { /* noop */ }
 
     // Active nav link highlight on scroll
     const sections = Array.from(document.querySelectorAll('section[id]'));
@@ -244,21 +253,22 @@ function showMessage(message, type) {
 
 // Scroll animations
 function observeElements() {
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const targets = document.querySelectorAll('.animate-on-scroll');
+    if (isMobile || reduceMotion) {
+        // Show immediately on mobile/reduced motion
+        targets.forEach(el => el.classList.add('animate'));
+        return;
+    }
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('animate');
             }
         });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    });
-
-    // Observe all elements with animate-on-scroll class
-    document.querySelectorAll('.animate-on-scroll').forEach(el => {
-        observer.observe(el);
-    });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    targets.forEach(el => observer.observe(el));
 }
 
 // Navbar scroll effect

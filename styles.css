@@ -209,7 +209,7 @@ h3 { font-size: var(--step-2); line-height: 1.25; letter-spacing: -0.005em; font
 .hero {
     /* allow easy tuning of background crop without editing CSS */
     --hero-obj-pos: center 35%;
-    height: calc(var(--vh, 1vh) * 100);
+    height: 100vh; /* stable fallback; overridden by 100svh when supported */
     position: relative;
     display: flex;
     align-items: center;
@@ -232,6 +232,13 @@ h3 { font-size: var(--step-2); line-height: 1.25; letter-spacing: -0.005em; font
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
 }
+/* If hero uses <picture class="hero-bg">, ensure inner <img> covers correctly */
+.hero picture.hero-bg { position: absolute; inset: 0; z-index: 0; display: block; }
+.hero picture.hero-bg > img {
+    width: 100%; height: 100%; display: block;
+    object-fit: cover; object-position: var(--hero-obj-pos, center 35%);
+}
+/* (If we switch hero to <picture>, add styles here) */
 /* Neutralize any legacy ::before background */
 .hero::before { content: none !important; background: none !important; background-image: none !important; filter: none !important; transform: none !important; pointer-events: none; }
 
@@ -253,6 +260,11 @@ h3 { font-size: var(--step-2); line-height: 1.25; letter-spacing: -0.005em; font
 /* Prefer modern viewport units when supported (prevents URL bar jank) */
 @supports (height: 100svh) {
     .hero { height: 100svh; }
+}
+
+/* Slightly lift the focal point on narrow screens to reduce awkward crops */
+@media (max-width: 768px) {
+    .hero { --hero-obj-pos: center 25%; }
 }
 
 .hero-content h1 {
@@ -326,6 +338,10 @@ h3 { font-size: var(--step-2); line-height: 1.25; letter-spacing: -0.005em; font
 .scroll-cue { animation: cueFloat 2.4s ease-in-out infinite; }
 @media (prefers-reduced-motion: reduce) {
     .scroll-cue { animation: none; }
+}
+/* Mobile: keep it simpler */
+@media (max-width: 768px) {
+    .scroll-cue { animation: none; opacity: 0.75; }
 }
 @media (min-width: 1024px) {
     .hero-content {
@@ -1616,15 +1632,32 @@ section[id] {
     }
     
     .map-placeholder { height: auto; min-height: 0; }
-    .map-placeholder iframe {
-        height: 300px;
-    }
+.map-placeholder iframe {
+    height: 300px;
+}
+
+/* Tap-to-load map button (mobile) */
+.load-map-btn {
+    display: inline-block;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 14px 18px;
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: #fff;
+    color: var(--text);
+    font-weight: 600;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.06);
+    cursor: pointer;
+}
+.load-map-btn:hover { background: #f6f6f6; }
 }
 
 /* Ensure transition can be disabled at any breakpoint */
 .nav-menu.no-transition { transition: none !important; }
 
-/* Strong mobile nav overrides to ensure reliability + cooler animation */
+/* Strong mobile nav overrides to ensure reliability + snappy animation */
 @media screen and (max-width: 992px) {
     .navbar .nav-menu {
         position: fixed;
@@ -1640,35 +1673,20 @@ section[id] {
         gap: 1.25rem;
         padding-top: 2rem;
         z-index: 10000;
-        /* Fancy reveal via circular mask expanding from the toggle. */
-        /* Fallbacks (opacity/transform) via base props below. */
-        transform: translateZ(0);
+        /* Snappy slide/scale with opacity — GPU friendly */
+        will-change: transform, opacity;
+        transform: translateY(12px) scale(0.985);
         opacity: 0;
         visibility: hidden;
         pointer-events: none;
-        transition: opacity 220ms ease-out, backdrop-filter 300ms ease;
+        transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
+                    opacity 200ms ease-out;
         -webkit-overflow-scrolling: touch;
         overflow-y: auto;
-        backdrop-filter: saturate(120%) blur(10px);
+        /* Drop heavy blur on mobile to avoid jank */
+        backdrop-filter: none;
     }
-    .navbar .nav-menu.active { opacity: 1; visibility: visible; pointer-events: auto; }
-
-    /* Use clip-path circle reveal if supported */
-    @supports (clip-path: circle(50% at 50% 50%)) {
-        .navbar .nav-menu {
-            /* Center of reveal set via JS on open; defaults to top-right */
-            --reveal-cx: calc(100% - 24px);
-            --reveal-cy: 24px;
-            clip-path: circle(0px at var(--reveal-cx) var(--reveal-cy));
-            transition: clip-path 600ms cubic-bezier(0.22, 1, 0.36, 1),
-                        opacity 200ms ease-out,
-                        backdrop-filter 300ms ease;
-        }
-        .navbar .nav-menu.active {
-            /* Large enough circle to cover any viewport */
-            clip-path: circle(150vmax at var(--reveal-cx) var(--reveal-cy));
-        }
-    }
+    .navbar .nav-menu.active { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0) scale(1); }
     /* Stagger links in for a polished feel */
     .navbar .nav-menu > li { opacity: 0; transform: translateY(8px); transition: transform 420ms cubic-bezier(0.22,1,0.36,1), opacity 260ms ease-out; }
     .navbar .nav-menu.active > li { opacity: 1; transform: translateY(0); }
@@ -1717,6 +1735,14 @@ section[id] {
         .navbar .nav-menu > li,
         .navbar .nav-menu.active > li { transition: none; transform: none; opacity: 1; }
     }
+}
+
+/* Mobile optimizations: remove heavy effects and animations */
+@media (max-width: 768px) {
+    /* Remove blur to reduce paint/composite cost */
+    .navbar { backdrop-filter: none; }
+    /* Disable scroll-in animations to avoid perceived lag */
+    .animate-on-scroll { opacity: 1 !important; transform: none !important; transition: none !important; }
 }
 
 @media screen and (max-width: 480px) {
@@ -2634,12 +2660,7 @@ html:not(.js) .animate-on-scroll {
     }
 }
 
-/* Fix for Safari's handling of 100vh on mobile */
-@supports (-webkit-appearance: none) {
-    .hero {
-        min-height: -webkit-fill-available;
-    }
-}
+/* Removed Safari -webkit-fill-available hack to avoid reflow-jank on scroll */
 
 /* Remove global perspective/backface to avoid breaking position: fixed */
 
@@ -2661,12 +2682,6 @@ html {
 
 /* Additional mobile fixes for Chrome */
 @media screen and (max-width: 768px) {
-    /* Fix viewport units on mobile Chrome */
-    .hero {
-        height: 100vh;
-        height: calc(var(--vh, 1vh) * 100);
-    }
-    
     /* Ensure proper touch scrolling */
     .nav-menu {
         -webkit-overflow-scrolling: touch;

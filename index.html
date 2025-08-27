@@ -9,7 +9,7 @@
     <meta name="keywords"
           content="coffee shop, premium coffee, espresso, latte, cold brew, Daniel's Coffee, specialty coffee">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="preload" as="image" href="imgs/store/main_hero.png">
+    <link rel="preload" as="image" href="imgs/store/main_hero.webp" type="image/webp">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,7 +64,10 @@
 <!--Test -->
 <!-- Hero Section -->
 <section id="home" class="hero">
-    <img class="hero-bg" src="imgs/store/main_hero.png" alt="" loading="eager" decoding="async" fetchpriority="high">
+    <picture class="hero-bg">
+        <source srcset="imgs/store/main_hero.webp" type="image/webp">
+        <img src="imgs/store/main_hero.png" alt="" loading="eager" decoding="async" fetchpriority="high">
+    </picture>
     <div class="hero-content">
         <h1 class="hero-heading">WELCOME TO <span class="brand-lockup">DANIEL'S COFFEE &amp; MORE</span></h1>
         <p>Where every cup tells a story</p>
@@ -87,41 +90,47 @@
         <p class="section-title-description">Available in store</p>
         <div class="menu-grid">
             <div class="menu-item">
-                <img src="imgs/lc/Corsica_12oz_Coffee_Web1.webp" alt="Corsica Coffee" class="animate-on-scroll" loading="lazy" decoding="async">
+                <img src="imgs/lc/Corsica_12oz_Coffee_Web1.webp" alt="Corsica Coffee" class="animate-on-scroll" loading="eager" fetchpriority="high" decoding="async">
                 <h3>Corsica Blend</h3>
                 <p>Premium single-origin coffee with rich, complex flavors</p>
                 <span class="price">$19.99</span>
             </div>
             <div class="menu-item">
                 <img src="imgs/lc/Colombia_SanRoque_web1_d22eb753-c4f1-47e0-9b9f-99a3aa38f0a0_1.webp"
-                     alt="Colombia San Roque" class="animate-on-scroll" loading="lazy" decoding="async">
+                     alt="Colombia San Roque" class="animate-on-scroll" loading="eager" decoding="async">
                 <h3>Colombia San Roque</h3>
                 <p>Smooth Colombian coffee with notes of chocolate and caramel</p>
                 <span class="price">$19.99</span>
             </div>
             <div class="menu-item">
-                <img src="imgs/lc/Nizza_12ozCoffee_web1.webp" alt="Nizza Coffee" class="animate-on-scroll" loading="lazy" decoding="async">
+                <img src="imgs/lc/Nizza_12ozCoffee_web1.webp" alt="Nizza Coffee" class="animate-on-scroll" loading="eager" decoding="async">
                 <h3>Nizza Roast</h3>
                 <p>Medium roast with balanced acidity and full body</p>
                 <span class="price">$19.99</span>
             </div>
             <div class="menu-item">
-                <img src="imgs/lc/decaf.jpg" alt="Decaf Coffee Beans" class="animate-on-scroll" loading="lazy"
-                     decoding="async">
+                <picture>
+                    <source srcset="imgs/lc/decaf.webp" type="image/webp">
+                    <img src="imgs/lc/decaf.jpg" alt="Decaf Coffee Beans" class="animate-on-scroll" loading="eager" decoding="async">
+                </picture>
                 <h3>Decaf Blend</h3>
                 <p>Rich decaffeinated blend with smooth flavor and aroma</p>
                 <span class="price">$19.99</span>
             </div>
             <div class="menu-item">
-                <img src="imgs/lc/afrique.jpg" alt="Afrique Coffee Beans" class="animate-on-scroll" loading="lazy"
-                     decoding="async">
+                <picture>
+                    <source srcset="imgs/lc/afrique.webp" type="image/webp">
+                    <img src="imgs/lc/afrique.jpg" alt="Afrique Coffee Beans" class="animate-on-scroll" loading="eager" decoding="async">
+                </picture>
                 <h3>Afrique</h3>
                 <p>Bright, fruit-forward African blend with cocoa undertones</p>
                 <span class="price">$24.99</span>
             </div>
             <div class="menu-item">
-                <img src="imgs/lc/monaco.jpg" alt="Monaco Coffee Beans" class="animate-on-scroll" loading="lazy"
-                     decoding="async">
+                <picture>
+                    <source srcset="imgs/lc/monaco.webp" type="image/webp">
+                    <img src="imgs/lc/monaco.jpg" alt="Monaco Coffee Beans" class="animate-on-scroll" loading="eager" decoding="async">
+                </picture>
                 <h3>Monaco</h3>
                 <p>Balanced medium roast with chocolate and caramel notes</p>
                 <span class="price">$24.99</span>
@@ -137,7 +146,10 @@
         <h2 class="section-title">About Daniel's Coffee & More</h2>
         <div class="about-content">
             <div class="about-image">
-                <img src="imgs/store/about-photo.png" alt="Daniel's Coffee & More - Cozy interior with comfortable seating and warm lighting" class="animate-on-scroll" loading="lazy" decoding="async">
+                <picture>
+                    <source srcset="imgs/store/about-photo.webp" type="image/webp">
+                    <img src="imgs/store/about-photo.png" alt="Daniel's Coffee & More - Cozy interior with comfortable seating and warm lighting" class="animate-on-scroll" loading="eager" decoding="async">
+                </picture>
             </div>
             <div class="about-text">
                 <p>Located in the heart of Manhattan's Upper East Side, Daniel's Coffee & More has been serving the community since 2019. We're more than just a coffee shop – we're your neighborhood gathering place where exceptional coffee meets genuine hospitality.</p>

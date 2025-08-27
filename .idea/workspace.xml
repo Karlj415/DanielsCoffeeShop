@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c10139a8-3e1a-487e-9561-56766d2721ef" name="Changes" comment="Enhanced hero section: updated background image, added custom scroll cue, optimized layout for mobile, and adjusted styles for improved performance.">
+    <list default="true" id="c10139a8-3e1a-487e-9561-56766d2721ef" name="Changes" comment="Responsive navigation overhaul: improved mobile menu functionality, added advanced animations and accessibility features (ARIA states, keyboard support), refined styles across breakpoints, and optimized layout transitions.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/script.js" afterDir="false" />
@@ -76,7 +76,9 @@
       <workItem from="1756047600733" duration="789000" />
       <workItem from="1756049118284" duration="8000" />
       <workItem from="1756218904898" duration="2940000" />
-      <workItem from="1756255414386" duration="5325000" />
+      <workItem from="1756255414386" duration="6017000" />
+      <workItem from="1756304917181" duration="30000" />
+      <workItem from="1756318153509" duration="1060000" />
     </task>
     <task id="LOCAL-00001" summary="Add initial project setup with homepage and assets&#10;&#10;- Included `index.html` as the main structure for the webpage.&#10;- Added `favicon.svg` for site branding.&#10;- Uploaded coffee-related SVG files for logos.&#10;- Structured sections for navigation, menu, about, and Instagram feed in `index.html`.">
       <option name="closed" value="true" />
@@ -150,7 +152,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756265524555</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Responsive navigation overhaul: improved mobile menu functionality, added advanced animations and accessibility features (ARIA states, keyboard support), refined styles across breakpoints, and optimized layout transitions.">
+      <option name="closed" value="true" />
+      <created>1756268142914</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1756268142914</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -166,6 +176,7 @@
     <MESSAGE value="Added new images for menu items in `imgs/lc` directory (afrique, bleu, decaf, monaco)." />
     <MESSAGE value="Enhanced hero section: replaced pseudo-element background with inline image for improved LCP; added scroll cue animation; optimized mobile layout and viewport handling; introduced JS fallbacks for CSS effects." />
     <MESSAGE value="Enhanced hero section: updated background image, added custom scroll cue, optimized layout for mobile, and adjusted styles for improved performance." />
-    <option name="LAST_COMMIT_MESSAGE" value="Enhanced hero section: updated background image, added custom scroll cue, optimized layout for mobile, and adjusted styles for improved performance." />
+    <MESSAGE value="Responsive navigation overhaul: improved mobile menu functionality, added advanced animations and accessibility features (ARIA states, keyboard support), refined styles across breakpoints, and optimized layout transitions." />
+    <option name="LAST_COMMIT_MESSAGE" value="Responsive navigation overhaul: improved mobile menu functionality, added advanced animations and accessibility features (ARIA states, keyboard support), refined styles across breakpoints, and optimized layout transitions." />
   </component>
 </project>
