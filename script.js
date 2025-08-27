@@ -23,50 +23,70 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (navToggle && navMenu) {
         const overlay = document.getElementById('navOverlay');
+        const BREAKPOINT = 992;
+        // Helper to set ARIA states
+        function setMenuState(open) {
+            // Set reveal center for clip-path (cool circular reveal)
+            try {
+                const r = navToggle.getBoundingClientRect();
+                const cx = Math.round(r.left + r.width / 2);
+                const cy = Math.round(r.top + r.height / 2);
+                navMenu.style.setProperty('--reveal-cx', cx + 'px');
+                navMenu.style.setProperty('--reveal-cy', cy + 'px');
+            } catch (_) {}
+            navMenu.classList.toggle('active', open);
+            navToggle.classList.toggle('active', open);
+            if (overlay) overlay.classList.toggle('show', open);
+            document.body.classList.toggle('no-scroll', open);
+            navToggle.setAttribute('aria-expanded', String(open));
+            navMenu.setAttribute('aria-hidden', String(!open));
+            // Rely on CSS transitions; clear any inline overrides
+            navMenu.style.display = '';
+            navMenu.style.pointerEvents = '';
+        }
+
         navToggle.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
             const willOpen = !navMenu.classList.contains('active');
-            navMenu.classList.toggle('active');
-            navToggle.classList.toggle('active');
-            if (overlay) overlay.classList.toggle('show', willOpen);
-            document.body.classList.toggle('no-scroll', willOpen);
+            setMenuState(willOpen);
+        });
+
+        // Keyboard support for toggle
+        navToggle.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                const willOpen = !navMenu.classList.contains('active');
+                setMenuState(willOpen);
+            } else if (e.key === 'Escape') {
+                setMenuState(false);
+            }
         });
 
         // Close mobile menu when clicking on a link
         document.querySelectorAll('.nav-menu a').forEach(link => {
             link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                navToggle.classList.remove('active');
-                const overlay = document.getElementById('navOverlay');
-                if (overlay) overlay.classList.remove('show');
-                document.body.classList.remove('no-scroll');
+                setMenuState(false);
             });
         });
 
         // Close mobile menu when clicking outside
         document.addEventListener('click', (e) => {
             if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
-                navMenu.classList.remove('active');
-                navToggle.classList.remove('active');
-                const overlay = document.getElementById('navOverlay');
-                if (overlay) overlay.classList.remove('show');
-                document.body.classList.remove('no-scroll');
+                setMenuState(false);
             }
         });
 
         // Close menu when tapping overlay
         if (overlay) {
             overlay.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                navToggle.classList.remove('active');
-                overlay.classList.remove('show');
-                document.body.classList.remove('no-scroll');
+                setMenuState(false);
             });
         }
 
         // Close menu and prevent odd auto-animations when crossing breakpoints
-        const BREAKPOINT = 992;
+        // keep in sync with setMenuState
+        // BREAKPOINT is defined above
         let lastIsMobile = window.innerWidth <= BREAKPOINT;
 
         window.addEventListener('resize', () => {
@@ -75,11 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Temporarily disable transitions to avoid slide flicker
                 navMenu.classList.add('no-transition');
                 // Ensure menu is closed and toggle reset when breakpoint changes
-                navMenu.classList.remove('active');
-                navToggle.classList.remove('active');
-                const overlay = document.getElementById('navOverlay');
-                if (overlay) overlay.classList.remove('show');
-                document.body.classList.remove('no-scroll');
+                setMenuState(false);
                 // Allow layout to settle, then re-enable transitions
                 setTimeout(() => {
                     navMenu.classList.remove('no-transition');
@@ -87,6 +103,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             lastIsMobile = isMobile;
         });
+        // Initialize ARIA states
+        setMenuState(false);
     }
 
     // Active nav link highlight on scroll
@@ -156,7 +174,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             });
         }
     });
-
+});
 // Newsletter Form Handling
 const newsletterForm = document.getElementById('newsletterForm');
 const formMessage = document.getElementById('form-message');
