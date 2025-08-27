@@ -428,8 +428,10 @@ h3 { font-size: var(--step-2); line-height: 1.25; letter-spacing: -0.005em; font
 
 .menu-item img {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
+    height: auto;
+    aspect-ratio: 4 / 5; /* consistent portrait ratio for all menu images */
+    object-fit: cover;   /* uniformly crop without distortion */
+    display: block;
 }
 
 .menu-item h3 {
@@ -1228,6 +1230,24 @@ section[id] {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
+    align-items: stretch; /* ensure equal column heights */
+}
+
+/* Prevent margin-collapsing so map height matches total card stack */
+.contact-info { display: flow-root; }
+
+/* Large screens: sticky map; single column of cards */
+@media screen and (min-width: 1024px) {
+    .map-placeholder {
+        position: sticky;
+        top: 96px;
+        height: 100%;
+        min-height: 480px;
+    }
+    /* Ensure left column remains a single stacked column */
+    .contact-info {
+        display: flow-root; /* cancel any grid override */
+    }
 }
 
 .contact-info .info-item {
@@ -1243,9 +1263,7 @@ section[id] {
 .contact-info p {
     margin-bottom: 1rem;
     color: var(--muted);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    display: block; /* prevent unintended text indentation */
 }
 
 .contact-info .icon {
@@ -1286,7 +1304,8 @@ section[id] {
 
 .map-placeholder {
     background: #e9ecef;
-    height: 400px;
+    height: 100%;
+    min-height: 420px;
     border-radius: var(--radius);
     overflow: hidden;
 }
@@ -1557,6 +1576,7 @@ section[id] {
         gap: 1rem;
     }
     
+    .map-placeholder { height: auto; min-height: 0; }
     .map-placeholder iframe {
         height: 300px;
     }
@@ -1728,9 +1748,8 @@ section[id] {
     .contact-row .icon { width: 28px; height: 28px; }
     .contact-label { font-size: 0.95rem; opacity: 0.9; }
 
-    .map-placeholder iframe {
-        height: 250px;
-    }
+    .map-placeholder { height: auto; min-height: 0; }
+    .map-placeholder iframe { height: 250px; }
 
     .footer {
         padding: 2rem 0 1rem;
@@ -2154,10 +2173,8 @@ section[id] {
         min-width: 44px;
     }
 
-    .map-placeholder iframe {
-        height: 200px;
-        width: 100%;
-    }
+    .map-placeholder { height: auto; min-height: 0; }
+    .map-placeholder iframe { height: 200px; width: 100%; }
 
     /* Tighter spacing for very small screens */
     .menu, .about, .instagram-feed, .newsletter, .contact {
@@ -2522,60 +2539,82 @@ html {
     }
 }
 
-/* Ensure Contact card tiles take effect (strong override, last in file) */
+/* Contact cards on all screen sizes */
+.contact .contact-info .contact-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* left-align content */
+    justify-content: center;
+    text-align: left;
+    width: 100%;
+    max-width: 420px;
+    margin: 1rem auto;
+    padding: 16px 18px;
+    border-radius: 12px;
+    background: var(--card-bg);
+    color: var(--text);
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--card-border);
+    gap: 6px;
+}
+.contact .contact-info .contact-row .icon { width: 28px; height: 28px; }
+.contact .contact-info .contact-row a { color: var(--brand); text-decoration: underline; }
+.contact .contact-info .contact-label { color: var(--text); opacity: 0.9; }
+/* Hide spacer <br> elements that separate contact cards */
+.contact .contact-info p.contact-row + br { display: none; }
+
+/* Make Address and Hours cards as well */
+.contact .contact-info .info-item {
+    background: var(--card-bg);
+    color: var(--text);
+    border: 1px solid var(--card-border);
+    box-shadow: var(--card-shadow);
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin: 0.5rem auto;
+    width: 100%;
+    max-width: 420px;
+    text-align: left;
+}
+.contact .contact-info .info-item h3 { margin-bottom: 0.5rem; color: var(--text); }
+.contact .contact-info .info-item p { color: var(--muted); }
+
+/* Dark theme card styles (all sizes) */
+[data-theme="dark"] .contact .contact-info .contact-row,
+[data-theme="dark"] .contact .contact-info .info-item {
+    background: #201E1B;
+    color: #fff;
+    border-color: rgba(255,255,255,0.10);
+    box-shadow: 0 10px 26px rgba(0,0,0,0.45);
+}
+[data-theme="dark"] .contact .contact-info .contact-row a { color: #fff; }
+[data-theme="dark"] .contact .contact-info .contact-row .icon { color: #fff; }
+
+/* Keep hiding line breaks only on small/medium screens for tighter cards */
 @media screen and (max-width: 768px) {
     .contact .contact-info br { display: none !important; }
-
-    /* Card tiles for Phone, Email, Instagram */
-    .contact .contact-info .contact-row {
-        display: flex !important;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        width: 100%;
-        max-width: 420px;
-        margin: 1rem auto; /* breathing room between cards */
-        padding: 16px 18px;
-        border-radius: 12px;
-        background: var(--card-bg);
-        color: var(--text);
-        box-shadow: var(--card-shadow);
-        border: 1px solid var(--card-border);
-        gap: 6px;
-    }
-    .contact .contact-info .contact-row .icon { width: 28px; height: 28px; }
-    .contact .contact-info .contact-row a { color: var(--brand); text-decoration: underline; }
-    .contact .contact-info .contact-label { color: var(--text); opacity: 0.9; }
-
-    /* Make Address and Hours cards as well */
-    .contact .contact-info .info-item {
-        background: var(--card-bg);
-        color: var(--text);
-        border: 1px solid var(--card-border);
-        box-shadow: var(--card-shadow);
-        border-radius: 12px;
-        padding: 16px 18px;
-        margin: 0.5rem auto;
-        width: 100%;
-        max-width: 420px;
-        text-align: center;
-    }
-    .contact .contact-info .info-item h3 { margin-bottom: 0.5rem; color: var(--text); }
-    .contact .contact-info .info-item p { color: var(--muted); }
+    /* Center-align cards and rows on small screens */
+    .contact .contact-info .info-item { text-align: center; }
+    .contact .contact-info .contact-row { align-items: center; text-align: center; }
 }
 
-/* Dark theme cards on mobile */
+/* On single-column layouts, center About features and make equal-width pills */
 @media screen and (max-width: 768px) {
-    [data-theme="dark"] .contact .contact-info .contact-row,
-    [data-theme="dark"] .contact .contact-info .info-item {
-        background: #201E1B;
-        color: #fff;
-        border-color: rgba(255,255,255,0.10);
-        box-shadow: 0 10px 26px rgba(0,0,0,0.45);
+    .about-features { text-align: center; }
+    .features {
+        grid-template-columns: 1fr; /* one per row */
+        justify-items: center;      /* center within container */
+        width: 100%;
     }
-    [data-theme="dark"] .contact .contact-info .contact-row a { color: #fff; }
-    [data-theme="dark"] .contact .contact-info .contact-row .icon { color: #fff; }
+    .features li {
+        display: flex;              /* simple centering */
+        align-items: center;
+        justify-content: center;    /* center text */
+        text-align: center;
+        width: 100%;                /* equal width pills */
+        max-width: 480px;           /* readable maximum */
+    }
+    .features li::before { display: none; content: none; }
 }
 
 
