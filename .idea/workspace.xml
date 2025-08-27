@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c10139a8-3e1a-487e-9561-56766d2721ef" name="Changes" comment="Refined mobile and responsive experience: replaced hero background with modern `&lt;picture&gt;` implementation, optimized image loading with WebP and eager priorities, simplified navigation animations for better performance, and deferred interactive map to improve initial load.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles.css" afterDir="false" />
+    <list default="true" id="c10139a8-3e1a-487e-9561-56766d2721ef" name="Changes" comment="Lightened hero overlay for small screens, improved responsiveness with modern viewport units, and updated background gradients for enhanced visual clarity.">
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +75,7 @@
       <workItem from="1756218904898" duration="2940000" />
       <workItem from="1756255414386" duration="6017000" />
       <workItem from="1756304917181" duration="30000" />
-      <workItem from="1756318153509" duration="1912000" />
+      <workItem from="1756318153509" duration="2276000" />
     </task>
     <task id="LOCAL-00001" summary="Add initial project setup with homepage and assets&#10;&#10;- Included `index.html` as the main structure for the webpage.&#10;- Added `favicon.svg` for site branding.&#10;- Uploaded coffee-related SVG files for logos.&#10;- Structured sections for navigation, menu, about, and Instagram feed in `index.html`.">
       <option name="closed" value="true" />
@@ -166,7 +165,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756319992910</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Lightened hero overlay for small screens, improved responsiveness with modern viewport units, and updated background gradients for enhanced visual clarity.">
+      <option name="closed" value="true" />
+      <created>1756320844790</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1756320844790</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -184,6 +191,7 @@
     <MESSAGE value="Enhanced hero section: updated background image, added custom scroll cue, optimized layout for mobile, and adjusted styles for improved performance." />
     <MESSAGE value="Responsive navigation overhaul: improved mobile menu functionality, added advanced animations and accessibility features (ARIA states, keyboard support), refined styles across breakpoints, and optimized layout transitions." />
     <MESSAGE value="Refined mobile and responsive experience: replaced hero background with modern `&lt;picture&gt;` implementation, optimized image loading with WebP and eager priorities, simplified navigation animations for better performance, and deferred interactive map to improve initial load." />
-    <option name="LAST_COMMIT_MESSAGE" value="Refined mobile and responsive experience: replaced hero background with modern `&lt;picture&gt;` implementation, optimized image loading with WebP and eager priorities, simplified navigation animations for better performance, and deferred interactive map to improve initial load." />
+    <MESSAGE value="Lightened hero overlay for small screens, improved responsiveness with modern viewport units, and updated background gradients for enhanced visual clarity." />
+    <option name="LAST_COMMIT_MESSAGE" value="Lightened hero overlay for small screens, improved responsiveness with modern viewport units, and updated background gradients for enhanced visual clarity." />
   </component>
 </project>
