@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c10139a8-3e1a-487e-9561-56766d2721ef" name="Changes" comment="Added new images for menu items in `imgs/lc` directory (afrique, bleu, decaf, monaco).">
+    <list default="true" id="c10139a8-3e1a-487e-9561-56766d2721ef" name="Changes" comment="Enhanced hero section: replaced pseudo-element background with inline image for improved LCP; added scroll cue animation; optimized mobile layout and viewport handling; introduced JS fallbacks for CSS effects.">
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/script.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -75,7 +74,7 @@
       <workItem from="1756047600733" duration="789000" />
       <workItem from="1756049118284" duration="8000" />
       <workItem from="1756218904898" duration="2940000" />
-      <workItem from="1756255414386" duration="3087000" />
+      <workItem from="1756255414386" duration="3581000" />
     </task>
     <task id="LOCAL-00001" summary="Add initial project setup with homepage and assets&#10;&#10;- Included `index.html` as the main structure for the webpage.&#10;- Added `favicon.svg` for site branding.&#10;- Uploaded coffee-related SVG files for logos.&#10;- Structured sections for navigation, menu, about, and Instagram feed in `index.html`.">
       <option name="closed" value="true" />
@@ -133,7 +132,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756258399769</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Enhanced hero section: replaced pseudo-element background with inline image for improved LCP; added scroll cue animation; optimized mobile layout and viewport handling; introduced JS fallbacks for CSS effects.">
+      <option name="closed" value="true" />
+      <created>1756265219242</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1756265219242</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -147,6 +154,7 @@
     <MESSAGE value="Refined typography and layout: improved readability with modular scale-based typography, updated headings for consistency, and adjusted spacing for better alignment across sections; introduced CSS Grid for features and optimized contact/info card styles for responsiveness." />
     <MESSAGE value="Refined menu content and visuals: updated menu items, prices, and descriptions; introduced consistent aspect ratios for images; enhanced contact card styles across themes; improved page layout with responsive adjustments and sticky map." />
     <MESSAGE value="Added new images for menu items in `imgs/lc` directory (afrique, bleu, decaf, monaco)." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added new images for menu items in `imgs/lc` directory (afrique, bleu, decaf, monaco)." />
+    <MESSAGE value="Enhanced hero section: replaced pseudo-element background with inline image for improved LCP; added scroll cue animation; optimized mobile layout and viewport handling; introduced JS fallbacks for CSS effects." />
+    <option name="LAST_COMMIT_MESSAGE" value="Enhanced hero section: replaced pseudo-element background with inline image for improved LCP; added scroll cue animation; optimized mobile layout and viewport handling; introduced JS fallbacks for CSS effects." />
   </component>
 </project>
