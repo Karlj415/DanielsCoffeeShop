@@ -1,3 +1,6 @@
+// Mark JS-enabled for CSS fallbacks
+document.documentElement.classList.add('js');
+
 // Fix for mobile Chrome viewport height issues
 function setViewportHeight() {
     let vh = window.innerHeight * 0.01;
@@ -153,7 +156,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             });
         }
     });
-});
 
 // Newsletter Form Handling
 const newsletterForm = document.getElementById('newsletterForm');
@@ -307,4 +309,5 @@ document.addEventListener('DOMContentLoaded', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
+    
 });
