@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c10139a8-3e1a-487e-9561-56766d2721ef" name="Changes" comment="Enhanced hero section with video background: added video fallback functionality for reduced motion preferences, introduced responsive hero controls, and refined styles for improved consistency and accessibility.">
+    <list default="true" id="c10139a8-3e1a-487e-9561-56766d2721ef" name="Changes" comment="Improved hero section: introduced dynamic responsive features, fine-tuned video styles, optimized content alignment, and enhanced accessibility for better user experience across devices.">
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/script.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -81,7 +80,7 @@
       <workItem from="1756255414386" duration="6017000" />
       <workItem from="1756304917181" duration="30000" />
       <workItem from="1756318153509" duration="4126000" />
-      <workItem from="1756389260723" duration="2070000" />
+      <workItem from="1756389260723" duration="3722000" />
     </task>
     <task id="LOCAL-00001" summary="Add initial project setup with homepage and assets&#10;&#10;- Included `index.html` as the main structure for the webpage.&#10;- Added `favicon.svg` for site branding.&#10;- Uploaded coffee-related SVG files for logos.&#10;- Structured sections for navigation, menu, about, and Instagram feed in `index.html`.">
       <option name="closed" value="true" />
@@ -195,7 +194,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756396201663</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Improved hero section: introduced dynamic responsive features, fine-tuned video styles, optimized content alignment, and enhanced accessibility for better user experience across devices.">
+      <option name="closed" value="true" />
+      <created>1756398718580</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1756398718580</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,6 +223,7 @@
     <MESSAGE value="Lightened hero overlay for small screens, improved responsiveness with modern viewport units, and updated background gradients for enhanced visual clarity." />
     <MESSAGE value="Simplified image handling by removing `&lt;picture&gt;` elements and WebP sources; transitioned to PNGs for hero, menu, and about section images; ensured consistency across visuals." />
     <MESSAGE value="Enhanced hero section with video background: added video fallback functionality for reduced motion preferences, introduced responsive hero controls, and refined styles for improved consistency and accessibility." />
-    <option name="LAST_COMMIT_MESSAGE" value="Enhanced hero section with video background: added video fallback functionality for reduced motion preferences, introduced responsive hero controls, and refined styles for improved consistency and accessibility." />
+    <MESSAGE value="Improved hero section: introduced dynamic responsive features, fine-tuned video styles, optimized content alignment, and enhanced accessibility for better user experience across devices." />
+    <option name="LAST_COMMIT_MESSAGE" value="Improved hero section: introduced dynamic responsive features, fine-tuned video styles, optimized content alignment, and enhanced accessibility for better user experience across devices." />
   </component>
 </project>

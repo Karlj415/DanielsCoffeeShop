@@ -275,26 +275,16 @@ function observeElements() {
 // Navbar scroll effect
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
-    const backToTop = document.getElementById('backToTop');
     if (!navbar) return;
-    
-    // Solid background + shadow after small scroll
-    if (navbar) {
-        if (window.scrollY > 100) {
-            navbar.style.background = '#4A2C2A';
-            navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.3)';
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.style.background = '#4A2C2A';
-            navbar.style.boxShadow = 'none';
-            navbar.classList.remove('scrolled');
-        }
-    }
-    
-    // Back-to-top toggle
-    if (backToTop) {
-        if (window.scrollY > 600) backToTop.classList.add('show');
-        else backToTop.classList.remove('show');
+    // Keep navbar stable; only optional shadow after small scroll
+    if (window.scrollY > 100) {
+        navbar.style.background = '#4A2C2A';
+        navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.3)';
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.style.background = '#4A2C2A';
+        navbar.style.boxShadow = 'none';
+        navbar.classList.remove('scrolled');
     }
 });
 
@@ -314,30 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fallback.style.display = 'grid';
     }
     
-    // Scroll-up reveal/hide navbar
-    let lastY = window.scrollY;
-    const nav = document.querySelector('.navbar');
-    window.addEventListener('scroll', () => {
-        const y = window.scrollY;
-        if (!nav) return;
-        if (y > lastY && y > 120) {
-            // scrolling down
-            nav.classList.add('nav-hidden');
-        } else {
-            // scrolling up
-            nav.classList.remove('nav-hidden');
-        }
-        lastY = y;
-    });
-    
-    // Back-to-top handler
-    const backToTop = document.getElementById('backToTop');
-    if (backToTop) {
-        backToTop.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    }
+    // Remove scroll-hide behavior; navbar always visible
     
     // Hero background: prefer strawb video; fallback to image if unsupported
     try {
