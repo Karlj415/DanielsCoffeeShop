@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c10139a8-3e1a-487e-9561-56766d2721ef" name="Changes" comment="Updated menu item images: replaced outdated JPEGs with new WebP assets for `Afrique`, `Decaf Monte Carlo`, and `Monaco`. Updated product names and descriptions for clarity." />
+    <list default="true" id="c10139a8-3e1a-487e-9561-56766d2721ef" name="Changes" comment="Updated Instagram grid: disabled scroll animation, ensured posts display instantly for smoother user experience.">
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -77,7 +81,7 @@
       <workItem from="1756255414386" duration="6017000" />
       <workItem from="1756304917181" duration="30000" />
       <workItem from="1756318153509" duration="4126000" />
-      <workItem from="1756389260723" duration="5089000" />
+      <workItem from="1756389260723" duration="6705000" />
     </task>
     <task id="LOCAL-00001" summary="Add initial project setup with homepage and assets&#10;&#10;- Included `index.html` as the main structure for the webpage.&#10;- Added `favicon.svg` for site branding.&#10;- Uploaded coffee-related SVG files for logos.&#10;- Structured sections for navigation, menu, about, and Instagram feed in `index.html`.">
       <option name="closed" value="true" />
@@ -215,7 +219,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756410776734</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Updated Instagram grid: disabled scroll animation, ensured posts display instantly for smoother user experience.">
+      <option name="closed" value="true" />
+      <created>1756411027338</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1756411027338</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -239,6 +251,7 @@
     <MESSAGE value="Improved hero section: introduced dynamic responsive features, fine-tuned video styles, optimized content alignment, and enhanced accessibility for better user experience across devices." />
     <MESSAGE value="Removed back-to-top button, always-on navbar, improved nav-pill styling for mobile, and refined layout adjustments across breakpoints." />
     <MESSAGE value="Updated menu item images: replaced outdated JPEGs with new WebP assets for `Afrique`, `Decaf Monte Carlo`, and `Monaco`. Updated product names and descriptions for clarity." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated menu item images: replaced outdated JPEGs with new WebP assets for `Afrique`, `Decaf Monte Carlo`, and `Monaco`. Updated product names and descriptions for clarity." />
+    <MESSAGE value="Updated Instagram grid: disabled scroll animation, ensured posts display instantly for smoother user experience." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated Instagram grid: disabled scroll animation, ensured posts display instantly for smoother user experience." />
   </component>
 </project>

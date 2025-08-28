@@ -47,7 +47,7 @@ html {
     --card-brown: #5A3E3A; /* slightly lighter brown for cards */
     --footer-bg: #4A2C2A;
     --newsletter-bg: #4A2C2A;
-    --logo-offset: 5px; /* tweakable vertical nudge for logo */
+    --logo-offset: 115px; /* tweakable vertical nudge for logo */
     /* How much of the next section to reveal under the hero (so CTAs stay visible) */
     --hero-reveal: 72px;
 }
@@ -1212,9 +1212,14 @@ section[id] {
 /* Mobile Order / Newsletter Section */
 .newsletter,
 .mobile-order {
-    padding: clamp(64px, 10vw, 96px) 0;
+    padding: clamp(88px, 12vw, 140px) 0;
     background: var(--newsletter-bg);
     color: white;
+}
+
+/* Make Order section taller so it anchors clearly */
+.mobile-order {
+    min-height: clamp(360px, 46vh, 640px);
 }
 
 .newsletter-content,
@@ -1223,6 +1228,112 @@ section[id] {
     max-width: 600px;
     margin: 0 auto;
 }
+
+/* Order cards layout */
+.order-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+    max-width: 980px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.order-card {
+    --accent: var(--brand);
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 12px;
+    padding: 1rem 1rem 1.1rem;
+    text-align: left;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-height: 240px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    transition: transform 200ms cubic-bezier(0.22,1,0.36,1), box-shadow 200ms ease, border-color 200ms ease;
+}
+
+.order-card:hover { transform: translateY(-2px); box-shadow: 0 14px 28px rgba(0,0,0,0.18); border-color: rgba(255,255,255,0.22); }
+.order-card:focus-within { box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 35%, white), 0 10px 24px rgba(0,0,0,0.12); }
+
+.order-card h3 { font-size: 1.15rem; font-weight: 600; color: #fff; }
+.order-card p { color: rgba(255,255,255,0.9); margin-bottom: 0.25rem; }
+
+.order-card .cta-button {
+    align-self: stretch;
+    text-align: center;
+    margin-top: auto;
+    border: none;
+    color: #0E0E0E;
+    border-radius: 999px;
+    min-height: 46px;
+    padding: 12px 18px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.18);
+}
+
+.order-card-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.18);
+}
+.order-card-icon svg { width: 22px; height: 22px; opacity: 0.95; }
+
+.order-meta { list-style: none; padding: 0; margin: 0 0 0.25rem; }
+.order-meta li { color: rgba(255,255,255,0.9); font-size: 0.95rem; padding-left: 1.2rem; position: relative; }
+.order-meta li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 0.05rem;
+    color: var(--accent);
+    font-weight: 800;
+}
+
+/* Brand badges for delivery partners */
+.brand-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.2px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.18);
+}
+.brand-seamless { background: #E53935; color: #fff; border-color: rgba(0,0,0,0.1); text-transform: lowercase; }
+.brand-ubereats { background: #0E0E0E; color: #fff; }
+.brand-ubereats .eats { color: #06C167; }
+.brand-doordash { background: #EB1700; color: #fff; border-color: rgba(0,0,0,0.08); }
+
+/* Inline SVG wordmarks */
+.brand-wordmark { display: inline-block; margin-bottom: 0.35rem; }
+.brand-wordmark-img { display: inline-block; height: 36px; width: auto; margin-bottom: 0.35rem; }
+
+/* Partner accent colors */
+.order-card[data-partner="pickup"] { --accent: var(--brand); }
+.order-card[data-partner="seamless"] { --accent: #E53935; }
+.order-card[data-partner="ubereats"] { --accent: #06C167; }
+.order-card[data-partner="doordash"] { --accent: #EB1700; }
+
+/* Card CTA colors per partner */
+.order-card .cta-button { background: var(--accent); }
+.order-card[data-partner="pickup"] .cta-button { background: var(--brand); color: #fff; }
+.order-card[data-partner="seamless"] .cta-button { color: #fff; }
+.order-card[data-partner="doordash"] .cta-button { color: #fff; }
+.order-card .cta-button:hover { filter: brightness(0.94); transform: translateY(-1px); box-shadow: 0 14px 28px rgba(0,0,0,0.22); }
 
 .newsletter-content h2,
 .mobile-order-content h2 {
@@ -1969,6 +2080,9 @@ section[id] {
         padding: 60px 0;
     }
 
+    /* Do not force taller height on small screens */
+    .mobile-order { min-height: auto; }
+
     .newsletter-content h2,
     .mobile-order-content h2 {
         font-size: 2rem;
@@ -2508,6 +2622,30 @@ section[id] {
     color: rgba(255,255,255,0.7);
     font-size: 0.95rem;
     margin-top: 1rem;
+}
+
+/* Order section: small detail pills to add context */
+.order-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1rem;
+}
+
+.order-detail {
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.14);
+    color: rgba(255,255,255,0.92);
+    font-size: 0.95rem;
+    white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+    .order-detail { font-size: 0.9rem; }
 }
 
 /* Animation Keyframes */

@@ -2,7 +2,7 @@
 document.documentElement.classList.add('js');
 
 // Mobile Navigation Toggle
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const navToggle = document.querySelector('.nav-toggle');
     const navMenu = document.querySelector('.nav-menu');
     const navLinks = Array.from(document.querySelectorAll('.nav-menu .nav-link'));
@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (navToggle && navMenu) {
         const overlay = document.getElementById('navOverlay');
         const BREAKPOINT = 992;
+
         // Helper to set ARIA states
         function setMenuState(open) {
             navMenu.classList.toggle('active', open);
@@ -24,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
             navMenu.style.pointerEvents = '';
         }
 
-        navToggle.addEventListener('click', function(e) {
+        navToggle.addEventListener('click', function (e) {
             e.preventDefault();
             e.stopPropagation();
             const willOpen = !navMenu.classList.contains('active');
@@ -114,7 +115,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 mapWrapper.appendChild(iframe);
             });
         }
-    } catch (e) { /* noop */ }
+    } catch (e) { /* noop */
+    }
 
     // Active nav link highlight on scroll
     const sections = Array.from(document.querySelectorAll('section[id]'));
@@ -125,9 +127,15 @@ document.addEventListener('DOMContentLoaded', function() {
     );
 
     function setActive(id) {
-        navLinks.forEach(a => { a.classList.remove('active'); a.removeAttribute('aria-current'); });
+        navLinks.forEach(a => {
+            a.classList.remove('active');
+            a.removeAttribute('aria-current');
+        });
         const link = linkById.get(id);
-        if (link) { link.classList.add('active'); link.setAttribute('aria-current', 'page'); }
+        if (link) {
+            link.classList.add('active');
+            link.setAttribute('aria-current', 'page');
+        }
     }
 
     if (sections.length && linkById.size) {
@@ -175,14 +183,27 @@ document.addEventListener('DOMContentLoaded', function() {
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        // Only intercept in-page anchors
+        if (!href || href.length < 2) return;
+        const target = document.querySelector(href);
+        if (!target) return;
+
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
+
+        // Compute offset to account for fixed navbar height
+        const navbar = document.querySelector('.navbar');
+        const navHeight = navbar ? navbar.offsetHeight : 0;
+        const extra = 8; // small breathing room below nav
+        const rect = target.getBoundingClientRect();
+        const absoluteTop = rect.top + window.pageYOffset;
+        const top = Math.max(absoluteTop - navHeight - extra, 0);
+
+        window.scrollTo({top, behavior: 'smooth'});
+
+        // Optional: move focus for accessibility without jumping
+        if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+        target.focus({preventScroll: true});
     });
 });
 // Newsletter Form Handling
@@ -190,23 +211,23 @@ const newsletterForm = document.getElementById('newsletterForm');
 const formMessage = document.getElementById('form-message');
 
 if (newsletterForm) {
-    newsletterForm.addEventListener('submit', function(e) {
+    newsletterForm.addEventListener('submit', function (e) {
         e.preventDefault();
-        
+
         const name = document.getElementById('name').value.trim();
         const email = document.getElementById('email').value.trim();
-        
+
         // Basic validation
         if (!name || !email) {
             showMessage('Please fill in all fields.', 'error');
             return;
         }
-        
+
         if (!isValidEmail(email)) {
             showMessage('Please enter a valid email address.', 'error');
             return;
         }
-        
+
         // Submit the form (replace with actual submission logic)
         submitNewsletter(name, email);
     });
@@ -219,20 +240,20 @@ function isValidEmail(email) {
 
 function submitNewsletter(name, email) {
     const submitBtn = document.querySelector('.submit-btn');
-    
+
     // Show loading state
     submitBtn.textContent = 'Subscribing...';
     submitBtn.disabled = true;
-    
+
     // Simulate API call (replace with your actual API endpoint)
     setTimeout(() => {
         // Reset form
         document.getElementById('name').value = '';
         document.getElementById('email').value = '';
-        
+
         // Show success message
         showMessage('Thank you for subscribing to our newsletter!', 'success');
-        
+
         // Reset button
         submitBtn.textContent = 'Subscribe';
         submitBtn.disabled = false;
@@ -244,7 +265,7 @@ function showMessage(message, type) {
         formMessage.textContent = message;
         formMessage.className = `form-message ${type}`;
         formMessage.style.display = 'block';
-        
+
         // Hide message after 5 seconds
         setTimeout(() => {
             formMessage.style.display = 'none';
@@ -268,7 +289,7 @@ function observeElements() {
                 entry.target.classList.add('animate');
             }
         });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    }, {threshold: 0.1, rootMargin: '0px 0px -50px 0px'});
     targets.forEach(el => observer.observe(el));
 }
 
@@ -278,11 +299,11 @@ window.addEventListener('scroll', () => {
     if (!navbar) return;
     // Keep navbar stable; only optional shadow after small scroll
     if (window.scrollY > 100) {
-        navbar.style.background = '#4A2C2A';
+        navbar.style.background = '#4a2c2a';
         navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.3)';
         navbar.classList.add('scrolled');
     } else {
-        navbar.style.background = '#4A2C2A';
+        navbar.style.background = '#4a2c2a';
         navbar.style.boxShadow = 'none';
         navbar.classList.remove('scrolled');
     }
@@ -291,21 +312,21 @@ window.addEventListener('scroll', () => {
 // Initialize animations when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     observeElements();
-    
+
     // Show Instagram fallback posts immediately
     const loading = document.querySelector('.instagram-loading');
     const fallback = document.querySelector('.instagram-fallback');
-    
+
     if (loading) {
         loading.style.display = 'none';
     }
-    
+
     if (fallback) {
         fallback.style.display = 'grid';
     }
-    
+
     // Remove scroll-hide behavior; navbar always visible
-    
+
     // Hero background: prefer strawb video; fallback to image if unsupported
     try {
         const hero = document.querySelector('.hero');
@@ -313,8 +334,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const mql = window.matchMedia('(prefers-reduced-motion: reduce)');
 
         // No poster: show video immediately
-        function showPoster() { /* no-op */ }
-        function showVideo() { /* no-op */ }
+        function showPoster() { /* no-op */
+        }
+
+        function showVideo() { /* no-op */
+        }
 
         if (!video) return;
 
@@ -323,10 +347,17 @@ document.addEventListener('DOMContentLoaded', () => {
         // Try to play; only hide poster when we know the video can play
         showPoster();
         let ready = false;
-        const onCanPlay = () => { if (!ready) { ready = true; showVideo(); } };
-        video.addEventListener('canplay', onCanPlay, { once: true });
-        video.addEventListener('playing', onCanPlay, { once: true });
-        video.addEventListener('error', () => { showPoster(); });
+        const onCanPlay = () => {
+            if (!ready) {
+                ready = true;
+                showVideo();
+            }
+        };
+        video.addEventListener('canplay', onCanPlay, {once: true});
+        video.addEventListener('playing', onCanPlay, {once: true});
+        video.addEventListener('error', () => {
+            showPoster();
+        });
 
         const attempt = video.play();
         if (attempt && typeof attempt.catch === 'function') {
@@ -334,10 +365,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Safety timeout: if not ready after 2s, keep poster
-        setTimeout(() => { if (!ready) showPoster(); }, 2000);
+        setTimeout(() => {
+            if (!ready) showPoster();
+        }, 2000);
 
         // React to prefers-reduced-motion changes
-        mql.addEventListener('change', (e) => { if (e.matches) showPoster(); else video.play(); });
-    } catch (e) { /* no-op */ }
+        mql.addEventListener('change', (e) => {
+            if (e.matches) showPoster(); else video.play();
+        });
+    } catch (e) { /* no-op */
+    }
 
 });
