@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const navToggle = document.querySelector('.nav-toggle');
     const navMenu = document.querySelector('.nav-menu');
     const navLinks = Array.from(document.querySelectorAll('.nav-menu .nav-link'));
-    const themeToggle = document.getElementById('themeToggle');
+    const themeToggles = Array.from(document.querySelectorAll('.theme-toggle'));
 
     if (navToggle && navMenu) {
         const overlay = document.getElementById('navOverlay');
@@ -150,24 +150,25 @@ document.addEventListener('DOMContentLoaded', function() {
     // Theme: load preference and toggle
     const rootEl = document.documentElement;
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        rootEl.setAttribute('data-theme', 'dark');
+    if (savedTheme === 'dark') rootEl.setAttribute('data-theme', 'dark');
+
+    function toggleTheme(btn) {
+        const isDark = rootEl.getAttribute('data-theme') === 'dark';
+        if (isDark) {
+            rootEl.removeAttribute('data-theme');
+            localStorage.removeItem('theme');
+        } else {
+            rootEl.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        }
+        if (btn) {
+            btn.classList.add('twist');
+            setTimeout(() => btn.classList.remove('twist'), 250);
+        }
     }
 
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            const isDark = rootEl.getAttribute('data-theme') === 'dark';
-            if (isDark) {
-                rootEl.removeAttribute('data-theme');
-                localStorage.removeItem('theme');
-            } else {
-                rootEl.setAttribute('data-theme', 'dark');
-                localStorage.setItem('theme', 'dark');
-            }
-            // micro-interaction twist
-            themeToggle.classList.add('twist');
-            setTimeout(() => themeToggle.classList.remove('twist'), 250);
-        });
+    if (themeToggles.length) {
+        themeToggles.forEach(btn => btn.addEventListener('click', () => toggleTheme(btn)));
     }
 });
 
@@ -342,25 +343,15 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
         const hero = document.querySelector('.hero');
         const video = document.getElementById('heroVideo');
-        const poster = document.getElementById('heroPoster');
         const mql = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-        // Ensure poster is visible until video can play
-        function showPoster() {
-            if (hero) hero.classList.remove('video-ready');
-            if (poster) poster.style.display = 'block';
-            if (video) video.style.display = 'none';
-        }
-        function showVideo() {
-            if (hero) hero.classList.add('video-ready');
-            if (poster) poster.style.display = '';
-            if (video) video.style.display = '';
-        }
+        // No poster: show video immediately
+        function showPoster() { /* no-op */ }
+        function showVideo() { /* no-op */ }
 
         if (!video) return;
 
-        // Reduced motion: still try to play video unless OS setting is critical
-        // We'll keep poster until playback is confirmed.
+        // Try to play immediately
 
         // Try to play; only hide poster when we know the video can play
         showPoster();

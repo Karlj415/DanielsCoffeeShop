@@ -48,6 +48,8 @@ html {
     --footer-bg: #4A2C2A;
     --newsletter-bg: #4A2C2A;
     --logo-offset: 5px; /* tweakable vertical nudge for logo */
+    /* How much of the next section to reveal under the hero (so CTAs stay visible) */
+    --hero-reveal: 72px;
 }
 
 body {
@@ -149,6 +151,9 @@ h3 { font-size: var(--step-2); line-height: 1.25; letter-spacing: -0.005em; font
     margin: 0 auto;
 }
 
+/* Hide mobile-only items on desktop */
+.nav-menu .mobile-only { display: none; }
+
 .nav-link {
     text-decoration: none;
     color: rgba(255,255,255,0.92);
@@ -209,7 +214,7 @@ h3 { font-size: var(--step-2); line-height: 1.25; letter-spacing: -0.005em; font
 .hero {
     /* allow easy tuning of background crop without editing CSS */
     --hero-obj-pos: center 35%;
-    height: 100vh; /* stable fallback; overridden by 100svh when supported */
+    height: calc(100vh - var(--hero-reveal)); /* reveal a bit of next section */
     position: relative;
     display: flex;
     align-items: center;
@@ -233,11 +238,8 @@ h3 { font-size: var(--step-2); line-height: 1.25; letter-spacing: -0.005em; font
     transform: translateZ(0);
 }
 /* Hide poster image by default; JS/reduced-motion can reveal */
-.hero video.hero-bg { display: none; }
-.hero img.hero-poster { display: block; }
-/* When video is ready, show it and hide poster */
-.hero.video-ready video.hero-bg { display: block; }
-.hero.video-ready img.hero-poster { display: none; }
+/* Ensure video shows immediately; no poster */
+.hero video.hero-bg { opacity: 1; }
 /* If hero uses <picture class="hero-bg">, ensure inner <img> covers correctly */
 .hero picture.hero-bg { position: absolute; inset: 0; z-index: 0; display: block; }
 .hero picture.hero-bg > img {
@@ -253,12 +255,13 @@ h3 { font-size: var(--step-2); line-height: 1.25; letter-spacing: -0.005em; font
     content: '';
     position: absolute;
     inset: 0;
-    background:
-        radial-gradient(ellipse at center,
-            rgba(0,0,0,0.32) 0%,
-            rgba(0,0,0,0.16) 55%,
-            rgba(0,0,0,0.40) 100%),
-        linear-gradient(rgba(0,0,0,0.32), rgba(0,0,0,0.32));
+    /* Softer, bottom-only gradient so video remains visible */
+    background: linear-gradient(to top,
+        rgba(0,0,0,0.48) 0%,
+        rgba(0,0,0,0.28) 24%,
+        rgba(0,0,0,0.14) 44%,
+        rgba(0,0,0,0.04) 64%,
+        rgba(0,0,0,0) 76%);
     pointer-events: none;
     z-index: 1;
 }
@@ -266,18 +269,17 @@ h3 { font-size: var(--step-2); line-height: 1.25; letter-spacing: -0.005em; font
 /* Lighten hero overlay on small screens to avoid washed-out look */
 @media (max-width: 768px) {
     .hero::after {
-        background:
-            radial-gradient(ellipse at center,
-                rgba(0,0,0,0.22) 0%,
-                rgba(0,0,0,0.12) 55%,
-                rgba(0,0,0,0.28) 100%),
-            linear-gradient(rgba(0,0,0,0.22), rgba(0,0,0,0.22));
+        background: linear-gradient(to top,
+            rgba(0,0,0,0.38) 0%,
+            rgba(0,0,0,0.22) 28%,
+            rgba(0,0,0,0.10) 52%,
+            rgba(0,0,0,0) 72%);
     }
 }
 
 /* Prefer modern viewport units when supported (prevents URL bar jank) */
 @supports (height: 100svh) {
-    .hero { height: 100svh; }
+    .hero { height: calc(100svh - var(--hero-reveal)); }
 }
 
 /* Slightly lift the focal point on narrow screens to reduce awkward crops */
@@ -285,13 +287,38 @@ h3 { font-size: var(--step-2); line-height: 1.25; letter-spacing: -0.005em; font
     .hero { --hero-obj-pos: center 25%; }
 }
 
+/* Fine-tune how much is revealed by breakpoint */
+@media (max-width: 768px) {
+    :root { --hero-reveal: 64px; }
+}
+@media (min-width: 1024px) {
+    :root { --hero-reveal: 80px; }
+}
+
+.hero { display: flex; align-items: stretch; justify-content: flex-start; }
+.hero-content {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 18px;
+    text-align: center;
+    z-index: 2; /* above overlays */
+    padding: 0; /* minimal padding to reduce blocking */
+    background: transparent; /* remove plate so video shows through */
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border-radius: 0;
+    max-width: min(92vw, 860px);
+    margin: 0 auto;
+    box-shadow: none;
+}
 .hero-content h1 {
-    font-size: clamp(2.2rem, 5.2vw, 3.8rem);
-    margin-bottom: 1rem;
-    font-weight: 600;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    line-height: 1.1;
-    letter-spacing: -1px;
+    font-size: clamp(1.9rem, 4.2vw, 3.1rem);
+    margin-bottom: 0.6rem;
+    font-weight: 500;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+    line-height: 1.08;
+    letter-spacing: -0.3px;
     overflow-wrap: anywhere; /* prevent clipping on narrow widths */
 }
 
@@ -313,11 +340,11 @@ h3 { font-size: var(--step-2); line-height: 1.25; letter-spacing: -0.005em; font
 @media (max-width: 540px) { .hero-heading .brand-lockup { white-space: normal; display: block; margin-left: 0; } }
 
 .hero-content p {
-    font-size: 1.3rem;
-    margin-bottom: 2rem;
+    font-size: clamp(1rem, 1.6vw, 1.15rem);
+    margin-bottom: 1.2rem;
     font-weight: 400;
-    color: rgba(255,255,255,0.95);
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    color: rgba(255,255,255,0.92);
+    text-shadow: 0 1px 6px rgba(0,0,0,0.35);
     line-height: 1.6;
 }
 
@@ -355,18 +382,22 @@ h3 { font-size: var(--step-2); line-height: 1.25; letter-spacing: -0.005em; font
     .scroll-cue { animation: none; }
 }
 
-/* Add a subtle readable plate behind hero text, stronger on small screens */
+/* Hero content: bottom-center overlay */
 .hero-content {
-    position: relative;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 18px;
+    text-align: center;
     z-index: 2; /* above overlays */
-    padding: 1rem 1.25rem;
-    background: rgba(0,0,0,0.34); /* stronger plate to beat busy background text */
-    -webkit-backdrop-filter: none; /* avoid mobile jank */
+    padding: 0 1rem; /* small side padding on narrow screens */
+    background: transparent;
+    -webkit-backdrop-filter: none;
     backdrop-filter: none;
-    border-radius: 12px;
-    max-width: min(92vw, 980px);
+    border-radius: 0;
+    max-width: min(92vw, 860px);
     margin: 0 auto;
-    box-shadow: 0 8px 28px rgba(0,0,0,0.22);
+    box-shadow: none;
 }
 
 /* Scroll cue at bottom of hero */
@@ -397,15 +428,15 @@ h3 { font-size: var(--step-2); line-height: 1.25; letter-spacing: -0.005em; font
 }
 @media (min-width: 1024px) {
     .hero-content {
-        padding: 1.25rem 1.5rem;
-        background: rgba(0,0,0,0.3); /* keep subtle plate on desktop too */
+        padding: 0 1.25rem;
+        background: transparent; /* no plate on desktop */
     }
 }
 
 /* Mobile: remove blur to avoid paint/composite jank */
 @media (max-width: 768px) {
     .hero-content {
-        background: rgba(0,0,0,0.36);
+        background: transparent; /* no plate on mobile */
         -webkit-backdrop-filter: none;
         backdrop-filter: none;
     }
@@ -417,7 +448,7 @@ h3 { font-size: var(--step-2); line-height: 1.25; letter-spacing: -0.005em; font
     color: white;
     padding: 15px 30px;
     text-decoration: none;
-    border: none;
+    border: 2px solid transparent; /* keep outline variant same height */
     border-radius: 5px;
     font-weight: 600;
     transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
@@ -443,6 +474,27 @@ h3 { font-size: var(--step-2); line-height: 1.25; letter-spacing: -0.005em; font
 .cta-group { display: inline-flex; gap: 0.75rem; align-items: center; justify-content: center; flex-wrap: wrap; }
 .cta-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.8); }
 .cta-outline:hover { background: rgba(255,255,255,0.1); }
+
+/* Ensure equal button heights in hero */
+.hero .cta-button { min-height: 44px; }
+
+/* When buttons stack on smaller screens, make them equal width */
+@media (max-width: 820px) {
+    .hero .cta-group {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: center;
+        width: min(92vw, 300px); /* narrower stacked buttons */
+        margin: 0 auto;
+        gap: 0.6rem;
+    }
+    .hero .cta-button {
+        width: 100%;
+        max-width: none;
+        min-height: 44px;
+    }
+}
 
 /* Section Titles */
 .section-title {
@@ -944,6 +996,10 @@ h3 { font-size: var(--step-2); line-height: 1.25; letter-spacing: -0.005em; font
         pointer-events: auto;
     }
     .nav-toggle { display: flex; }
+    /* Move theme toggle into menu on mobile */
+    .nav-controls .theme-toggle { display: none; }
+    .nav-menu .mobile-only { display: list-item; }
+    .nav-menu .mobile-only .theme-toggle { display: inline-flex; }
 }
 
 /* Mobile menu overlay */
@@ -1269,6 +1325,7 @@ section[id] {
 .submit-btn:hover::before {
     transform: skewX(-20deg) translateX(350%);
 }
+
 
 /* Optional outer glow pulse on hover */
 @keyframes glowPulseGreen {
@@ -2545,14 +2602,16 @@ html:not(.js) .animate-on-scroll {
     }
     
     .about-image {
-        flex: 1 1 60%;
-        max-width: min(60%, 600px);
+        flex: 1 1 50%;
+        width: auto;           /* override any earlier width caps */
+        max-width: none;       /* allow flex to size column */
         aspect-ratio: 4 / 3;
         order: 0; /* Keep proper order on tablet */
+        margin-left: 0;        /* cancel right-push from wider rules */
     }
     
     .about-text {
-        flex: 1 1 40%;
+        flex: 1 1 50%;
         padding-right: 1.5rem;
         text-align: center; /* Center text on tablet */
     }

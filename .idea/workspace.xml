@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c10139a8-3e1a-487e-9561-56766d2721ef" name="Changes" comment="Simplified image handling by removing `&lt;picture&gt;` elements and WebP sources; transitioned to PNGs for hero, menu, and about section images; ensured consistency across visuals.">
-      <change afterPath="$PROJECT_DIR$/imgs/store/draft.mov" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imgs/store/strawb.mov" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imgs/store/strawb2.mov" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="c10139a8-3e1a-487e-9561-56766d2721ef" name="Changes" comment="Enhanced hero section with video background: added video fallback functionality for reduced motion preferences, introduced responsive hero controls, and refined styles for improved consistency and accessibility.">
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/script.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles.css" afterDir="false" />
@@ -85,7 +81,7 @@
       <workItem from="1756255414386" duration="6017000" />
       <workItem from="1756304917181" duration="30000" />
       <workItem from="1756318153509" duration="4126000" />
-      <workItem from="1756389260723" duration="1246000" />
+      <workItem from="1756389260723" duration="2070000" />
     </task>
     <task id="LOCAL-00001" summary="Add initial project setup with homepage and assets&#10;&#10;- Included `index.html` as the main structure for the webpage.&#10;- Added `favicon.svg` for site branding.&#10;- Uploaded coffee-related SVG files for logos.&#10;- Structured sections for navigation, menu, about, and Instagram feed in `index.html`.">
       <option name="closed" value="true" />
@@ -191,7 +187,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756321209129</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Enhanced hero section with video background: added video fallback functionality for reduced motion preferences, introduced responsive hero controls, and refined styles for improved consistency and accessibility.">
+      <option name="closed" value="true" />
+      <created>1756396201663</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1756396201663</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -211,6 +215,7 @@
     <MESSAGE value="Refined mobile and responsive experience: replaced hero background with modern `&lt;picture&gt;` implementation, optimized image loading with WebP and eager priorities, simplified navigation animations for better performance, and deferred interactive map to improve initial load." />
     <MESSAGE value="Lightened hero overlay for small screens, improved responsiveness with modern viewport units, and updated background gradients for enhanced visual clarity." />
     <MESSAGE value="Simplified image handling by removing `&lt;picture&gt;` elements and WebP sources; transitioned to PNGs for hero, menu, and about section images; ensured consistency across visuals." />
-    <option name="LAST_COMMIT_MESSAGE" value="Simplified image handling by removing `&lt;picture&gt;` elements and WebP sources; transitioned to PNGs for hero, menu, and about section images; ensured consistency across visuals." />
+    <MESSAGE value="Enhanced hero section with video background: added video fallback functionality for reduced motion preferences, introduced responsive hero controls, and refined styles for improved consistency and accessibility." />
+    <option name="LAST_COMMIT_MESSAGE" value="Enhanced hero section with video background: added video fallback functionality for reduced motion preferences, introduced responsive hero controls, and refined styles for improved consistency and accessibility." />
   </component>
 </project>
