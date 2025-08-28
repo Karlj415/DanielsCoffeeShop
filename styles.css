@@ -1232,7 +1232,7 @@ section[id] {
 /* Order cards layout */
 .order-options {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 1.25rem;
     margin-top: 1.5rem;
     max-width: 980px;
@@ -1276,6 +1276,7 @@ section[id] {
     font-weight: 700;
     letter-spacing: 0.2px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.18);
+    width: 100%;
 }
 
 .order-card-icon {
@@ -1334,6 +1335,18 @@ section[id] {
 .order-card[data-partner="seamless"] .cta-button { color: #fff; }
 .order-card[data-partner="doordash"] .cta-button { color: #fff; }
 .order-card .cta-button:hover { filter: brightness(0.94); transform: translateY(-1px); box-shadow: 0 14px 28px rgba(0,0,0,0.22); }
+
+@media (max-width: 768px) {
+    .order-options { gap: 1.5rem; }
+    .order-card {
+        background: rgba(255,255,255,0.12);
+        border-color: rgba(255,255,255,0.28);
+        border-radius: 14px;
+        padding: 14px 14px 16px;
+        box-shadow: 0 12px 28px rgba(0,0,0,0.22);
+    }
+    .brand-wordmark-img { margin-bottom: 8px; }
+}
 
 .newsletter-content h2,
 .mobile-order-content h2 {
@@ -1627,9 +1640,15 @@ section[id] {
 .footer-section ul {
     list-style: none;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.5rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 1rem;
+    row-gap: 0.4rem;
 }
+/* Ensure 2x2 placement: Menu, About in left column; Instagram, Contact in right */
+.footer .footer-section ul li:nth-child(1) { grid-column: 1; grid-row: 1; }
+.footer .footer-section ul li:nth-child(2) { grid-column: 1; grid-row: 2; }
+.footer .footer-section ul li:nth-child(3) { grid-column: 2; grid-row: 1; }
+.footer .footer-section ul li:nth-child(4) { grid-column: 2; grid-row: 2; }
 
 .footer-section ul li {
     margin-bottom: 0.5rem;
@@ -2137,7 +2156,8 @@ section[id] {
     }
 
     .footer-section ul {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
+        grid-auto-flow: column;
         text-align: center;
     }
 
@@ -2170,9 +2190,10 @@ section[id] {
         margin-top: 0.25rem; /* breathe under top row */
     }
 
-    /* Simplify Quick Links to a single column for balance */
+    /* Keep Quick Links as two columns on tablet */
     .footer .footer-section ul {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
+        grid-auto-flow: column;
     }
 
     /* Slightly tighter headings on tablet */
@@ -2207,8 +2228,8 @@ section[id] {
         margin-top: 0.25rem;
     }
 
-    /* Quick Links as a single column for clarity */
-    .footer .footer-section ul { grid-template-columns: 1fr; }
+    /* Keep Quick Links as two columns on small tablets */
+    .footer .footer-section ul { grid-template-columns: 1fr 1fr; grid-auto-flow: column; }
 
     /* Slightly larger social icons */
     .footer .social-links { gap: 1.2rem; }
