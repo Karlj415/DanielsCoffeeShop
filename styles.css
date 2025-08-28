@@ -910,6 +910,14 @@ h3 { font-size: var(--step-2); line-height: 1.25; letter-spacing: -0.005em; font
     fill: currentColor;
 }
 
+/* Instagram: show posts instantly (no animation) */
+.instagram-grid .animate-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+}
+.instagram-post:nth-child(n) .animate-on-scroll { transition-delay: 0ms !important; }
+
 /* Instagram Title Layout */
 .instagram-title {
     display: flex;
