@@ -338,4 +338,48 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
+    // Hero background: prefer strawb video; fallback to image if unsupported
+    try {
+        const hero = document.querySelector('.hero');
+        const video = document.getElementById('heroVideo');
+        const poster = document.getElementById('heroPoster');
+        const mql = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+        // Ensure poster is visible until video can play
+        function showPoster() {
+            if (hero) hero.classList.remove('video-ready');
+            if (poster) poster.style.display = 'block';
+            if (video) video.style.display = 'none';
+        }
+        function showVideo() {
+            if (hero) hero.classList.add('video-ready');
+            if (poster) poster.style.display = '';
+            if (video) video.style.display = '';
+        }
+
+        if (!video) return;
+
+        // Reduced motion: still try to play video unless OS setting is critical
+        // We'll keep poster until playback is confirmed.
+
+        // Try to play; only hide poster when we know the video can play
+        showPoster();
+        let ready = false;
+        const onCanPlay = () => { if (!ready) { ready = true; showVideo(); } };
+        video.addEventListener('canplay', onCanPlay, { once: true });
+        video.addEventListener('playing', onCanPlay, { once: true });
+        video.addEventListener('error', () => { showPoster(); });
+
+        const attempt = video.play();
+        if (attempt && typeof attempt.catch === 'function') {
+            attempt.catch(() => showPoster());
+        }
+
+        // Safety timeout: if not ready after 2s, keep poster
+        setTimeout(() => { if (!ready) showPoster(); }, 2000);
+
+        // React to prefers-reduced-motion changes
+        mql.addEventListener('change', (e) => { if (e.matches) showPoster(); else video.play(); });
+    } catch (e) { /* no-op */ }
+
 });

@@ -4,8 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c10139a8-3e1a-487e-9561-56766d2721ef" name="Changes" comment="Lightened hero overlay for small screens, improved responsiveness with modern viewport units, and updated background gradients for enhanced visual clarity.">
+    <list default="true" id="c10139a8-3e1a-487e-9561-56766d2721ef" name="Changes" comment="Simplified image handling by removing `&lt;picture&gt;` elements and WebP sources; transitioned to PNGs for hero, menu, and about section images; ensured consistency across visuals.">
+      <change afterPath="$PROJECT_DIR$/imgs/store/draft.mov" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgs/store/strawb.mov" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgs/store/strawb2.mov" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,27 +30,30 @@
     <option name="showLibraryContents" value="true" />
     <option name="showScratchesAndConsoles" value="false" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JavaScript Debug.index.html.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/gawdly/Developer/CoffeeShop&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.CSS&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JavaScript Debug.index.html.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "/Users/gawdly/Developer/CoffeeShop/imgs/store",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.CSS",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/imgs/store" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/imgs" />
     </key>
@@ -75,7 +84,8 @@
       <workItem from="1756218904898" duration="2940000" />
       <workItem from="1756255414386" duration="6017000" />
       <workItem from="1756304917181" duration="30000" />
-      <workItem from="1756318153509" duration="2276000" />
+      <workItem from="1756318153509" duration="4126000" />
+      <workItem from="1756389260723" duration="1246000" />
     </task>
     <task id="LOCAL-00001" summary="Add initial project setup with homepage and assets&#10;&#10;- Included `index.html` as the main structure for the webpage.&#10;- Added `favicon.svg` for site branding.&#10;- Uploaded coffee-related SVG files for logos.&#10;- Structured sections for navigation, menu, about, and Instagram feed in `index.html`.">
       <option name="closed" value="true" />
@@ -173,7 +183,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756320844790</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Simplified image handling by removing `&lt;picture&gt;` elements and WebP sources; transitioned to PNGs for hero, menu, and about section images; ensured consistency across visuals.">
+      <option name="closed" value="true" />
+      <created>1756321209129</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1756321209129</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -192,6 +210,7 @@
     <MESSAGE value="Responsive navigation overhaul: improved mobile menu functionality, added advanced animations and accessibility features (ARIA states, keyboard support), refined styles across breakpoints, and optimized layout transitions." />
     <MESSAGE value="Refined mobile and responsive experience: replaced hero background with modern `&lt;picture&gt;` implementation, optimized image loading with WebP and eager priorities, simplified navigation animations for better performance, and deferred interactive map to improve initial load." />
     <MESSAGE value="Lightened hero overlay for small screens, improved responsiveness with modern viewport units, and updated background gradients for enhanced visual clarity." />
-    <option name="LAST_COMMIT_MESSAGE" value="Lightened hero overlay for small screens, improved responsiveness with modern viewport units, and updated background gradients for enhanced visual clarity." />
+    <MESSAGE value="Simplified image handling by removing `&lt;picture&gt;` elements and WebP sources; transitioned to PNGs for hero, menu, and about section images; ensured consistency across visuals." />
+    <option name="LAST_COMMIT_MESSAGE" value="Simplified image handling by removing `&lt;picture&gt;` elements and WebP sources; transitioned to PNGs for hero, menu, and about section images; ensured consistency across visuals." />
   </component>
 </project>

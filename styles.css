@@ -232,6 +232,12 @@ h3 { font-size: var(--step-2); line-height: 1.25; letter-spacing: -0.005em; font
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
 }
+/* Hide poster image by default; JS/reduced-motion can reveal */
+.hero video.hero-bg { display: none; }
+.hero img.hero-poster { display: block; }
+/* When video is ready, show it and hide poster */
+.hero.video-ready video.hero-bg { display: block; }
+.hero.video-ready img.hero-poster { display: none; }
 /* If hero uses <picture class="hero-bg">, ensure inner <img> covers correctly */
 .hero picture.hero-bg { position: absolute; inset: 0; z-index: 0; display: block; }
 .hero picture.hero-bg > img {
@@ -313,6 +319,40 @@ h3 { font-size: var(--step-2); line-height: 1.25; letter-spacing: -0.005em; font
     color: rgba(255,255,255,0.95);
     text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
     line-height: 1.6;
+}
+
+/* Dev controls for swapping hero background */
+.hero-controls {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 3;
+    display: flex;
+    gap: 6px;
+    background: rgba(0,0,0,0.45);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 999px;
+    padding: 6px 8px;
+    backdrop-filter: blur(6px);
+}
+.hero-ctl {
+    appearance: none;
+    border: 0;
+    border-radius: 999px;
+    padding: 6px 10px;
+    font-size: 12px;
+    color: #fff;
+    background: rgba(255,255,255,0.18);
+    cursor: pointer;
+}
+.hero-ctl.active { background: var(--brand); color: #fff; }
+
+/* Hide dev controls on very small screens */
+@media (max-width: 520px) { .hero-controls { display: none; } }
+
+/* Reduced motion: keep subtle animations off (but don't force-hide video) */
+@media (prefers-reduced-motion: reduce) {
+    .scroll-cue { animation: none; }
 }
 
 /* Add a subtle readable plate behind hero text, stronger on small screens */
@@ -586,7 +626,7 @@ h3 { font-size: var(--step-2); line-height: 1.25; letter-spacing: -0.005em; font
     font-size: clamp(1rem, 2.5vw, 1.1rem);
     line-height: 1.7;
     font-weight: 400;
-    max-width: 65ch; /* Optimal reading width */
+    max-width: var(--measure); /* Optimal reading width */
     text-align: center;
     margin-left: auto;
     margin-right: auto;
@@ -2044,9 +2084,15 @@ section[id] {
         gap: clamp(2.5rem, 4vw, 4rem);
         align-items: flex-start;
     }
-    .about-text, .about-image { 
-        flex: 1 1 50%; 
+    .about-text {
+        flex: 1 1 auto;
         max-width: none;
+    }
+    .about-image {
+        flex: 0 0 auto;
+        width: min(100%, var(--measure));
+        max-width: none;
+        margin: 0 auto; /* center to mirror paragraph block */
     }
     .about-text {
         padding-right: 1rem; /* Add some breathing room */
@@ -2061,7 +2107,8 @@ section[id] {
         margin-right: auto;
     }
     .about-image {
-        max-width: min(50%, 450px);
+        width: min(100%, var(--measure));
+        max-width: none;
         aspect-ratio: 4 / 3;
     }
     /* Keep About title centered for consistency */
@@ -2091,15 +2138,16 @@ section[id] {
     }
     
     .about-text { 
-        flex: 1 1 55%;
+        flex: 1 1 42%;
         max-width: none; /* Remove restrictive max-width */
         text-align: center; /* Ensure text stays centered */
         padding-right: 2rem;
     }
     
     .about-image {
-        flex: 1 1 45%;
-        max-width: min(45%, 500px);
+        flex: 0 0 auto;
+        width: min(100%, var(--measure));
+        max-width: none;
         aspect-ratio: 4 / 3;
     }
     
@@ -2110,7 +2158,7 @@ section[id] {
     }
     
     .about-text p {
-        max-width: 60ch; /* Apply max-width to paragraphs only */
+        max-width: var(--measure); /* Keep consistent with image */
         margin-left: auto;
         margin-right: auto;
         text-align: center;
@@ -2497,13 +2545,14 @@ html:not(.js) .animate-on-scroll {
     }
     
     .about-image {
-        max-width: min(45%, 420px);
+        flex: 1 1 60%;
+        max-width: min(60%, 600px);
         aspect-ratio: 4 / 3;
         order: 0; /* Keep proper order on tablet */
     }
     
     .about-text {
-        flex: 1 1 55%;
+        flex: 1 1 40%;
         padding-right: 1.5rem;
         text-align: center; /* Center text on tablet */
     }
@@ -2552,6 +2601,22 @@ html:not(.js) .animate-on-scroll {
 /* Disable the previous glow ripple for a cleaner hover */
 .coffee-glow::after { content: none; }
 
+/* Desktop (1024–1199px): present image larger alongside text */
+@media screen and (min-width: 1024px) and (max-width: 1199px) {
+    .about-content {
+        flex-direction: row-reverse;
+        align-items: flex-start;
+        gap: clamp(2.5rem, 4vw, 3rem);
+    }
+    .about-image {
+        flex: 0 0 auto;
+        width: min(100%, 60ch);
+        max-width: none;
+        aspect-ratio: 4 / 3;
+    }
+    .about-text { flex: 1 1 auto; padding-right: 1.5rem; }
+}
+
 /* Large Desktop Styles */
 @media screen and (min-width: 1200px) {
     .about-content {
@@ -2562,13 +2627,14 @@ html:not(.js) .animate-on-scroll {
     }
     
     .about-image {
-        flex: 1 1 45%;
-        max-width: min(45%, 480px); /* keep modest on large screens */
+        flex: 0 0 auto;
+        width: min(100%, 60ch);
+        max-width: none; /* ensure width matches paragraph measure */
         aspect-ratio: 4 / 3;
     }
     
     .about-text {
-        flex: 1 1 55%;
+        flex: 1 1 auto;
         max-width: none; /* Remove restrictive max-width from container */
         text-align: center; /* Keep text centered */
         padding-right: 2rem;
@@ -2581,7 +2647,7 @@ html:not(.js) .animate-on-scroll {
     }
     
     .about-text p {
-        max-width: 60ch; /* Apply to paragraphs only */
+        max-width: var(--measure); /* Keep consistent with image */
         margin-left: auto;
         margin-right: auto;
         text-align: center;
@@ -2613,13 +2679,14 @@ html:not(.js) .animate-on-scroll {
     }
     
     .about-image {
-        flex: 1 1 42%;
-        max-width: min(42%, 500px); /* avoid overly large about image */
+        flex: 0 0 auto;
+        width: min(100%, 65ch);
+        max-width: none; /* match paragraph max width at this breakpoint */
         aspect-ratio: 4 / 3;
     }
     
     .about-text {
-        flex: 1 1 58%;
+        flex: 1 1 auto;
         max-width: none; /* Remove restrictive max-width from container */
         text-align: center; /* Keep text centered */
         padding-right: 2.5rem;
@@ -2632,7 +2699,7 @@ html:not(.js) .animate-on-scroll {
     }
     
     .about-text p {
-        max-width: 65ch; /* Slightly wider for extra large screens */
+        max-width: var(--measure); /* Keep consistent across sizes */
         margin-left: auto;
         margin-right: auto;
         text-align: center;

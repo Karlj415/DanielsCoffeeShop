@@ -64,7 +64,9 @@
 <!--Test -->
 <!-- Hero Section -->
 <section id="home" class="hero">
-    <img class="hero-bg" src="imgs/store/main_hero.png" alt="" loading="eager" decoding="async" fetchpriority="high">
+    <!-- Hero background: video with image fallback for reduced motion -->
+    <video class="hero-bg" id="heroVideo" autoplay muted playsinline loop preload="metadata" poster="imgs/store/main_hero.webp" aria-hidden="true" src="imgs/store/strawb.mov"></video>
+    <img class="hero-bg hero-poster" id="heroPoster" src="imgs/store/main_hero.png" alt="" loading="eager" decoding="async" fetchpriority="high" aria-hidden="true">
     <div class="hero-content">
         <h1 class="hero-heading">WELCOME TO <span class="brand-lockup">DANIEL'S COFFEE &amp; MORE</span></h1>
         <p>Where every cup tells a story</p>
@@ -78,6 +80,7 @@
             <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
     </a>
+    
 </section>
 
 <!-- Menu Section -->
