@@ -1118,9 +1118,9 @@ body.no-scroll { overflow: hidden; }
 }
 
 /* Comfortable reading width for text blocks */
-.about-text, .newsletter-content p, .contact-info { max-width: var(--measure); }
+.about-text, .contact-info { max-width: var(--measure); }
 @media (max-width: 480px) {
-    .about-text, .newsletter-content p, .contact-info { max-width: 58ch; }
+    .about-text, .contact-info { max-width: 58ch; }
 }
 
 /* Improve underline readability where used */
@@ -1206,8 +1206,7 @@ section[id] {
 .theme-toggle.twist .icon-moon,
 .theme-toggle.twist .icon-sun { transform: rotate(90deg); }
 
-/* Mobile Order / Newsletter Section */
-.newsletter,
+/* Order Section */
 .mobile-order {
     padding: clamp(88px, 12vw, 140px) 0;
     background: var(--newsletter-bg);
@@ -1219,7 +1218,6 @@ section[id] {
     min-height: clamp(360px, 46vh, 640px);
 }
 
-.newsletter-content,
 .mobile-order-content {
     text-align: center;
     max-width: 600px;
@@ -1277,39 +1275,7 @@ section[id] {
     width: 100%;
 }
 
-.order-card-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.18);
-}
-.order-card-icon svg { width: 22px; height: 22px; opacity: 0.95; }
-
 .order-meta { display: none; }
-
-/* Brand badges for delivery partners */
-.brand-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-weight: 700;
-    font-size: 0.95rem;
-    letter-spacing: 0.2px;
-    padding: 6px 10px;
-    border-radius: 8px;
-    border: 1px solid rgba(255,255,255,0.18);
-}
-.brand-seamless { background: #E53935; color: #fff; border-color: rgba(0,0,0,0.1); text-transform: lowercase; }
-.brand-ubereats { background: #0E0E0E; color: #fff; }
-.brand-ubereats .eats { color: #06C167; }
-.brand-doordash { background: #EB1700; color: #fff; border-color: rgba(0,0,0,0.08); }
-
-/* Inline SVG wordmarks */
-.brand-wordmark { display: inline-block; margin-bottom: 0.35rem; }
 .brand-wordmark-img { display: inline-block; height: 36px; width: auto; margin-bottom: 0.35rem; }
 
 /* Full-width brand pill header inside order cards */
@@ -1364,31 +1330,15 @@ section[id] {
     }
     .brand-wordmark-img { margin-bottom: 8px; }
 }
-
-.newsletter-content h2,
 .mobile-order-content h2 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
     color: white;
 }
-
-.newsletter-content p,
 .mobile-order-content p {
     font-size: 1.1rem;
     margin-bottom: 2rem;
     color: rgba(255,255,255,0.9);
-}
-
-.newsletter-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    max-width: 400px;
-    margin: 0 auto;
-}
-
-.form-group {
-    flex: 1;
 }
 
 .form-group input {
@@ -1438,8 +1388,7 @@ section[id] {
 }
 
 .cta-button::before,
-.instagram-btn::before,
-.submit-btn::before {
+.instagram-btn::before {
     content: '';
     position: absolute;
     top: -50%;
@@ -1460,8 +1409,7 @@ section[id] {
 }
 
 .cta-button:hover::before,
-.instagram-btn:hover::before,
-.submit-btn:hover::before {
+.instagram-btn:hover::before {
     transform: skewX(-20deg) translateX(350%);
 }
 
@@ -1481,27 +1429,23 @@ section[id] {
 
 .cta-button:hover { animation: glowPulseGreen 1400ms ease-out; }
 .instagram-btn:hover { animation: glowPulsePink 1400ms ease-out; }
-.submit-btn:hover { animation: glowPulseGreen 1400ms ease-out; }
 
 /* Press feedback */
 .cta-button:active,
-.instagram-btn:active,
-.submit-btn:active {
+.instagram-btn:active {
     transform: scale(0.98);
 }
 
 /* Respect reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
     .cta-button:hover,
-    .instagram-btn:hover,
-    .submit-btn:hover {
+    .instagram-btn:hover {
         transform: none;
         box-shadow: none;
         animation: none;
     }
     .cta-button::before,
-    .instagram-btn::before,
-    .submit-btn::before { content: none; }
+    .instagram-btn::before { content: none; }
     .nav-menu { transition: none !important; }
 }
 
@@ -2111,7 +2055,6 @@ section[id] {
         padding: 60px 0;
     }
 
-    .newsletter,
     .mobile-order {
         padding: 60px 0;
     }
@@ -2119,13 +2062,11 @@ section[id] {
     /* Do not force taller height on small screens */
     .mobile-order { min-height: auto; }
 
-    .newsletter-content h2,
     .mobile-order-content h2 {
         font-size: 2rem;
         margin-bottom: 1rem;
     }
 
-    .newsletter-content p,
     .mobile-order-content p {
         font-size: 1rem;
         margin-bottom: 1.5rem;

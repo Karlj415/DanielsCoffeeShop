@@ -211,72 +211,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         target.focus({preventScroll: true});
     });
 });
-// Newsletter Form Handling
-const newsletterForm = document.getElementById('newsletterForm');
-const formMessage = document.getElementById('form-message');
-
-if (newsletterForm) {
-    newsletterForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
-
-        // Basic validation
-        if (!name || !email) {
-            showMessage('Please fill in all fields.', 'error');
-            return;
-        }
-
-        if (!isValidEmail(email)) {
-            showMessage('Please enter a valid email address.', 'error');
-            return;
-        }
-
-        // Submit the form (replace with actual submission logic)
-        submitNewsletter(name, email);
-    });
-}
-
-function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-}
-
-function submitNewsletter(name, email) {
-    const submitBtn = document.querySelector('.submit-btn');
-
-    // Show loading state
-    submitBtn.textContent = 'Subscribing...';
-    submitBtn.disabled = true;
-
-    // Simulate API call (replace with your actual API endpoint)
-    setTimeout(() => {
-        // Reset form
-        document.getElementById('name').value = '';
-        document.getElementById('email').value = '';
-
-        // Show success message
-        showMessage('Thank you for subscribing to our newsletter!', 'success');
-
-        // Reset button
-        submitBtn.textContent = 'Subscribe';
-        submitBtn.disabled = false;
-    }, 2000);
-}
-
-function showMessage(message, type) {
-    if (formMessage) {
-        formMessage.textContent = message;
-        formMessage.className = `form-message ${type}`;
-        formMessage.style.display = 'block';
-
-        // Hide message after 5 seconds
-        setTimeout(() => {
-            formMessage.style.display = 'none';
-        }, 5000);
-    }
-}
+// (Removed unused newsletter form handling)
 
 // Scroll animations
 function observeElements() {
