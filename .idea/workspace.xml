@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c10139a8-3e1a-487e-9561-56766d2721ef" name="Changes" comment="Refined order cards and brand visuals: standardized mobile layout, simplified &quot;Order&quot; content, and adjusted dark theme handling.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles.css" afterDir="false" />
-    </list>
+    <list default="true" id="c10139a8-3e1a-487e-9561-56766d2721ef" name="Changes" comment="Removed newsletter-related code and styles: streamlined layout by eliminating unused form handling, adjusted styles for improved consistency, and prioritized performance by optimizing Instagram image loading attributes." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -83,7 +78,7 @@
       <workItem from="1756255414386" duration="6017000" />
       <workItem from="1756304917181" duration="30000" />
       <workItem from="1756318153509" duration="4126000" />
-      <workItem from="1756389260723" duration="12719000" />
+      <workItem from="1756389260723" duration="13193000" />
     </task>
     <task id="LOCAL-00001" summary="Add initial project setup with homepage and assets&#10;&#10;- Included `index.html` as the main structure for the webpage.&#10;- Added `favicon.svg` for site branding.&#10;- Uploaded coffee-related SVG files for logos.&#10;- Structured sections for navigation, menu, about, and Instagram feed in `index.html`.">
       <option name="closed" value="true" />
@@ -269,7 +264,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756475335364</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Removed newsletter-related code and styles: streamlined layout by eliminating unused form handling, adjusted styles for improved consistency, and prioritized performance by optimizing Instagram image loading attributes.">
+      <option name="closed" value="true" />
+      <created>1756489761874</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1756489761874</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -299,6 +302,7 @@
     <MESSAGE value="Introduced brand pill headers with updated SVGs for delivery partners (Odeko, DoorDash, Seamless, Uber Eats) and refined order card visuals for improved consistency and responsiveness." />
     <MESSAGE value="Improved mobile menu layout: removed pill styling for &quot;Order&quot; link, simplified structure for cleaner design. Enhanced theme handling by respecting system preferences when no saved theme is found. Reverted frosted-glass overrides in dark mode." />
     <MESSAGE value="Refined order cards and brand visuals: standardized mobile layout, simplified &quot;Order&quot; content, and adjusted dark theme handling." />
-    <option name="LAST_COMMIT_MESSAGE" value="Refined order cards and brand visuals: standardized mobile layout, simplified &quot;Order&quot; content, and adjusted dark theme handling." />
+    <MESSAGE value="Removed newsletter-related code and styles: streamlined layout by eliminating unused form handling, adjusted styles for improved consistency, and prioritized performance by optimizing Instagram image loading attributes." />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed newsletter-related code and styles: streamlined layout by eliminating unused form handling, adjusted styles for improved consistency, and prioritized performance by optimizing Instagram image loading attributes." />
   </component>
 </project>

@@ -252,18 +252,33 @@ window.addEventListener('scroll', () => {
 // Initialize animations when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     observeElements();
-
+    
     // Show Instagram fallback posts immediately
     const loading = document.querySelector('.instagram-loading');
     const fallback = document.querySelector('.instagram-fallback');
-
+    
     if (loading) {
         loading.style.display = 'none';
     }
-
+    
     if (fallback) {
         fallback.style.display = 'grid';
     }
+
+    // Ensure Instagram images are fetched immediately on mobile (no lazy loading)
+    try {
+        const instaImgs = document.querySelectorAll('#instafeed img');
+        instaImgs.forEach((img, idx) => {
+            // Force eager loading across browsers
+            img.setAttribute('loading', 'eager');
+            img.setAttribute('decoding', 'async');
+            // Kick off fetch even if offscreen (Safari/iOS may still defer)
+            if (!img.complete) {
+                const pre = new Image();
+                pre.src = img.currentSrc || img.src;
+            }
+        });
+    } catch (_) { /* noop */ }
 
     // Remove scroll-hide behavior; navbar always visible
 
