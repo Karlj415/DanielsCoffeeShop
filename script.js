@@ -158,7 +158,15 @@ document.addEventListener('DOMContentLoaded', function () {
     // Theme: load preference and toggle
     const rootEl = document.documentElement;
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') rootEl.setAttribute('data-theme', 'dark');
+    // Respect saved theme; otherwise honor system preference
+    if (savedTheme === 'dark') {
+        rootEl.setAttribute('data-theme', 'dark');
+    } else if (!savedTheme) {
+        try {
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (prefersDark) rootEl.setAttribute('data-theme', 'dark');
+        } catch (_) { /* noop */ }
+    }
 
     function toggleTheme(btn) {
         const isDark = rootEl.getAttribute('data-theme') === 'dark';
