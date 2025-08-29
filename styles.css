@@ -1323,6 +1323,23 @@ section[id] {
 .brand-wordmark { display: inline-block; margin-bottom: 0.35rem; }
 .brand-wordmark-img { display: inline-block; height: 36px; width: auto; margin-bottom: 0.35rem; }
 
+/* Full-width brand pill header inside order cards */
+.brand-pill {
+    width: 100%;
+    min-height: 48px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2px 0 10px 0; /* little space from edges/content */
+}
+.brand-pill .brand-wordmark-img { height: 28px; margin-bottom: 0; }
+.brand-pickup { background: #0E0E0E; }
+.brand-seamless { background: #E53935; }
+.brand-ubereats { background: #0E0E0E; }
+.brand-doordash { background: #EB1700; }
+
 /* Partner accent colors */
 .order-card[data-partner="pickup"] { --accent: var(--brand); }
 .order-card[data-partner="seamless"] { --accent: #E53935; }

@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c10139a8-3e1a-487e-9561-56766d2721ef" name="Changes" comment="Added delivery partner support: integrated DoorDash, Seamless, and Uber Eats with branded visuals and CTAs for order pickup and delivery. Refined order section layout, improved responsiveness, and updated styles for a polished user experience.">
+    <list default="true" id="c10139a8-3e1a-487e-9561-56766d2721ef" name="Changes" comment="Refined order section: adjusted grid layout, enhanced responsive styles, ensured consistent footer alignment, and improved visuals for mobile and tablet breakpoints.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/brands/doordash.svg" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/brands/doordash.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/brands/seamless.svg" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/brands/seamless.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/brands/uber-eats.svg" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/brands/uber-eats.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -28,6 +33,7 @@
   "keyToString": {
     "JavaScript Debug.index.html.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Node.js.script.js.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -39,7 +45,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.CSS",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
     "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
   }
@@ -79,7 +85,7 @@
       <workItem from="1756255414386" duration="6017000" />
       <workItem from="1756304917181" duration="30000" />
       <workItem from="1756318153509" duration="4126000" />
-      <workItem from="1756389260723" duration="7140000" />
+      <workItem from="1756389260723" duration="8761000" />
     </task>
     <task id="LOCAL-00001" summary="Add initial project setup with homepage and assets&#10;&#10;- Included `index.html` as the main structure for the webpage.&#10;- Added `favicon.svg` for site branding.&#10;- Uploaded coffee-related SVG files for logos.&#10;- Structured sections for navigation, menu, about, and Instagram feed in `index.html`.">
       <option name="closed" value="true" />
@@ -233,7 +239,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756423932628</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Refined order section: adjusted grid layout, enhanced responsive styles, ensured consistent footer alignment, and improved visuals for mobile and tablet breakpoints.">
+      <option name="closed" value="true" />
+      <created>1756424356235</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1756424356235</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -259,6 +273,7 @@
     <MESSAGE value="Updated menu item images: replaced outdated JPEGs with new WebP assets for `Afrique`, `Decaf Monte Carlo`, and `Monaco`. Updated product names and descriptions for clarity." />
     <MESSAGE value="Updated Instagram grid: disabled scroll animation, ensured posts display instantly for smoother user experience." />
     <MESSAGE value="Added delivery partner support: integrated DoorDash, Seamless, and Uber Eats with branded visuals and CTAs for order pickup and delivery. Refined order section layout, improved responsiveness, and updated styles for a polished user experience." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added delivery partner support: integrated DoorDash, Seamless, and Uber Eats with branded visuals and CTAs for order pickup and delivery. Refined order section layout, improved responsiveness, and updated styles for a polished user experience." />
+    <MESSAGE value="Refined order section: adjusted grid layout, enhanced responsive styles, ensured consistent footer alignment, and improved visuals for mobile and tablet breakpoints." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refined order section: adjusted grid layout, enhanced responsive styles, ensured consistent footer alignment, and improved visuals for mobile and tablet breakpoints." />
   </component>
 </project>

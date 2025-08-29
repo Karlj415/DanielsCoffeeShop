@@ -1,4 +1,5 @@
 <svg width="132" height="36" viewBox="0 0 132 36" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="DoorDash">
-  <rect x="0" y="0" width="132" height="36" rx="8" fill="#EB1700"/>
-  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#FFFFFF" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-weight="700" font-size="16">DoorDash</text>
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#FFFFFF"
+        font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif"
+        font-weight="700" font-size="18">DoorDash</text>
 </svg>
