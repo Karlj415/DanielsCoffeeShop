@@ -1482,6 +1482,11 @@ section[id] {
 
 /* Prevent margin-collapsing so map height matches total card stack */
 .contact-info { display: flow-root; }
+/* Add subtle shadow around the info-items container */
+.contact .contact-info {
+    box-shadow: var(--card-shadow);
+    padding-block: 1px; /* +2px total height */
+}
 
 /* Large screens: sticky map; single column of cards */
 @media screen and (min-width: 1024px) {
@@ -1489,7 +1494,7 @@ section[id] {
         position: sticky;
         top: 96px;
         height: 100%;
-        min-height: 480px;
+        min-height: auto; /* match the height of the left cards column */
     }
     /* Ensure left column remains a single stacked column */
     .contact-info {
@@ -1557,10 +1562,34 @@ section[id] {
     overflow: hidden;
 }
 
+/* Reduce map height slightly on tablet/desktop to match contact cards */
+@media screen and (min-width: 769px) {
+    .map-placeholder { min-height: 396px; }
+}
+
 .map-placeholder iframe {
     width: 100%;
     height: 100%;
     border: none;
+}
+
+/* Ensure the map column matches the cards height on desktop
+   Place after the global map rules so it takes precedence */
+@media screen and (min-width: 1024px) {
+    .contact-content { align-items: stretch; }
+    /* Allow JS to control exact height; avoid forcing full stretch */
+    .map-placeholder { min-height: 0 !important; height: auto; }
+    .map-placeholder iframe { height: 100%; }
+}
+
+/* Allow JS to fully control map height on tablet range (769–1023px) */
+@media screen and (min-width: 769px) and (max-width: 1023px) {
+    .map-placeholder { min-height: 0 !important; }
+}
+
+/* Prevent grid stretch so map can be slightly shorter */
+@media screen and (min-width: 769px) {
+    .map-placeholder { align-self: start; }
 }
 
 /* Footer */
@@ -1592,6 +1621,14 @@ section[id] {
     color: #ccc;
     text-decoration: none;
     line-height: 1.6;
+}
+/* Reset default margins so we can control alignment precisely */
+.footer-section p { margin: 0; }
+
+/* Nudge the brand paragraph down slightly so it visually aligns with the social icon row on the right */
+@media screen and (min-width: 769px) {
+    /* Nudge brand paragraph down to visually align with icon row */
+    .footer .container .footer-content > .footer-section:first-child p { margin-top: 1.2rem; }
 }
 
 .footer-section a:hover {
@@ -2126,102 +2163,40 @@ section[id] {
 
 /* Center "Follow Us" under two-column footer (tablet widths) */
 @media screen and (min-width: 769px) and (max-width: 1024px) {
-    /* Ensure two equal columns and explicit areas */
     .footer .container .footer-content {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         align-items: start;
-        justify-items: center; /* center content in each cell */
-        row-gap: 1.25rem;      /* slightly tighter vertical rhythm */
-        grid-template-areas:
-          "brand links"
-          "social social";
+        justify-items: center;
+        row-gap: 1.25rem;
     }
+    .footer .container .footer-content > .footer-section:nth-child(1) { justify-self: start; text-align: left; }
+    .footer .container .footer-content > .footer-section:nth-child(2) { justify-self: end; text-align: center; }
 
-    .footer .container .footer-content > .footer-section:nth-child(1) { grid-area: brand; }
-    .footer .container .footer-content > .footer-section:nth-child(2) { grid-area: links; }
-    .footer .container .footer-content > .footer-section:nth-child(3) {
-        grid-area: social;
-        justify-self: center;
-        align-self: start;
-        width: max-content;
-        text-align: center;
-        margin-top: 0.25rem; /* breathe under top row */
-    }
-
-    /* Keep Quick Links as two columns on tablet */
-    .footer .footer-section ul {
-        grid-template-columns: 1fr 1fr;
-        grid-auto-flow: column;
-    }
-
-    /* Slightly tighter headings on tablet */
     .footer .footer-section h3,
     .footer .footer-section h4 { margin-bottom: 0.75rem; }
-
-    /* Make social icons a tad larger for touch comfort */
     .footer .social-links { gap: 1.25rem; }
     .footer .social-icon { width: 44px; height: 44px; }
 }
 
+
 /* Center "Follow Us" under two-column footer (<=768px down to small tablets) */
 @media screen and (max-width: 768px) {
-    /* Keep two columns with centered social row on small tablets */
     .footer .container .footer-content {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-template-areas:
-          "brand links"
-          "social social";
-        align-items: start;
+        grid-template-columns: 1fr;
         justify-items: center;
         row-gap: 1rem;
     }
-
-    .footer .container .footer-content > .footer-section:nth-child(1) { grid-area: brand; }
-    .footer .container .footer-content > .footer-section:nth-child(2) { grid-area: links; }
-    .footer .container .footer-content > .footer-section:nth-child(3) {
-        grid-area: social;
-        justify-self: center;
-        align-self: start;
-        text-align: center;
-        margin-top: 0.25rem;
-    }
-
-    /* Keep Quick Links as two columns on small tablets */
-    .footer .footer-section ul { grid-template-columns: 1fr 1fr; grid-auto-flow: column; }
-
-    /* Slightly larger social icons */
+    .footer .container .footer-content > .footer-section { text-align: center; }
     .footer .social-links { gap: 1.2rem; }
     .footer .social-icon { width: 44px; height: 44px; }
-    .footer .container .footer-content {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-template-areas:
-          "brand links"
-          "social social";
-        align-items: start;
-    }
-
-    .footer .container .footer-content > .footer-section:nth-child(1) { grid-area: brand; }
-    .footer .container .footer-content > .footer-section:nth-child(2) { grid-area: links; }
-    .footer .container .footer-content > .footer-section:nth-child(3) {
-        grid-area: social;
-        justify-self: center;
-        align-self: start;
-        text-align: center;
-    }
 }
 
-/* Below ~phone widths, stack all three */
+/* Below ~phone widths, stack sections */
 @media screen and (max-width: 480px) {
     .footer .container .footer-content {
         grid-template-columns: 1fr;
-        grid-template-areas:
-          "brand"
-          "links"
-          "social";
     }
-    .footer .container .footer-content > .footer-section:nth-child(3) {
-        justify-self: center;
-    }
+    .footer .container .footer-content > .footer-section { justify-self: center; }
 }
 
 /* Tablet and up */
@@ -2957,7 +2932,7 @@ html {
     width: 100%;
     max-width: 420px;
     margin: 1rem auto;
-    padding: 16px 18px;
+    padding: 16px 18px 17px;
     border-radius: 12px;
     background: var(--card-bg);
     color: var(--text);
@@ -2978,7 +2953,7 @@ html {
     border: 1px solid var(--card-border);
     box-shadow: var(--card-shadow);
     border-radius: 12px;
-    padding: 16px 18px;
+    padding: 16px 18px 17px;
     margin: 0.5rem auto;
     width: 100%;
     max-width: 420px;
@@ -2986,6 +2961,14 @@ html {
 }
 .contact .contact-info .info-item h3 { margin-bottom: 0.5rem; color: var(--text); }
 .contact .contact-info .info-item p { color: var(--muted); }
+
+/* Increase info-item height by 2px on tablet/desktop only */
+@media screen and (min-width: 769px) {
+    .contact .contact-info .info-item,
+    .contact .contact-info .contact-row {
+        padding: 18px 18px 19px; /* +4px total (top+bottom) */
+    }
+}
 
 /* Dark theme card styles (all sizes) */
 [data-theme="dark"] .contact .contact-info .contact-row,

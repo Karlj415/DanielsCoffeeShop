@@ -279,9 +279,68 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     } catch (_) { /* noop */ }
-
     // Remove scroll-hide behavior; navbar always visible
 
+    // On tablet/desktop (>=769px), match the map height to the left cards exactly
+    function syncContactHeights() {
+        try {
+            const isNotMobile = window.innerWidth > 768;
+            const left = document.querySelector('.contact .contact-info');
+            const map = document.querySelector('.contact .map-placeholder');
+            if (!left || !map) return;
+            if (isNotMobile) {
+                // Clear any previous explicit sizing
+                left.style.minHeight = '';
+                map.style.height = '';
+                // Measure from the top of the left column to the bottom border of the
+                // last visible .info-item (ignore its margin and container padding).
+                const leftRect = left.getBoundingClientRect();
+                const cards = left.querySelectorAll('.info-item');
+                let lastCard = null;
+                for (let i = cards.length - 1; i >= 0; i--) {
+                    if (cards[i].offsetParent !== null) { lastCard = cards[i]; break; }
+                }
+                let targetHeight;
+                if (lastCard) {
+                    const lastRect = lastCard.getBoundingClientRect();
+                    targetHeight = lastRect.bottom - leftRect.top; // bottom border of card
+                } else {
+                    targetHeight = leftRect.height;
+                }
+                // Use floor to ensure the map never overshoots the card border visually
+                const h = Math.max(0, Math.floor(targetHeight));
+                // Force override to beat any CSS rules
+                map.style.setProperty('height', h + 'px', 'important');
+                const iframe = map.querySelector('iframe');
+                if (iframe) iframe.style.setProperty('height', h + 'px', 'important');
+            } else {
+                // On mobile, let natural height flow
+                map.style.height = '';
+                left.style.minHeight = '';
+            }
+        } catch (_) { /* noop */ }
+    }
+    let syncTimer = null;
+    const requestSync = () => {
+        if (syncTimer) cancelAnimationFrame(syncTimer);
+        syncTimer = requestAnimationFrame(syncContactHeights);
+    };
+    // Initial sync after layout settles
+    requestSync();
+    setTimeout(requestSync, 50);
+    window.addEventListener('resize', requestSync);
+    window.addEventListener('load', requestSync);
+
+    // Also respond when the cards column changes height (images/fonts/layout)
+    try {
+        if ('ResizeObserver' in window) {
+            const left = document.querySelector('.contact .contact-info');
+            const map = document.querySelector('.contact .map-placeholder');
+            const ro = new ResizeObserver(() => requestSync());
+            if (left) ro.observe(left);
+            if (map) ro.observe(map);
+        }
+    } catch (_) { /* noop */ }
     // Hero background: prefer strawb video; fallback to image if unsupported
     try {
         const hero = document.querySelector('.hero');
