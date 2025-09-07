@@ -1616,6 +1616,12 @@ section[id] {
     color: #6B8E71;
 }
 
+/* Ensure footer headings match in size across devices */
+.footer .footer-section h3,
+.footer .footer-section h4 {
+    font-size: var(--step-1);
+}
+
 .footer-section p,
 .footer-section a {
     color: #ccc;
@@ -1654,7 +1660,7 @@ section[id] {
 
 .social-links {
     display: flex;
-    gap: 1rem;
+    gap: 1.2rem; /* slightly tighter, balanced for 3 icons */
     margin-top: 1rem;
     justify-content: center;
 }
@@ -2172,6 +2178,13 @@ section[id] {
     .footer .container .footer-content > .footer-section:nth-child(1) { justify-self: start; text-align: left; }
     .footer .container .footer-content > .footer-section:nth-child(2) { justify-self: end; text-align: center; }
 
+    /* Center brand heading while keeping paragraph left-aligned on tablets */
+    .footer .container .footer-content > .footer-section:nth-child(1) h3 {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
     .footer .footer-section h3,
     .footer .footer-section h4 { margin-bottom: 0.75rem; }
     .footer .social-links { gap: 1.25rem; }
@@ -2187,7 +2200,7 @@ section[id] {
         row-gap: 1rem;
     }
     .footer .container .footer-content > .footer-section { text-align: center; }
-    .footer .social-links { gap: 1.2rem; }
+    .footer .social-links { gap: 1.1rem; }
     .footer .social-icon { width: 44px; height: 44px; }
 }
 
