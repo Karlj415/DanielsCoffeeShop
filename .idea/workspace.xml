@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c10139a8-3e1a-487e-9561-56766d2721ef" name="Changes" comment="">
+    <list default="true" id="c10139a8-3e1a-487e-9561-56766d2721ef" name="Changes" comment="Refined footer styles: standardized heading sizes across devices, adjusted social icon spacing, improved tablet alignment, and added external links with proper attributes.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/script.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,27 +27,27 @@
     <option name="showLibraryContents" value="true" />
     <option name="showScratchesAndConsoles" value="false" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JavaScript Debug.index.html.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Node.js.script.js.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/gawdly/Developer/CoffeeShop/imgs/store&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JavaScript Debug.index.html.executor": "Debug",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Node.js.script.js.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "/Users/gawdly/Developer/CoffeeShop/imgs/store",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.web.browsers",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/imgs/store" />
@@ -86,6 +87,7 @@
       <workItem from="1756747044299" duration="8000" />
       <workItem from="1757009307890" duration="11000" />
       <workItem from="1757261321309" duration="996000" />
+      <workItem from="1757264916025" duration="2081000" />
     </task>
     <task id="LOCAL-00001" summary="Add initial project setup with homepage and assets&#10;&#10;- Included `index.html` as the main structure for the webpage.&#10;- Added `favicon.svg` for site branding.&#10;- Uploaded coffee-related SVG files for logos.&#10;- Structured sections for navigation, menu, about, and Instagram feed in `index.html`.">
       <option name="closed" value="true" />
@@ -295,14 +297,21 @@
       <option name="project" value="LOCAL" />
       <updated>1756521318466</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Refined footer styles: standardized heading sizes across devices, adjusted social icon spacing, improved tablet alignment, and added external links with proper attributes.">
+      <option name="closed" value="true" />
+      <created>1757264935034</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1757264935034</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Responsive navigation and UI improvements: enhanced mobile menu interactions, added accessibility features (skip links, aria labels), subtle theme/overlay effects, hero blur overlays, polished typography, and refined button hover states." />
     <MESSAGE value="Responsive typography and layout tweaks: improved About section readability, feature alignment, and responsive behavior across breakpoints; refined footer and mobile styles for consistency." />
     <MESSAGE value="Responsive grid layout for features: replaced flexbox with CSS Grid for better alignment and responsiveness; adjusted typography and spacing for various screen sizes." />
     <MESSAGE value="Refined typography and layout: improved readability with modular scale-based typography, updated headings for consistency, and adjusted spacing for better alignment across sections; introduced CSS Grid for features and optimized contact/info card styles for responsiveness." />
@@ -327,6 +336,7 @@
     <MESSAGE value="Removed newsletter-related code and styles: streamlined layout by eliminating unused form handling, adjusted styles for improved consistency, and prioritized performance by optimizing Instagram image loading attributes." />
     <MESSAGE value="Optimized Instagram feed: ensured immediate image loading on mobile by enforcing eager loading and async decoding, improving performance and user experience." />
     <MESSAGE value="Refined layout and performance: adjusted map height to align with contact cards, enhanced footer responsiveness, and optimized styles for better tablet/desktop alignment." />
-    <option name="LAST_COMMIT_MESSAGE" value="Refined layout and performance: adjusted map height to align with contact cards, enhanced footer responsiveness, and optimized styles for better tablet/desktop alignment." />
+    <MESSAGE value="Refined footer styles: standardized heading sizes across devices, adjusted social icon spacing, improved tablet alignment, and added external links with proper attributes." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refined footer styles: standardized heading sizes across devices, adjusted social icon spacing, improved tablet alignment, and added external links with proper attributes." />
   </component>
 </project>

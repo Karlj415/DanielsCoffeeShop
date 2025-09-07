@@ -213,25 +213,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 // (Removed unused newsletter form handling)
 
-// Scroll animations
-function observeElements() {
-    const isMobile = window.matchMedia('(max-width: 768px)').matches;
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const targets = document.querySelectorAll('.animate-on-scroll');
-    if (isMobile || reduceMotion) {
-        // Show immediately on mobile/reduced motion
-        targets.forEach(el => el.classList.add('animate'));
-        return;
-    }
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate');
-            }
-        });
-    }, {threshold: 0.1, rootMargin: '0px 0px -50px 0px'});
-    targets.forEach(el => observer.observe(el));
-}
+// Scroll animations removed
 
 // Navbar scroll effect
 window.addEventListener('scroll', () => {
@@ -251,7 +233,7 @@ window.addEventListener('scroll', () => {
 
 // Initialize animations when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    observeElements();
+    // Scroll-in animations disabled; nothing to initialize
     
     // Show Instagram fallback posts immediately
     const loading = document.querySelector('.instagram-loading');
@@ -347,19 +329,46 @@ document.addEventListener('DOMContentLoaded', () => {
         const video = document.getElementById('heroVideo');
         const mql = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-        // No poster: show video immediately
-        function showPoster() { /* no-op */
+        // Toggle helpers
+        function showPoster() {
+            if (!hero) return;
+            // Create fallback image lazily to avoid any initial flash
+            let img = hero.querySelector('.hero-fallback');
+            if (!img) {
+                img = document.createElement('img');
+                img.className = 'hero-bg hero-fallback';
+                img.alt = '';
+                img.setAttribute('aria-hidden', 'true');
+                img.decoding = 'async';
+                img.loading = 'eager';
+                img.src = 'imgs/store/main_hero.png';
+                hero.appendChild(img);
+            }
+            hero.classList.add('hero--show-fallback');
+            if (video) {
+                try { video.pause(); } catch (_) {}
+            }
         }
 
-        function showVideo() { /* no-op */
+        function showVideo() {
+            if (!hero) return;
+            hero.classList.remove('hero--show-fallback');
+            // Clean up fallback image to avoid unnecessary paints
+            const img = hero.querySelector('.hero-fallback');
+            if (img) img.remove();
         }
 
         if (!video) return;
 
         // Try to play immediately
 
-        // Try to play; only hide poster when we know the video can play
-        showPoster();
+        // If user prefers reduced motion initially, show fallback and skip playing
+        if (mql.matches) {
+            showPoster();
+            return;
+        }
+
+        // Try to play; rely on the video poster until we know it can play
         let ready = false;
         const onCanPlay = () => {
             if (!ready) {
@@ -378,14 +387,15 @@ document.addEventListener('DOMContentLoaded', () => {
             attempt.catch(() => showPoster());
         }
 
-        // Safety timeout: if not ready after 2s, keep poster
-        setTimeout(() => {
-            if (!ready) showPoster();
-        }, 2000);
-
         // React to prefers-reduced-motion changes
         mql.addEventListener('change', (e) => {
-            if (e.matches) showPoster(); else video.play();
+            if (e.matches) {
+                showPoster();
+            } else {
+                showVideo();
+                const p = video.play();
+                if (p && typeof p.catch === 'function') p.catch(() => showPoster());
+            }
         });
     } catch (e) { /* no-op */
     }

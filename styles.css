@@ -243,6 +243,11 @@ h3 { font-size: var(--step-2); line-height: 1.25; letter-spacing: -0.005em; font
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
 }
+/* Fallback image is hidden by default; JS can reveal */
+.hero .hero-fallback { display: none; }
+/* When fallback should show (video failed or reduced-motion), hide video and show image */
+.hero.hero--show-fallback .hero-fallback { display: block; }
+.hero.hero--show-fallback video.hero-bg { display: none; }
 /* Hide poster image by default; JS/reduced-motion can reveal */
 /* Ensure video shows immediately; no poster */
 .hero video.hero-bg { opacity: 1; }
@@ -917,12 +922,7 @@ h3 { font-size: var(--step-2); line-height: 1.25; letter-spacing: -0.005em; font
 }
 
 /* Instagram: show posts instantly (no animation) */
-.instagram-grid .animate-on-scroll {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-}
-.instagram-post:nth-child(n) .animate-on-scroll { transition-delay: 0ms !important; }
+/* Removed stagger delays; animations disabled sitewide */
 
 /* Instagram Title Layout */
 .instagram-title {
@@ -1982,8 +1982,7 @@ section[id] {
 @media (max-width: 768px) {
     /* Remove blur to reduce paint/composite cost */
     .navbar { backdrop-filter: none; }
-    /* Disable scroll-in animations to avoid perceived lag */
-    .animate-on-scroll { opacity: 1 !important; transform: none !important; transition: none !important; }
+    /* Disable scroll-in animations removed; class no longer used */
 }
 
 @media screen and (max-width: 480px) {
@@ -2653,40 +2652,9 @@ section[id] {
     }
 }
 
-/* Animation Classes */
-.animate-on-scroll {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s ease-out;
-}
+/* Scroll-in animation classes removed */
 
-.animate-on-scroll.animate {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* No-JS fallback: reveal content if scripts fail */
-html:not(.js) .animate-on-scroll {
-    opacity: 1 !important;
-    transform: none !important;
-}
-
-/* Staggered animations for images */
-.menu-item:nth-child(1) .animate-on-scroll { transition-delay: 0.1s; }
-.menu-item:nth-child(2) .animate-on-scroll { transition-delay: 0.2s; }
-.menu-item:nth-child(3) .animate-on-scroll { transition-delay: 0.3s; }
-.menu-item:nth-child(4) .animate-on-scroll { transition-delay: 0.4s; }
-.menu-item:nth-child(5) .animate-on-scroll { transition-delay: 0.5s; }
-.menu-item:nth-child(6) .animate-on-scroll { transition-delay: 0.6s; }
-
-.instagram-post:nth-child(1) .animate-on-scroll { transition-delay: 0.1s; }
-.instagram-post:nth-child(2) .animate-on-scroll { transition-delay: 0.2s; }
-.instagram-post:nth-child(3) .animate-on-scroll { transition-delay: 0.3s; }
-.instagram-post:nth-child(4) .animate-on-scroll { transition-delay: 0.4s; }
-.instagram-post:nth-child(5) .animate-on-scroll { transition-delay: 0.5s; }
-.instagram-post:nth-child(6) .animate-on-scroll { transition-delay: 0.6s; }
-
-.about-image .animate-on-scroll { transition-delay: 0.2s; }
+/* Removed stagger delays for menu/instagram/about */
 
 /* Tablet Styles */
 @media screen and (max-width: 1023px) and (min-width: 769px) {
