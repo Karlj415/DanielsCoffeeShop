@@ -4,48 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c10139a8-3e1a-487e-9561-56766d2721ef" name="Changes" comment="Removed scroll animations and related styles: deprecated `.animate-on-scroll` class, eliminated staggered delays, ensured immediate content visibility. Enhanced hero section with fallback image support for video failures.">
+    <list default="true" id="c10139a8-3e1a-487e-9561-56766d2721ef" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/lc/2_ce1eec92-d36d-4a12-8a18-9480fead2e6d.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/lc/3_75cea746-25cd-42e5-b782-644024b0edcf.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/lc/586933784-dtc_2024_9oz_coldbrew-camera.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/lc/586933794-dtc_2024_9oz_oatdouble-camera_1.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/lc/586933802-dtc_2024_9oz_oatvanilla-camera.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/lc/586933865-dtc_2024_9oz_variety-SansDouble_1.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/lc/Afrique_12ozCoffee_1_1.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/lc/Colombia_SanRoque_web1_d22eb753-c4f1-47e0-9b9f-99a3aa38f0a0_1.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/lc/Monaco_12oz_Coffee_2023Update_Web_1.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/lc/RTD-9oz-2024_ColdBrew3.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/lc/RTD_9ozOatVanilla_DTC1.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/lc/SBM_9oz_DTC.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/lc/SMR_9oz_DTC_Studio.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/lc/afrique.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/lc/afrique.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/lc/bleu.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/lc/decaf.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/lc/decaf.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/lc/monaco.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/lc/monaco.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/misc/blake-verdoorn-gM-RfQsZK98-unsplash.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/misc/caleb-dow-uDFAD5PS-pI-unsplash.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/misc/coffee-cup-logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/misc/coffee-logo-light.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/misc/coffee-svg-logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/misc/najib-kalil-BKfsCuFQ5R8-unsplash.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/misc/najib-kalil-gHQxwXFj15o-unsplash.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/misc/nathan-dumlao-c2Y16tC3yO8-unsplash.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/misc/pariwat-pannium-lKQFFWoCjr8-unsplash.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/store/Screenshot 2025-05-09 at 02-13-59 Daniel’s Coffee &amp; More (@danielscoffeeandmore) • Instagram photos and videos.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/store/Screenshot 2025-05-09 at 02-14-44 Daniel’s Coffee &amp; More (@danielscoffeeandmore) • Instagram photos and videos.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/store/Screenshot 2025-05-09 at 02-17-43 Daniel’s Coffee &amp; More (@danielscoffeeandmore) • Instagram photos and videos.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/store/Screenshot 2025-05-09 at 02-17-58 Daniel’s Coffee &amp; More (@danielscoffeeandmore) • Instagram photos and videos.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/store/about-photo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/store/dcam_logo_light.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/store/dcam_logo_resized.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/store/draft.mov" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/store/main_hero.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/store/strawb2.mov" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +34,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/Users/gawdly/Developer/CoffeeShop/imgs/store",
+    "last_opened_file_path": "/Users/gawdly/Developer/CoffeeShop",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -96,7 +56,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-b598e85cdad2-JavaScript-WS-252.25557.126" />
+        <option value="bundled-js-predefined-d6986cc7102b-9c94529fcfe0-JavaScript-WS-252.26199.162" />
       </set>
     </attachedChunks>
   </component>
@@ -124,7 +84,9 @@
       <workItem from="1756747044299" duration="8000" />
       <workItem from="1757009307890" duration="11000" />
       <workItem from="1757261321309" duration="996000" />
-      <workItem from="1757264916025" duration="4227000" />
+      <workItem from="1757264916025" duration="4345000" />
+      <workItem from="1757281521502" duration="3000" />
+      <workItem from="1758765509362" duration="30000" />
     </task>
     <task id="LOCAL-00001" summary="Add initial project setup with homepage and assets&#10;&#10;- Included `index.html` as the main structure for the webpage.&#10;- Added `favicon.svg` for site branding.&#10;- Uploaded coffee-related SVG files for logos.&#10;- Structured sections for navigation, menu, about, and Instagram feed in `index.html`.">
       <option name="closed" value="true" />
@@ -350,14 +312,21 @@
       <option name="project" value="LOCAL" />
       <updated>1757268032190</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Deleted unused logo and image assets. Updated menu items with revised names, new images, and adjusted prices.">
+      <option name="closed" value="true" />
+      <created>1757270982046</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1757270982046</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Responsive grid layout for features: replaced flexbox with CSS Grid for better alignment and responsiveness; adjusted typography and spacing for various screen sizes." />
     <MESSAGE value="Refined typography and layout: improved readability with modular scale-based typography, updated headings for consistency, and adjusted spacing for better alignment across sections; introduced CSS Grid for features and optimized contact/info card styles for responsiveness." />
     <MESSAGE value="Refined menu content and visuals: updated menu items, prices, and descriptions; introduced consistent aspect ratios for images; enhanced contact card styles across themes; improved page layout with responsive adjustments and sticky map." />
     <MESSAGE value="Added new images for menu items in `imgs/lc` directory (afrique, bleu, decaf, monaco)." />
@@ -382,6 +351,7 @@
     <MESSAGE value="Refined layout and performance: adjusted map height to align with contact cards, enhanced footer responsiveness, and optimized styles for better tablet/desktop alignment." />
     <MESSAGE value="Refined footer styles: standardized heading sizes across devices, adjusted social icon spacing, improved tablet alignment, and added external links with proper attributes." />
     <MESSAGE value="Removed scroll animations and related styles: deprecated `.animate-on-scroll` class, eliminated staggered delays, ensured immediate content visibility. Enhanced hero section with fallback image support for video failures." />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed scroll animations and related styles: deprecated `.animate-on-scroll` class, eliminated staggered delays, ensured immediate content visibility. Enhanced hero section with fallback image support for video failures." />
+    <MESSAGE value="Deleted unused logo and image assets. Updated menu items with revised names, new images, and adjusted prices." />
+    <option name="LAST_COMMIT_MESSAGE" value="Deleted unused logo and image assets. Updated menu items with revised names, new images, and adjusted prices." />
   </component>
 </project>
