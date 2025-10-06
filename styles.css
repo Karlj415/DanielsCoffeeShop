@@ -113,6 +113,15 @@ h3 { font-size: var(--step-2); line-height: 1.25; letter-spacing: -0.005em; font
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
+    width: 100%;
+}
+
+@media screen and (min-width: 1280px) {
+    .nav-container {
+        max-width: none;
+        margin: 0;
+        padding: 0 clamp(1.5rem, 2.5vw, 2.5rem);
+    }
 }
 
 .nav-logo {
