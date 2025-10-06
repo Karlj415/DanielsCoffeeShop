@@ -341,7 +341,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 img.setAttribute('aria-hidden', 'true');
                 img.decoding = 'async';
                 img.loading = 'eager';
-                img.src = 'imgs/store/main_hero.png';
+                img.src = 'imgs/store/hero.png';
                 hero.appendChild(img);
             }
             hero.classList.add('hero--show-fallback');
