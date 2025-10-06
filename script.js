@@ -376,6 +376,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 showVideo();
             }
         };
+        // Ensure muted autoplay works consistently across browsers
+        try {
+            video.muted = true;
+            video.setAttribute('muted', '');
+            video.setAttribute('playsinline', '');
+        } catch (_) { /* noop */ }
+
+        if (video.readyState >= (window.HTMLMediaElement ? HTMLMediaElement.HAVE_CURRENT_DATA : 2)) {
+            onCanPlay();
+        } else {
+            showPoster();
+        }
+
         video.addEventListener('canplay', onCanPlay, {once: true});
         video.addEventListener('playing', onCanPlay, {once: true});
         video.addEventListener('error', () => {

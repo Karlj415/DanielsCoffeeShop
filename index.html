@@ -161,9 +161,14 @@
 <!--Test -->
 <!-- Hero Section -->
 <section class="hero" id="home">
-    <!-- Hero background: video (fallback image injected only on failure) -->
+    <!-- Hero background: video with fallback image -->
+    <img alt="" aria-hidden="true" class="hero-bg hero-fallback" loading="eager"
+         src="imgs/store/hero.png">
     <video aria-hidden="true" autoplay class="hero-bg" id="heroVideo" loop muted playsinline
-           preload="auto" src="imgs/store/strawb.mov"></video>
+           preload="auto">
+        <source src="imgs/store/strawb.mov" type="video/mp4">
+        <source src="imgs/store/strawb.mov" type="video/quicktime">
+    </video>
     <div class="hero-content">
         <div class="cta-group">
             <a class="cta-button coffee-glow" href="#order" rel="noopener" target="_blank">Order
